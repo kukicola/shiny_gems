@@ -1,12 +1,54 @@
+$red: #CC342D;
+
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
-@import "bootstrap/scss/root";
 @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/images";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/nav";
 @import "bootstrap/scss/helpers";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/utilities/api";
+
+.navbar-logo {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar-nav .nav-link {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.text-red {
+  color: $red;
+}
+
+.text-gray {
+  color: $gray-500;
+}
+
+a.text-gray:hover {
+  color: $gray-400;
+}
+
+.intro {
+  background-color: rgba(204, 52, 45, 1);
+  background-image: linear-gradient(0deg, rgba(204, 52, 45, 1) 0%, rgba(231, 101, 98, 1) 100%);
+}
+
+.py-10 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.home-title {
+  line-height: 1;
+}

@@ -8,6 +8,89 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   </head>
   <body>
+    <nav class="navbar navbar-expand">
+      <div class="container">
+        <a href="/" class="text-decoration-none d-flex justify-content-center">
+          <img src="/assets/images/logo.svg" class="navbar-logo"/>
+          <strong class="navbar-brand ms-2">
+            Shiny<span class="text-red">Gems</span>
+          </strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Browse gems</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">For maintainers</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <%= yield %>
-   </body>
+    <footer class="bg-dark py-5 text-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-4">
+            <strong class="text-uppercase">Menu</strong>
+            <hr/>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">Browse gems</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">For maintainers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray">About author</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <strong class="text-uppercase">Recently added</strong>
+            <hr/>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">Browse gems</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">For maintainers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray">About author</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <strong class="text-uppercase">Most popular</strong>
+            <hr/>
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">Browse gems</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray" href="#">For maintainers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-gray">About author</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
