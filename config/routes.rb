@@ -2,6 +2,6 @@
 
 module ShinyGems
   class Routes < Hanami::Routes
-    root to: "root"
+    root to: "pages.index"
   end
 end

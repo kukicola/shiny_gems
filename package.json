@@ -1,0 +1,9 @@
+{
+  "name": "shiny_gems",
+  "version": "1.0.0",
+  "author": "Karol Bąk <kukicola@gmail.com>",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "5.2.3"
+  }
+}

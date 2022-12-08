@@ -1,2 +1,4 @@
 .sass-cache
 .bundle
+/log
+/node_modules
