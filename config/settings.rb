@@ -2,8 +2,8 @@
 
 module ShinyGems
   class Settings < Hanami::Settings
-    # Define your app settings here, for example:
-    #
-    # setting :my_flag, default: false, constructor: Types::Params::Bool
+    setting :github_key, constructor: Types::String
+    setting :github_secret, constructor: Types::String
+    setting :session_secret, constructor: Types::String
   end
 end
