@@ -8,6 +8,8 @@ gem "hanami-controller", "~> 2.0"
 gem "hanami-validations", "~> 2.0"
 gem "hanami-view", github: "hanami/view"
 gem "erbse"
+gem "omniauth"
+gem "omniauth-github"
 
 gem "dry-types", "~> 1.0", ">= 1.6.1"
 gem "puma"

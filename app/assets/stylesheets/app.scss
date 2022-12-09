@@ -1,4 +1,5 @@
 $red: #CC342D;
+$bootstrap-icons-font-dir: '/assets/fonts';
 
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
@@ -16,6 +17,7 @@ $red: #CC342D;
 @import "bootstrap/scss/helpers";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/utilities/api";
+@import "bootstrap-icons/font/bootstrap-icons";
 
 .navbar-logo {
   width: 40px;

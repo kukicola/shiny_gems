@@ -4,6 +4,7 @@
   "author": "Karol Bąk <kukicola@gmail.com>",
   "private": true,
   "dependencies": {
-    "bootstrap": "5.2.3"
+    "bootstrap": "5.2.3",
+    "bootstrap-icons": "^1.10.2"
   }
 }
