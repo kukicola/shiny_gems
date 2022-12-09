@@ -5,5 +5,6 @@ module ShinyGems
     setting :github_key, constructor: Types::String
     setting :github_secret, constructor: Types::String
     setting :session_secret, constructor: Types::String
+    setting :database_url, constructor: Types::String
   end
 end

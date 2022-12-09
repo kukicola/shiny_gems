@@ -10,6 +10,9 @@ gem "hanami-view", github: "hanami/view"
 gem "erbse"
 gem "omniauth"
 gem "omniauth-github"
+gem "rom", "~> 5.3"
+gem "rom-sql", "~> 3.6"
+gem "pg"
 
 gem "dry-types", "~> 1.0", ">= 1.6.1"
 gem "puma"
@@ -18,6 +21,7 @@ gem "rake"
 group :development, :test do
   gem "dotenv"
   gem "standard"
+  gem "database_cleaner-sequel"
 end
 
 group :cli, :development do
