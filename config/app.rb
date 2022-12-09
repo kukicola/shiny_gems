@@ -9,16 +9,14 @@ module ShinyGems
     config.actions.sessions = :cookie, {
       key: "session",
       secret: settings.session_secret,
-      expire_after: 60*60*24*365
+      expire_after: 60 * 60 * 24 * 365
     }
 
     config.actions.content_security_policy[:form_action] += " https://github.com"
 
-    OmniAuth.config.request_validation_phase = nil # TODO: enable it please
-
-    config.middleware.use Rack::Static, { urls: ["/assets"], root: "public" }
+    config.middleware.use Rack::Static, {urls: ["/assets"], root: "public"}
     config.middleware.use OmniAuth::Builder do
-      provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret
+      provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret, scope: 'user:email'
     end
   end
 end

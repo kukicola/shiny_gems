@@ -4,11 +4,9 @@ module ShinyGems
   module Actions
     module Pages
       class Index < ShinyGems::Action
-        include Deps[view: "views.pages.index"]
+        include Deps[view: "views.pages.index", view_context: "views.app_context"]
 
         def handle(request, response)
-
-          response.render(view)
         end
       end
     end

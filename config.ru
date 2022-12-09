@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 require "hanami/boot"
-require "rack/static"
 
+OmniAuth.config.request_validation_phase = ShinyGems::Action.new
 run Hanami.app

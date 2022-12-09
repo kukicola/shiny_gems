@@ -14,7 +14,7 @@ Hanami.app.register_provider :persistence, namespace: true do
     config = target["persistence.config"]
 
     config.auto_registration(
-      target.root.join("lib/shiny_gems/persistence"),
+      target.root.join("lib/shiny_gems/persistance"),
       namespace: "ShinyGems::Persistence"
     )
 
