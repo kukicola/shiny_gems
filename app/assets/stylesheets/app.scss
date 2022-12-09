@@ -52,3 +52,28 @@ a.text-gray:hover {
 .home-title {
   line-height: 1;
 }
+
+.btn-intro-main {
+  color: $red;
+
+  &:hover {
+    color: $red;
+    background: #ffffff;
+  }
+}
+
+.btn-intro-secondary {
+  &:hover {
+    border-color: #ffffff;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.btn {
+  font-weight: bolder;
+}
+
+.text-big {
+  font-size: 1.2rem;
+}
