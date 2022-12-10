@@ -12167,4 +12167,9 @@ a.text-gray:hover {
 .text-big {
   font-size: 1.2rem; }
 
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px; }
+
 /*# sourceMappingURL=app.css.map */
