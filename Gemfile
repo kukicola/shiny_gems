@@ -21,7 +21,6 @@ gem "rake"
 group :development, :test do
   gem "dotenv"
   gem "standard"
-  gem "database_cleaner-sequel"
 end
 
 group :cli, :development do
@@ -38,4 +37,6 @@ end
 
 group :test do
   gem "rack-test"
+  gem "database_cleaner-sequel"
+  gem "rom-factory"
 end

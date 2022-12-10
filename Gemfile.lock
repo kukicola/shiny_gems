@@ -80,6 +80,8 @@ GEM
       zeitwerk (~> 2.6)
     erbse (0.1.4)
       temple
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.1)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -145,6 +147,8 @@ GEM
       zeitwerk (~> 2.6.0)
     hansi (0.2.1)
     hashie (5.0.0)
+    i18n (1.12.0)
+      concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     json (2.6.3)
     jwt (2.5.0)
@@ -220,6 +224,12 @@ GEM
       dry-struct (~> 1.0)
       dry-types (~> 1.6)
       transproc (~> 1.0, >= 1.1.0)
+    rom-factory (0.11.0)
+      dry-configurable (~> 1.0)
+      dry-core (~> 1.0)
+      dry-struct (~> 1.6)
+      faker (>= 2.0, < 3.0)
+      rom-core (~> 5.3)
     rom-repository (5.3.0)
       dry-core (~> 1.0)
       dry-initializer (~> 3.0, >= 3.0.1)
@@ -299,6 +309,7 @@ DEPENDENCIES
   rack-test
   rake
   rom (~> 5.3)
+  rom-factory
   rom-sql (~> 3.6)
   standard
 

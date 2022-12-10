@@ -16,7 +16,7 @@ module ShinyGems
 
     config.middleware.use Rack::Static, {urls: ["/assets"], root: "public"}
     config.middleware.use OmniAuth::Builder do
-      provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret, scope: 'user:email'
+      provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret, scope: "user:email"
     end
   end
 end

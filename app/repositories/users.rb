@@ -15,10 +15,10 @@ module ShinyGems
         info = auth_hash.info
         attrs = {
           github_id: auth_hash.uid,
-          username: info['nickname'],
-          email: info['email'],
-          avatar: info['image'],
-          github_token_encrypted: 'abc'
+          username: info["nickname"],
+          email: info["email"],
+          avatar: info["image"],
+          github_token_encrypted: "abc"
         }
 
         if (user = users.where(github_id: attrs[:github_id]).one)

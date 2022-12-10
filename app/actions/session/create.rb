@@ -7,9 +7,9 @@ module ShinyGems
         include Deps[users_repository: "repositories.users"]
 
         def handle(request, response)
-          user = users_repository.auth(request.env['omniauth.auth'])
+          user = users_repository.auth(request.env["omniauth.auth"])
           response.session[:user_id] = user.id
-          response.redirect_to '/'
+          response.redirect_to("/")
         end
       end
     end
