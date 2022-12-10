@@ -8,6 +8,19 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   </head>
   <body>
+    <% unless flash.empty? %>
+      <div class="toast-container bottom-0 end-0 m-3 position-fixed">
+        <% flash.each do |type, content| %>
+          <div class="toast flash show align-items-center text-bg-<%= type %> border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+              <div class="toast-body">
+                <%= content %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
     <nav class="navbar navbar-expand">
       <div class="container">
         <a href="/" class="text-decoration-none d-flex justify-content-center">
@@ -38,13 +51,15 @@
             <div class="d-flex align-items-center ms-3">
               <span class="navbar-text">Logged as <%= current_user.username %></span>
               <img src="<%= current_user.avatar %>" class="avatar ms-2"/>
-              <a href="/auth/destroy" class="nav-link ms-3"><i class="bi bi-box-arrow-right"></i></a>
+              <a href="/auth/destroy" class="nav-link ms-3" aria-label="sign out"><i class="bi bi-box-arrow-right"></i></a>
             </div>
           <% else %>
             <form action="/auth/github" method="POST">
               <input type="hidden" name="_csrf_token" value="<%= csrf_token %>">
-              <button type="submit" class="btn btn-outline-secondary ms-3" href="#">Sign in with GitHub
-                <i class="bi-github"></i></button>
+              <button type="submit" class="btn btn-outline-secondary ms-3" href="#">
+                Sign in with GitHub
+                <i class="bi-github"></i>
+              </button>
             </form>
           <% end %>
         </div>
@@ -111,5 +126,6 @@
         </div>
       </div>
     </footer>
+    <script src="/assets/scripts/app.js" type="text/javascript"></script>
   </body>
 </html>

@@ -13,6 +13,7 @@ gem "omniauth-github"
 gem "rom", "~> 5.3"
 gem "rom-sql", "~> 3.6"
 gem "pg"
+gem "lockbox"
 
 gem "dry-types", "~> 1.0", ">= 1.6.1"
 gem "puma"
@@ -39,4 +40,5 @@ group :test do
   gem "rack-test"
   gem "database_cleaner-sequel"
   gem "rom-factory"
+  gem "capybara"
 end

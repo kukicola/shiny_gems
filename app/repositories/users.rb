@@ -3,9 +3,11 @@
 module ShinyGems
   module Repositories
     class Users < ROM::Repository[:users]
-      include Deps[container: "persistence.rom"]
+      include Deps["lockbox", container: "persistence.rom"]
 
       commands :create, update: :by_pk
+      struct_namespace ::ShinyGems::Entities
+      auto_struct true
 
       def by_id(id)
         users.by_pk(id).one
@@ -16,9 +18,8 @@ module ShinyGems
         attrs = {
           github_id: auth_hash.uid,
           username: info["nickname"],
-          email: info["email"],
           avatar: info["image"],
-          github_token_encrypted: "abc"
+          github_token_encrypted: lockbox.encrypt(auth_hash.credentials["token"])
         }
 
         if (user = users.where(github_id: attrs[:github_id]).one)

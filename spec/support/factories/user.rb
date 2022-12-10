@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-Factory.define(:user) do |f|
+Factory.define(:user, struct_namespace: ShinyGems::Entities) do |f|
   f.username "testname"
   f.github_id "123142"
-  f.email "fake@email.com"
-  f.github_token_encrypted "xxx"
+  f.github_token_encrypted "cvTvQ3SwDxhf7ILAxLVLPd6IbsezZ5mSVmeNVChPzQ=="
   f.avatar "http://localhost/avatar.png"
 end

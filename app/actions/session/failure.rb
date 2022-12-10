@@ -3,10 +3,9 @@
 module ShinyGems
   module Actions
     module Session
-      class Destroy < ShinyGems::Action
+      class Failure < ShinyGems::Action
         def handle(_request, response)
-          response.session.delete(:user_id)
-          response.flash[:success] = "Successfully signed out"
+          response.flash[:warning] = "Error: couldn't sign in"
           response.redirect_to("/")
         end
       end
