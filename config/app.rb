@@ -15,8 +15,9 @@ module ShinyGems
     config.actions.content_security_policy[:form_action] += " https://github.com"
 
     config.middleware.use Rack::Static, {urls: ["/assets", "/favicon.ico"], root: "public"}
+
     config.middleware.use OmniAuth::Builder do
-      provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret
+      provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret, scope: "read:org"
     end
   end
 end

@@ -14,6 +14,7 @@ gem "rom", "~> 5.3"
 gem "rom-sql", "~> 3.6"
 gem "pg"
 gem "lockbox"
+gem "octokit"
 
 gem "dry-types", "~> 1.0", ">= 1.6.1"
 gem "puma"
