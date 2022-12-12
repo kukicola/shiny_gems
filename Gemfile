@@ -44,4 +44,5 @@ group :test do
   gem "database_cleaner-sequel"
   gem "rom-factory"
   gem "capybara"
+  gem "rspec-sidekiq"
 end

@@ -282,6 +282,9 @@ GEM
     rspec-mocks (3.12.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
+    rspec-sidekiq (3.1.0)
+      rspec-core (~> 3.0, >= 3.0.0)
+      sidekiq (>= 2.4.0)
     rspec-support (3.12.0)
     rubocop (1.39.0)
       json (~> 2.3)
@@ -358,6 +361,7 @@ DEPENDENCIES
   rom (~> 5.3)
   rom-factory
   rom-sql (~> 3.6)
+  rspec-sidekiq
   sidekiq
   standard
 

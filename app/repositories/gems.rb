@@ -12,6 +12,10 @@ module ShinyGems
       def by_id(id)
         gems.by_pk(id).one
       end
+
+      def pluck_ids
+        gems.pluck(:id)
+      end
     end
   end
 end
