@@ -3,10 +3,10 @@
 module ShinyGems
   module Persistence
     module Relations
-      class Users < ROM::Relation[:sql]
-        schema(:users, infer: true) do
+      class Gems < ROM::Relation[:sql]
+        schema(:gems, infer: true) do
           associations do
-            has_many :gems
+            belongs_to :user
           end
         end
       end

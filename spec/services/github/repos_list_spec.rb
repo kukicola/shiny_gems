@@ -23,7 +23,7 @@ RSpec.describe ShinyGems::Services::Github::ReposList do
 
     it "fetches data from octokit and returns list of repos" do
       expect(subject.success?).to be_truthy
-      expect(subject.value!).to eq(["some/repo", "another/repo"])
+      expect(subject.value!).to eq(fake_response)
     end
   end
 
