@@ -22,6 +22,5 @@ module ShinyGems
   end
 end
 
-# TODO: sidekiq integration
 # TODO: sync workers & rake tasks
 # TODO: add gem form

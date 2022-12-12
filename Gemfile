@@ -20,6 +20,7 @@ gem "gems"
 gem "dry-types", "~> 1.0", ">= 1.6.1"
 gem "puma"
 gem "rake"
+gem "sidekiq"
 
 group :development, :test do
   gem "dotenv"
