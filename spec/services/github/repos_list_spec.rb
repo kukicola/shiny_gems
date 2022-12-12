@@ -15,9 +15,27 @@ RSpec.describe ShinyGems::Services::Github::ReposList do
 
   subject { described_class.new(octokit: fake_octokit).call(user) }
 
-  it "fetches data from octokit and returns list of repos" do
-    expect(fake_octokit).to receive(:new).with(access_token: "abc").and_return(fake_octokit_instance)
-    expect(fake_octokit_instance).to receive(:repos).with({}, query: {sort: "asc"}).and_return(fake_response)
-    expect(subject).to eq(["some/repo", "another/repo"])
+  context "everything is ok" do
+    before do
+      allow(fake_octokit).to receive(:new).with(access_token: "abc").and_return(fake_octokit_instance)
+      allow(fake_octokit_instance).to receive(:repos).with({}, query: {sort: "asc"}).and_return(fake_response)
+    end
+
+    it "fetches data from octokit and returns list of repos" do
+      expect(subject.success?).to be_truthy
+      expect(subject.value!).to eq(["some/repo", "another/repo"])
+    end
+  end
+
+  context "api error" do
+    before do
+      allow(fake_octokit).to receive(:new).with(access_token: "abc").and_return(fake_octokit_instance)
+      allow(fake_octokit_instance).to receive(:repos).with({}, query: {sort: "asc"}).and_raise(Octokit::NotFound)
+    end
+
+    it "returns failure" do
+      expect(subject.success?).to be_falsey
+      expect(subject.failure).to eq(:repos_list_failed)
+    end
   end
 end

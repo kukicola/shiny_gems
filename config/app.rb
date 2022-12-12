@@ -21,3 +21,11 @@ module ShinyGems
     end
   end
 end
+
+# TODO: gem persistance
+# TODO: add gem service
+# TODO: name info parse from repo
+# TODO: fetch basic data from rubygems
+# TODO: sidekiq integration
+# TODO: sync workers & rake tasks
+# TODO: add gem form

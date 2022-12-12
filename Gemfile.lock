@@ -53,6 +53,10 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
+    dry-monads (1.6.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 1.0, < 2)
+      zeitwerk (~> 2.6)
     dry-monitor (1.0.1)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
@@ -322,6 +326,7 @@ DEPENDENCIES
   capybara
   database_cleaner-sequel
   dotenv
+  dry-monads
   dry-types (~> 1.0, >= 1.6.1)
   erbse
   guard-puma (~> 0.8)
