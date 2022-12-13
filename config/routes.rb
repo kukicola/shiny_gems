@@ -17,7 +17,6 @@ module ShinyGems
       get "failure", to: "session.failure"
     end
 
-
     scope "gems" do
       get "new", to: "gems.new"
     end

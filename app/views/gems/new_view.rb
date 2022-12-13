@@ -8,8 +8,8 @@ module ShinyGems
 
         config.template = "gems/new"
 
-        expose :repos do |context:|
-          repos_list.call(context.current_user).value!
+        expose :repos do |current_user:|
+          repos_list.call(current_user).value!
         end
       end
     end
