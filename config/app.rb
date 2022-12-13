@@ -6,8 +6,6 @@ require "omniauth-github"
 require "sidekiq"
 
 module ShinyGems
-  Workers = Module.new
-
   class App < Hanami::App
     config.actions.sessions = :cookie, {
       key: "session",
@@ -45,4 +43,5 @@ module ShinyGems
   end
 end
 
+# TODO: sidekiq auth
 # TODO: add gem form

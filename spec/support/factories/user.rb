@@ -5,4 +5,5 @@ Factory.define(:user, struct_namespace: ShinyGems::Entities) do |f|
   f.github_id "123142"
   f.github_token_encrypted "cvTvQ3SwDxhf7ILAxLVLPd6IbsezZ5mSVmeNVChPzQ=="
   f.avatar "http://localhost/avatar.png"
+  f.admin false
 end
