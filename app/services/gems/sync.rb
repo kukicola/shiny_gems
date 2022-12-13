@@ -4,11 +4,7 @@ module ShinyGems
   module Services
     module Gems
       class Sync < ShinyGems::Service
-        include Deps[
-          "services.gems.rubygems_info",
-          "services.github.repo",
-          gems_repository: "repositories.gems"
-                ]
+        include Deps["services.gems.rubygems_info", "services.github.repo", "repositories.gems_repository"]
 
         def call(gem)
           info = yield rubygems_info.call(gem.name)

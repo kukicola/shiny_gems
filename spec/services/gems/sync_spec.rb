@@ -3,7 +3,7 @@
 RSpec.describe ShinyGems::Services::Gems::Sync do
   let(:fake_rubygems_info) { instance_double(ShinyGems::Services::Gems::RubygemsInfo) }
   let(:fake_repo) { instance_double(ShinyGems::Services::Github::Repo) }
-  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::Gems) }
+  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository) }
   let(:gem) { Factory.structs[:gem, name: "some_gem", repo: "test/some_gem"] }
   let(:repo_data) do
     {full_name: "test/some_gem", stargazers_count: 50}

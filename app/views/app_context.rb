@@ -3,7 +3,7 @@
 module ShinyGems
   module Views
     class AppContext < Hanami::View::Context
-      include Deps[users_repository: "repositories.users"]
+      include Deps["repositories.users_repository"]
 
       def current_user
         return nil unless session[:user_id]

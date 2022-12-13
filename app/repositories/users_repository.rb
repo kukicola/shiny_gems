@@ -2,7 +2,7 @@
 
 module ShinyGems
   module Repositories
-    class Users < ROM::Repository[:users]
+    class UsersRepository < ROM::Repository[:users]
       include Deps["lockbox", container: "persistence.rom"]
 
       commands :create, update: :by_pk

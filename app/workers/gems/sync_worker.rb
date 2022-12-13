@@ -3,13 +3,10 @@
 module ShinyGems
   module Workers
     module Gems
-      class SyncJob < ShinyGems::Worker
+      class SyncWorker < ShinyGems::Worker
         SyncError = Class.new(StandardError)
 
-        include Deps[
-          "services.gems.sync",
-          gems_repository: "repositories.gems"
-                ]
+        include Deps["services.gems.sync", "repositories.gems_repository"]
 
         def perform(gem_id)
           gem = gems_repository.by_id(gem_id)

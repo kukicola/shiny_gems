@@ -5,7 +5,7 @@ RSpec.describe ShinyGems::Services::Gems::Create do
   let(:fake_rubygems_info) { instance_double(ShinyGems::Services::Gems::RubygemsInfo) }
   let(:fake_gemspec) { instance_double(ShinyGems::Services::Github::Gemspec) }
   let(:fake_repos_list) { instance_double(ShinyGems::Services::Github::ReposList) }
-  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::Gems) }
+  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository) }
   let(:user) { Factory.structs[:user] }
   let(:gem) { Factory.structs[:gem] }
   let(:gemspec_dbl) { double }

@@ -4,7 +4,7 @@ module ShinyGems
   module Actions
     module Session
       class Create < ShinyGems::Action
-        include Deps[users_repository: "repositories.users"]
+        include Deps["repositories.users_repository"]
 
         def handle(request, response)
           user = users_repository.auth(request.env["omniauth.auth"])

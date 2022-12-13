@@ -4,13 +4,8 @@ module ShinyGems
   module Services
     module Gems
       class Create < ShinyGems::Service
-        include Deps[
-          "services.gems.gemspec_parse_name",
-          "services.gems.rubygems_info",
-          "services.github.gemspec",
-          "services.github.repos_list",
-          gem_repository: "repositories.gems"
-                ]
+        include Deps["services.gems.gemspec_parse_name", "services.gems.rubygems_info", "services.github.gemspec",
+          "services.github.repos_list", "repositories.gem_repository"]
 
         def call(user:, repo:)
           repo_data = yield fetch_repo(user: user, repo: repo)

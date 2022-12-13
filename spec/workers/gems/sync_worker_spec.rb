@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Workers::Gems::SyncJob do
-  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::Gems, pluck_ids: [1, 2, 3]) }
+RSpec.describe ShinyGems::Workers::Gems::SyncWorker do
+  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository, pluck_ids: [1, 2, 3]) }
   let(:fake_sync) { instance_double(ShinyGems::Services::Gems::Sync) }
   let(:gem) { Factory.structs[:gem] }
 
@@ -25,7 +25,7 @@ RSpec.describe ShinyGems::Workers::Gems::SyncJob do
 
     it "raises error" do
       expect(fake_sync).to receive(:call).with(gem).and_return(Dry::Monads::Failure(:abc))
-      expect { subject }.to raise_error(ShinyGems::Workers::Gems::SyncJob::SyncError, "abc")
+      expect { subject }.to raise_error(ShinyGems::Workers::Gems::SyncWorker::SyncError, "abc")
     end
   end
 end

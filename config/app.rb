@@ -23,32 +23,26 @@ module ShinyGems
       provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret, scope: "read:org"
     end
 
-    prepare_container do
-      Sidekiq.configure_server do |c|
-        c.redis = {url: Hanami.app["settings"].redis_url}
-      end
-
-      Sidekiq.configure_client do |c|
-        c.redis = {url: Hanami.app["settings"].redis_url}
-      end
+    Sidekiq.configure_server do |c|
+      c.redis = {url: settings.redis_url}
     end
 
-    class << self
-      private
+    Sidekiq.configure_client do |c|
+      c.redis = {url: settings.redis_url}
+    end
 
-      def prepare_app_component_dirs
-        container.config.component_dirs.add("app/workers") do |dir|
-          dir.namespaces.add_root(key: "workers", const: "ShinyGems::Workers")
-          dir.instance = proc do |component|
+    prepare_container do |container|
+      container.config.component_dirs.dir("app") do |dir|
+        dir.instance = proc do |component|
+          if component.key.match?(/workers\./)
             component.loader.constant(component)
+          else
+            component.loader.call(component)
           end
         end
-
-        super
       end
     end
   end
 end
 
-# TODO: sync workers & rake tasks
 # TODO: add gem form

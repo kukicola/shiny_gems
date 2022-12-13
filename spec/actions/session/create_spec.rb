@@ -5,7 +5,7 @@ RSpec.describe ShinyGems::Actions::Session::Create do
 
   let(:auth_mock) { OmniAuth.config.mock_auth[:github] }
   let(:user) { Factory.structs[:user, id: 2] }
-  let(:fake_repo) { instance_double(ShinyGems::Repositories::Users, {auth: user}) }
+  let(:fake_repo) { instance_double(ShinyGems::Repositories::UsersRepository, {auth: user}) }
   let(:env) { {"omniauth.auth" => OmniAuth.config.mock_auth[:github]} }
 
   it "redirects to homepage" do

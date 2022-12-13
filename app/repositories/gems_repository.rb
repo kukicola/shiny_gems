@@ -2,7 +2,7 @@
 
 module ShinyGems
   module Repositories
-    class Gems < ROM::Repository[:gems]
+    class GemsRepository < ROM::Repository[:gems]
       include Deps[container: "persistence.rom"]
 
       commands :create, update: :by_pk

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Repositories::Gems, type: :database do
+RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
   subject(:repo) { described_class.new }
 
   describe "#by_id" do

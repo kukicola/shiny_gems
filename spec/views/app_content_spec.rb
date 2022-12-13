@@ -5,7 +5,7 @@ RSpec.describe ShinyGems::Views::AppContext do
     subject { described_class.new(request: request, users_repository: fake_repo).current_user }
 
     let(:user) { Factory.structs[:user, id: 2] }
-    let(:fake_repo) { instance_double(ShinyGems::Repositories::Users) }
+    let(:fake_repo) { instance_double(ShinyGems::Repositories::UsersRepository) }
     let(:request) { Hanami::Action::Request.new(env: env, params: {}, sessions_enabled: true) }
 
     before { allow(fake_repo).to receive(:by_id).with(2).and_return(user) }
