@@ -43,5 +43,4 @@ module ShinyGems
   end
 end
 
-# TODO: sidekiq auth
 # TODO: add gem form

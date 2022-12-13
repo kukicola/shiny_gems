@@ -22,111 +22,113 @@
         <% end %>
       </div>
     <% end %>
-    <nav class="navbar navbar-expand">
-      <div class="container">
-        <a href="/" class="text-decoration-none d-flex justify-content-center">
-          <img src="/assets/images/logo.svg" class="navbar-logo"/>
-          <strong class="navbar-brand ms-2">
-            Shiny<span class="text-red">Gems</span>
-          </strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Browse gems</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">For maintainers</a>
-            </li>
+    <div class="page">
+      <nav class="navbar navbar-expand bg-white">
+        <div class="container">
+          <a href="/" class="text-decoration-none d-flex justify-content-center">
+            <img src="/assets/images/logo.svg" class="navbar-logo"/>
+            <strong class="navbar-brand ms-2">
+              Shiny<span class="text-red">Gems</span>
+            </strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Browse gems</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">For maintainers</a>
+              </li>
+              <% if current_user %>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">My gems</a>
+                </li>
+              <% end %>
+            </ul>
             <% if current_user %>
-              <li class="nav-item">
-                <a class="nav-link" href="#">My gems</a>
-              </li>
+              <div class="vr mx-3 my-2"></div>
+              <div class="d-flex align-items-center ms-3">
+                <span class="navbar-text">Logged as <%= current_user.username %></span>
+                <img src="<%= current_user.avatar %>" class="avatar ms-2"/>
+                <a href="/auth/destroy" class="nav-link ms-3" aria-label="sign out"><i class="bi bi-box-arrow-right"></i></a>
+              </div>
+            <% else %>
+              <form action="/auth/github" method="POST">
+                <input type="hidden" name="_csrf_token" value="<%= csrf_token %>">
+                <button type="submit" class="btn btn-outline-secondary ms-3" href="#">
+                  Sign in with GitHub
+                  <i class="bi-github"></i>
+                </button>
+              </form>
             <% end %>
-          </ul>
-          <% if current_user %>
-            <div class="vr mx-3 my-2"></div>
-            <div class="d-flex align-items-center ms-3">
-              <span class="navbar-text">Logged as <%= current_user.username %></span>
-              <img src="<%= current_user.avatar %>" class="avatar ms-2"/>
-              <a href="/auth/destroy" class="nav-link ms-3" aria-label="sign out"><i class="bi bi-box-arrow-right"></i></a>
+          </div>
+        </div>
+      </nav>
+      <%= yield %>
+      <footer class="bg-dark py-5 text-gray">
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <strong class="text-uppercase">Menu</strong>
+              <hr/>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">Browse gems</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">For maintainers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray">About author</a>
+                </li>
+              </ul>
             </div>
-          <% else %>
-            <form action="/auth/github" method="POST">
-              <input type="hidden" name="_csrf_token" value="<%= csrf_token %>">
-              <button type="submit" class="btn btn-outline-secondary ms-3" href="#">
-                Sign in with GitHub
-                <i class="bi-github"></i>
-              </button>
-            </form>
-          <% end %>
-        </div>
-      </div>
-    </nav>
-    <%= yield %>
-    <footer class="bg-dark py-5 text-gray">
-      <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <strong class="text-uppercase">Menu</strong>
-            <hr/>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">Browse gems</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">For maintainers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray">About author</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-4">
-            <strong class="text-uppercase">Recently added</strong>
-            <hr/>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">Browse gems</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">For maintainers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray">About author</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-4">
-            <strong class="text-uppercase">Most popular</strong>
-            <hr/>
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">Browse gems</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray" href="#">For maintainers</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-gray">About author</a>
-              </li>
-            </ul>
+            <div class="col-4">
+              <strong class="text-uppercase">Recently added</strong>
+              <hr/>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">Browse gems</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">For maintainers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray">About author</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-4">
+              <strong class="text-uppercase">Most popular</strong>
+              <hr/>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">Browse gems</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray" href="#">For maintainers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-gray">About author</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
     <script src="/assets/scripts/app.js" type="text/javascript"></script>
   </body>
 </html>

@@ -18,7 +18,19 @@ $bootstrap-icons-font-dir: '/assets/fonts';
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/utilities/api";
 @import "bootstrap/scss/toasts";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/forms";
 @import "bootstrap-icons/font/bootstrap-icons";
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  background: #f5f7fb;
+}
 
 .navbar-logo {
   width: 40px;
@@ -85,4 +97,8 @@ a.text-gray:hover {
   width: 40px;
   height: 40px;
   border-radius: 20px;
+}
+
+footer {
+  margin-top: auto;
 }

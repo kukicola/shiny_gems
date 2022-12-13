@@ -10,8 +10,16 @@ module ShinyGems
     mount Sidekiq::Web, at: "/admin/sidekiq"
 
     root to: "pages.index"
-    get "auth/:provider/callback", to: "session.create"
-    get "auth/destroy", to: "session.destroy"
-    get "auth/failure", to: "session.failure"
+
+    scope "auth" do
+      get ":provider/callback", to: "session.create"
+      get "destroy", to: "session.destroy"
+      get "failure", to: "session.failure"
+    end
+
+
+    scope "gems" do
+      get "new", to: "gems.new"
+    end
   end
 end
