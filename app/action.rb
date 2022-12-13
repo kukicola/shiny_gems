@@ -16,11 +16,11 @@ module ShinyGems
       response[:current_user] = user_id && Hanami.app["repositories.users_repository"].by_id(user_id)
     end
 
-    # def require_user!(_, response)
-    #   return if current_user
-    #
-    #   # TODO: add flash
-    #   response.redirect_to("/")
-    # end
+    def require_user!(_, response)
+      return if response[:current_user]
+
+      response.flash[:warning] = "You need to sign in first"
+      response.redirect_to("/")
+    end
   end
 end
