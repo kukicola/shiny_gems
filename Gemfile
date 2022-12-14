@@ -46,4 +46,5 @@ group :test do
   gem "rom-factory"
   gem "capybara"
   gem "rspec-sidekiq"
+  gem "simplecov"
 end

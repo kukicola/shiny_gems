@@ -32,6 +32,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
       sequel
     diff-lcs (1.5.0)
+    docile (1.4.0)
     dotenv (2.8.1)
     dry-auto_inject (1.0.0)
       dry-core (~> 1.0, < 2)
@@ -315,6 +316,12 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.11.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -366,6 +373,7 @@ DEPENDENCIES
   rom-sql (~> 3.6)
   rspec-sidekiq
   sidekiq
+  simplecov
   standard
 
 BUNDLED WITH

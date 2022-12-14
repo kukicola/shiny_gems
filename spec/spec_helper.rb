@@ -4,6 +4,8 @@ require "pathname"
 SPEC_ROOT = Pathname(__dir__).realpath.freeze
 
 ENV["HANAMI_ENV"] ||= "test"
+
+require_relative "support/cov"
 require "hanami/prepare"
 
 require_relative "support/rspec"
