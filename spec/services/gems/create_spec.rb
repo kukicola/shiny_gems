@@ -40,7 +40,7 @@ RSpec.describe ShinyGems::Services::Gems::Create do
       rubygems_info: fake_rubygems_info,
       gemspec: fake_gemspec,
       repos_list: fake_repos_list,
-      gem_repository: fake_gem_repo
+      gems_repository: fake_gem_repo
     ).call(user: user, repo: "test/some_gem")
   end
 

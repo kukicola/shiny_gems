@@ -1,0 +1,48 @@
+<div class="py-5 border-top">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-end mb-3">
+      <div class="h2 mb-0">Browse gems</div>
+      <div>
+        <form action="/gems" method="GET" data-autosave="true">
+          <span class="fw-semibold">Sort by:</span>
+          <select class="form-select d-inline w-auto ms-1" name="sort_by">
+            <option value="name" <%= "selected" if sort_by.value == "name" %>>Name</option>
+            <option value="stars" <%= "selected" if sort_by.value == "stars" %>>Stars</option>
+            <option value="downloads" <%= "selected" if sort_by.value == "downloads" %>>Downloads</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <% gems.each do |gem| %>
+      <a href="/gems/<%= gem.id %>" class="card text-decoration-none text-black">
+        <div class="card-body">
+          <div class="d-flex">
+            <div class="flex-grow-1">
+              <h5 class="card-title"><%= gem.name %></h5>
+              <p class="card-text"><%= gem.description %></p>
+            </div>
+            <div class="text-end">
+              <div class="card-subtitle text-muted" data-bs-toggle="tooltip" data-bs-title="GitHub stars">
+                <%= gem.stars %> <i class="bi-star ms-1"></i>
+              </div>
+              <div class="card-subtitle mt-2 text-muted" data-bs-toggle="tooltip" data-bs-title="RubyGems downloads">
+                <%= gem.downloads %> <i class="bi-download ms-1"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+    <div class="d-flex justify-content-center mt-5">
+      <nav>
+        <ul class="pagination">
+          <% pager.total_pages.times do |i| %>
+            <li class="page-item <%= 'active' if pager.current_page == i + 1 %>">
+              <a class="page-link" href="/gems?page=<%= i + 1 %>&sort_by=<%= sort_by %>"><%= i + 1 %></a>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

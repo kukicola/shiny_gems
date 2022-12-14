@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+# TODO: specs
+
 module ShinyGems
   module Actions
     module Gems
       class New < ShinyGems::Action
-        include Deps["services.github.repos_list", view: "views.gems.new_view", view_context: "views.app_context"]
+        include Deps["services.github.repos_list", "errors_mapper",
+          view: "views.gems.new_view", view_context: "views.app_context"]
 
         before :require_user!
 
@@ -14,7 +17,8 @@ module ShinyGems
           if repos.success?
             response[:repos] = repos.value!
           else
-            # TODO: redirect to gem list with notification
+            response.flash[:warning] = errors_mapper.call(repos.failure)
+            response.redirect_to("/gems/mine")
           end
         end
       end

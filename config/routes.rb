@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "sidekiq/web"
-require_relative "../lib/shiny_gems/admin_middleware"
+require_relative "../app/lib/admin_middleware"
 
 Sidekiq::Web.use ShinyGems::AdminMiddleware
 
@@ -18,7 +18,9 @@ module ShinyGems
     end
 
     scope "gems" do
+      get "/", to: "gems.index"
       get "new", to: "gems.new"
+      post "/", to: "gems.create"
     end
   end
 end

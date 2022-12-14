@@ -14,6 +14,8 @@ module ShinyGems
     }
 
     config.actions.content_security_policy[:form_action] += " https://github.com"
+    config.actions.content_security_policy[:script_src] += " https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    config.actions.content_security_policy[:font_src] += " https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/fonts/"
 
     config.middleware.use Rack::Static, {urls: ["/assets", "/favicon.ico"], root: "public"}
 
@@ -42,5 +44,3 @@ module ShinyGems
     end
   end
 end
-
-# TODO: add gem form

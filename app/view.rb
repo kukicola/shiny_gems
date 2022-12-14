@@ -6,7 +6,7 @@ module ShinyGems
     # Set common configuration in the shared base view class
     config.paths = [File.join(__dir__, "templates")]
     config.layout = "application"
-    # config.part_namespace = View::Parts
+    config.part_namespace = Views::Parts
     # config.scope_namespace = View::Scopes
     config.default_context = Views::AppContext.new
   end

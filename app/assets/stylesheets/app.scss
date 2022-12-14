@@ -1,26 +1,4 @@
 $red: #CC342D;
-$bootstrap-icons-font-dir: '/assets/fonts';
-
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/maps";
-@import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
-@import "bootstrap/scss/root";
-@import "bootstrap/scss/reboot";
-@import "bootstrap/scss/type";
-@import "bootstrap/scss/images";
-@import "bootstrap/scss/containers";
-@import "bootstrap/scss/grid";
-@import "bootstrap/scss/navbar";
-@import "bootstrap/scss/nav";
-@import "bootstrap/scss/helpers";
-@import "bootstrap/scss/buttons";
-@import "bootstrap/scss/utilities/api";
-@import "bootstrap/scss/toasts";
-@import "bootstrap/scss/card";
-@import "bootstrap/scss/forms";
-@import "bootstrap-icons/font/bootstrap-icons";
 
 .page {
   min-height: 100vh;
@@ -47,11 +25,11 @@ body {
 }
 
 .text-gray {
-  color: $gray-500;
+  color: #adb5bd;
 }
 
 a.text-gray:hover {
-  color: $gray-400;
+  color: #ced4da;
 }
 
 .intro {

@@ -2,17 +2,24 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-4">
-        <div class="h2">Add new gem</div>
+        <div class="h2 mb-3">Add new gem</div>
         <div class="card">
           <div class="card-body">
             <form action="/gems" method="POST">
               <input type="hidden" name="_csrf_token" value="<%= csrf_token %>">
               <label for="repository" class="form-label">Select repository</label>
-              <select class="form-select" name="repository">
+              <select class="form-select <%= "is-invalid" if error %>" name="repository">
                 <% repos.each do |repo| %>
-                  <option value="<%= repo[:full_name] %>"><%= repo[:full_name] %></option>
+                  <option value="<%= repo[:full_name] %>" <%= "selected" if current_repo&.value == repo[:full_name] %>>
+                    <%= repo[:full_name] %>
+                  </option>
                 <% end %>
               </select>
+              <% if error %>
+                <div class="invalid-feedback">
+                  <%= error %>
+                </div>
+              <% end %>
               <input type="submit" class="btn btn-primary mt-3" value="Submit">
             </form>
           </div>
