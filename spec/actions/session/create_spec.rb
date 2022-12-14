@@ -9,7 +9,7 @@ RSpec.describe ShinyGems::Actions::Session::Create do
   let(:env) { {"omniauth.auth" => OmniAuth.config.mock_auth[:github]} }
 
   it "redirects to homepage" do
-    expect(subject.headers["Location"]).to eq("/")
+    expect(subject.headers["Location"]).to eq("/gems/mine")
   end
 
   it "saves user id returned from repo to session" do

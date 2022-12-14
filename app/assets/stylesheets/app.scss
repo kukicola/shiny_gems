@@ -48,6 +48,7 @@ a.text-gray:hover {
 
 .btn-intro-main {
   color: $red;
+  font-weight: bolder;
 
   &:hover {
     color: $red;
@@ -56,15 +57,13 @@ a.text-gray:hover {
 }
 
 .btn-intro-secondary {
+  font-weight: bolder;
+
   &:hover {
     border-color: #ffffff;
     color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
   }
-}
-
-.btn {
-  font-weight: bolder;
 }
 
 .text-big {

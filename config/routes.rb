@@ -21,6 +21,7 @@ module ShinyGems
       get "/", to: "gems.index"
       get "new", to: "gems.new"
       post "/", to: "gems.create"
+      get "mine", to: "gems.mine"
     end
   end
 end

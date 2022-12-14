@@ -8,7 +8,7 @@ RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
 
     context "gem exists" do
       it "returns gem" do
-        expect(repo.by_id(gem.id).attributes).to eq(gem.attributes.except(:user))
+        expect(repo.by_id(gem.id)).to match_entity(gem)
       end
     end
 
@@ -34,10 +34,20 @@ RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
     let!(:gem3) { Factory[:gem, stars: 20] }
 
     it "returns paginated data" do
-      expect(subject.index(per_page: 2, page: 1, order: "stars", order_dir: "desc").to_a.map(&:attributes))
-        .to eq([gem2.attributes.except(:user), gem3.attributes.except(:user)])
-      expect(subject.index(per_page: 2, page: 2, order: "stars", order_dir: "desc").to_a.map(&:attributes))
-        .to eq([gem1.attributes.except(:user)])
+      expect(subject.index(per_page: 2, page: 1, order: "stars", order_dir: "desc").to_a)
+        .to match([match_entity(gem2), match_entity(gem3)])
+      expect(subject.index(per_page: 2, page: 2, order: "stars", order_dir: "desc").to_a)
+        .to match([match_entity(gem1)])
+    end
+  end
+
+  describe "#belonging_to_user" do
+    let!(:gem1) { Factory[:gem] }
+    let!(:gem2) { Factory[:gem, user: gem1.user] }
+    let!(:gem3) { Factory[:gem] }
+
+    it "returns gems for provided user_id" do
+      expect(subject.belonging_to_user(gem1.user_id).to_a).to match([match_entity(gem1), match_entity(gem2)])
     end
   end
 end

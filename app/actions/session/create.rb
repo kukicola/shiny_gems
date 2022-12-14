@@ -10,7 +10,7 @@ module ShinyGems
           user = users_repository.auth(request.env["omniauth.auth"])
           response.session[:user_id] = user.id
           response.flash[:success] = "Successfully signed in"
-          response.redirect_to("/")
+          response.redirect_to("/gems/mine")
         end
       end
     end

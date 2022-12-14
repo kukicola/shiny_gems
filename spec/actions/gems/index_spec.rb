@@ -22,9 +22,7 @@ RSpec.describe ShinyGems::Actions::Gems::Index, type: :database do
 
     it "exposes proper data" do
       expect(subject[:sort_by]).to eq("name")
-      # TODO: create custom matcher for it
-      expect(subject[:gems].to_a.map(&:attributes))
-        .to eq([gem.attributes.except(:user)])
+      expect(subject[:gems].to_a).to match([match_entity(gem)])
     end
 
     it "render view" do
@@ -49,8 +47,7 @@ RSpec.describe ShinyGems::Actions::Gems::Index, type: :database do
 
     it "exposes proper data" do
       expect(subject[:sort_by]).to eq("downloads")
-      expect(subject[:gems].to_a.map(&:attributes))
-        .to eq([gem.attributes.except(:user)])
+      expect(subject[:gems].to_a).to match([match_entity(gem)])
     end
 
     it "render view" do
