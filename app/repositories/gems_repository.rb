@@ -17,7 +17,7 @@ module ShinyGems
         gems.pluck(:id)
       end
 
-      def index(per_page: 1, page: 1, order: "name", order_dir: "asc")
+      def index(per_page: 20, page: 1, order: "name", order_dir: "asc")
         gems.per_page(per_page).page(page).order(gems[order.to_sym].send(order_dir.to_sym))
       end
     end

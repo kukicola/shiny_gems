@@ -13,26 +13,7 @@
         </form>
       </div>
     </div>
-    <% gems.each do |gem| %>
-      <a href="/gems/<%= gem.id %>" class="card text-decoration-none text-black">
-        <div class="card-body">
-          <div class="d-flex">
-            <div class="flex-grow-1">
-              <h5 class="card-title"><%= gem.name %></h5>
-              <p class="card-text"><%= gem.description %></p>
-            </div>
-            <div class="text-end">
-              <div class="card-subtitle text-muted" data-bs-toggle="tooltip" data-bs-title="GitHub stars">
-                <%= gem.stars %> <i class="bi-star ms-1"></i>
-              </div>
-              <div class="card-subtitle mt-2 text-muted" data-bs-toggle="tooltip" data-bs-title="RubyGems downloads">
-                <%= gem.downloads %> <i class="bi-download ms-1"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
-    <% end %>
+    <%= render :gems_list %>
     <div class="d-flex justify-content-center mt-5">
       <nav>
         <ul class="pagination">

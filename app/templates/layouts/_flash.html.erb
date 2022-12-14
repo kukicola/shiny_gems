@@ -1,0 +1,13 @@
+<% unless flash.empty? %>
+  <div class="toast-container bottom-0 end-0 m-3 position-fixed">
+    <% flash.each do |type, content| %>
+      <div class="toast align-items-center text-bg-<%= type %> border-0" role="alert" aria-live="polite" aria-atomic="true" data-bs-delay="3000">
+        <div class="d-flex">
+          <div class="toast-body">
+            <%= content %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
