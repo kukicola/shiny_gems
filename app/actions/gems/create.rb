@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: specs
-
 module ShinyGems
   module Actions
     module Gems
@@ -20,6 +18,7 @@ module ShinyGems
           repos = create.call(user: response[:current_user], repo: request.params[:repository])
 
           if repos.success?
+            # TODO: redirect to issues edit
             response.redirect_to("/gems/#{repos.value!.id}")
           else
             response[:error] = errors_mapper.call(repos.failure)

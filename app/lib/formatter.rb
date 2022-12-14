@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: specs
-
 module ShinyGems
   class Formatter
     def separator(number)
