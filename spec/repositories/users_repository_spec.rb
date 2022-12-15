@@ -24,12 +24,12 @@ RSpec.describe ShinyGems::Repositories::UsersRepository, type: :database do
       {
         username: "test",
         avatar: "http://localhost/avatar.png",
-        github_id: "235352"
+        github_id: 235352
       }
     end
 
     context "user exists" do
-      let!(:user) { Factory[:user, github_id: "235352"] }
+      let!(:user) { Factory[:user, github_id: 235352] }
 
       it "returns updated user" do
         user = repo.auth(OmniAuth.config.mock_auth[:github])

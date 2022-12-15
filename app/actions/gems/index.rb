@@ -6,6 +6,8 @@ module ShinyGems
       class Index < ShinyGems::Action
         include Deps["repositories.gems_repository", view: "views.gems.index_view", view_context: "views.app_context"]
 
+        before :validate_params!
+
         DEFAULT_PARAMS = {
           page: 1,
           sort_by: "name"
@@ -23,7 +25,7 @@ module ShinyGems
         end
 
         def handle(request, response)
-          params = request.params.valid? ? DEFAULT_PARAMS.merge(request.params.to_h) : DEFAULT_PARAMS
+          params = DEFAULT_PARAMS.merge(request.params.to_h)
 
           response[:gems] = gems_repository.index(page: params[:page], order: params[:sort_by], order_dir: SORTING_DIRECTIONS[params[:sort_by]])
           response[:pager] = response[:gems].pager

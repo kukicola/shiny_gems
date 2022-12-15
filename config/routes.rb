@@ -22,6 +22,8 @@ module ShinyGems
       get "new", to: "gems.new"
       post "/", to: "gems.create"
       get "mine", to: "gems.mine"
+      get ":id/issues/edit", to: "gems.issues.edit"
+      post ":id/issues", to: "gems.issues.update"
     end
   end
 end

@@ -17,6 +17,16 @@ RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
         expect(repo.by_id(gem.id + 3)).to be_nil
       end
     end
+
+    context "when 'with' present" do
+      let!(:issue) { Factory[:issue, gem_id: gem.id] }
+
+      it "returns gem with associations" do
+        result = repo.by_id(gem.id, with: [:issues])
+        expect(result.name).to eq(gem.name)
+        expect(result.issues).to match([match_entity(issue)])
+      end
+    end
   end
 
   describe "#pluck_ids" do
@@ -47,7 +57,7 @@ RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
     let!(:gem3) { Factory[:gem] }
 
     it "returns gems for provided user_id" do
-      expect(subject.belonging_to_user(gem1.user_id).to_a).to match([match_entity(gem1), match_entity(gem2)])
+      expect(subject.belonging_to_user(gem1.user_id).to_a).to match_array([match_entity(gem1), match_entity(gem2)])
     end
   end
 end

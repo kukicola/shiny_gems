@@ -17,3 +17,5 @@ require_relative "support/capybara"
 require_relative "support/sidekiq"
 require_relative "support/auth"
 require_relative "support/matchers"
+
+Hanami.app.container.enable_stubs!

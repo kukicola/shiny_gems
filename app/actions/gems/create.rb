@@ -8,7 +8,7 @@ module ShinyGems
           view: "views.gems.new_view", view_context: "views.app_context"]
 
         before :require_user!
-        before :validate_params
+        before :validate_params!
 
         params do
           required(:repository).filled(:string)
@@ -18,22 +18,12 @@ module ShinyGems
           repos = create.call(user: response[:current_user], repo: request.params[:repository])
 
           if repos.success?
-            # TODO: redirect to issues edit
-            response.redirect_to("/gems/#{repos.value!.id}")
+            response.redirect_to("/gems/#{repos.value!.id}/issues/edit")
           else
             response[:error] = errors_mapper.call(repos.failure)
             response[:current_repo] = request.params[:repository]
             new.handle(request, response)
           end
-        end
-
-        private
-
-        def validate_params(request, response)
-          return if request.params.valid?
-
-          new.handle(request, response)
-          throw :halt
         end
       end
     end

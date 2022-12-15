@@ -9,8 +9,10 @@ module ShinyGems
       struct_namespace ::ShinyGems::Entities
       auto_struct true
 
-      def by_id(id)
-        gems.by_pk(id).one
+      def by_id(id, with: nil)
+        query = gems.by_pk(id)
+        query = query.combine(*with) if with
+        query.one
       end
 
       def pluck_ids

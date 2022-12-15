@@ -16,16 +16,8 @@ RSpec.describe ShinyGems::Actions::Gems::Create do
   context "when params invalid" do
     subject { instance.call(env.merge({params: {}})) }
 
-    it "is successful" do
-      expect(subject).to be_successful
-    end
-
-    it "delagates request handle to new action" do
-      expect(subject[:repos]).to eq([])
-    end
-
-    it "render view" do
-      expect(subject.body[0]).to include("Add new gem")
+    it "returns bad request" do
+      expect(subject.status).to eq(400)
     end
   end
 
@@ -66,7 +58,7 @@ RSpec.describe ShinyGems::Actions::Gems::Create do
     subject { instance.call(env.merge({repository: "test/abc"})) }
 
     it "redirects to gem" do
-      expect(subject.headers["Location"]).to eq("/gems/5")
+      expect(subject.headers["Location"]).to eq("/gems/5/issues/edit")
     end
   end
 end

@@ -9,7 +9,8 @@ module ShinyGems
       gem_info_fetch_failed: "Couldn't fetch gem info from RubyGems",
       gemspec_fetch_failed: "Couldn't fetch gemspec from repository",
       repo_fetch_failed: "Couldn't fetch repository from GitHub",
-      repos_list_failed: "Couldn't fetch your repositories from GitHub"
+      repos_list_failed: "Couldn't fetch your repositories from GitHub",
+      issues_list_failed: "Couldn't fetch issues from GitHub"
     }.freeze
 
     def call(error)

@@ -11,9 +11,9 @@ RSpec.describe ShinyGems::Services::Github::IssuesList do
     ]
   end
 
-  subject { described_class.new(octokit: fake_octokit).call("some/repo") }
-
   context "everything is ok" do
+    subject { described_class.new(octokit: fake_octokit).call("some/repo", all: true) }
+
     before do
       allow(fake_octokit).to receive(:list_issues).with("some/repo", sort: "created", state: "all")
         .and_return(fake_response)
@@ -26,8 +26,10 @@ RSpec.describe ShinyGems::Services::Github::IssuesList do
   end
 
   context "api error" do
+    subject { described_class.new(octokit: fake_octokit).call("some/repo") }
+
     before do
-      allow(fake_octokit).to receive(:list_issues).with("some/repo", sort: "created", state: "all")
+      allow(fake_octokit).to receive(:list_issues).with("some/repo", sort: "created", state: "open")
         .and_raise(Octokit::NotFound)
     end
 
