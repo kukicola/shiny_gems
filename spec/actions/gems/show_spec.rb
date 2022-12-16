@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Actions::Gems::Show, type: :database do
+RSpec.describe ShinyGems::Actions::Gems::Show do
   let(:fake_gems_repository) do
     fake_repository(:gems) do |repo|
       allow(repo).to receive(:by_id).with(gem.id, with: [:issues, :user]).and_return(gem)
       allow(repo).to receive(:by_id).with(-1, with: [:issues, :user]).and_return(nil)
     end
   end
-  let(:gem) { Factory[:gem, :with_issues] }
+  let(:gem) { Factory.structs[:gem, :with_issues] }
 
   context "gem not found" do
     subject { described_class.new(gems_repository: fake_gems_repository).call({id: -1}) }

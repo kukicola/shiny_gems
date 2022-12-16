@@ -10,7 +10,9 @@
         </div>
       </div>
       <div>
-
+        <% if current_gem.user_id == current_user&.id %>
+          <a href="/gems/<%= current_gem.id %>/issues/edit" class="btn btn-primary">Edit issues</a>
+        <% end %>
       </div>
     </div>
     <div class="row">

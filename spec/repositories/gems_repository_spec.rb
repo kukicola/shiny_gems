@@ -50,6 +50,10 @@ RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
       expect(subject.index(per_page: 2, page: 2, order: "stars", order_dir: "desc").to_a)
         .to match([match_entity(gem1)])
     end
+
+    it "returns pager" do
+      expect(subject.index(per_page: 2, page: 1, order: "stars", order_dir: "desc").pager).not_to be_nil
+    end
   end
 
   describe "#belonging_to_user" do

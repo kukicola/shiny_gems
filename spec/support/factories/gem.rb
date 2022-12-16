@@ -7,6 +7,7 @@ Factory.define(:gem, struct_namespace: ShinyGems::Entities) do |f|
   f.stars { 1521 }
   f.downloads { 2453432 }
   f.association(:user)
+  f.association(:issues, count: 0)
 
   f.trait :with_issues do |t|
     t.association(:issues, count: 3)

@@ -45,9 +45,9 @@ module ShinyGems
   end
 end
 
-# TODO: add button to edit issues for author
 # TODO: add delete gem option
 # TODO: sync issues job
+# TODO: upload gemfile
 # TODO: feature specs
 # TODO: homepage
 # TODO: for mainteners

@@ -9,7 +9,7 @@ RSpec.describe ShinyGems::Actions::Gems::Issues::Edit do
       allow(repo).to receive(:by_id).with(gem.id, with: [:issues]).and_return(gem)
     end
   end
-  let(:gem) { Factory.structs[:gem, repo: "test/repo", user: user.attributes] }
+  let(:gem) { Factory.structs[:gem, :with_issues, repo: "test/repo", user: user.attributes] }
 
   subject { described_class.new(issues_list_fetcher: fake_issues_list_fetcher, gems_repository: fake_gem_repo).call(env.merge(id: gem.id)) }
 
