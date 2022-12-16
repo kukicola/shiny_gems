@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Hanami.app["octokit"]
+Hanami.app.prepare(:octokit)
 
 RSpec.describe ShinyGems::Services::Github::RepoFetcher do
   let(:fake_octokit) { instance_double(Octokit::Client) }

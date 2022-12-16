@@ -6,7 +6,7 @@ module ShinyGems
       def fake_repository(name, stub_container: false, &block)
         instance_double("ShinyGems::Repositories::#{name.capitalize}Repository").tap do |double|
           Hanami.app.container.stub("repositories.#{name}_repository", double) if stub_container
-          block.call(double) if block
+          block&.call(double)
         end
       end
     end

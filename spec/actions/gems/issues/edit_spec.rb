@@ -13,7 +13,6 @@ RSpec.describe ShinyGems::Actions::Gems::Issues::Edit do
 
   subject { described_class.new(issues_list_fetcher: fake_issues_list_fetcher, gems_repository: fake_gem_repo).call(env.merge(id: gem.id)) }
 
-
   context "issues list fetched successfully" do
     before do
       allow(fake_issues_list_fetcher).to receive(:call).with("test/repo")

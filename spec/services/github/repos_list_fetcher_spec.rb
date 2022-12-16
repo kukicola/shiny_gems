@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Hanami.app["octokit"]
+Hanami.app.prepare(:octokit)
 
 RSpec.describe ShinyGems::Services::Github::ReposListFetcher do
   let(:user) { Factory.structs[:user] }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Hanami.app["gems_api"]
+Hanami.app.prepare(:gems_api)
 
 RSpec.describe ShinyGems::Services::Gems::RubygemsInfoFetcher do
   subject { described_class.new(gems_api: fake_gem_api).call("some_gem") }
