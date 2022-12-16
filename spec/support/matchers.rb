@@ -2,6 +2,10 @@
 
 RSpec::Matchers.define :match_entity do |expected|
   match do |actual|
-    actual.attributes.reject { |_, value| value.is_a?(ROM::Struct) } == expected.attributes.reject { |_, value| value.is_a?(ROM::Struct) }
+    filtered(actual) == filtered(expected)
+  end
+
+  def filtered(entity)
+    entity.attributes.reject { |_, value| value.is_a?(ROM::Struct) || (value.is_a?(Array) && value.all? { |el| el.is_a?(ROM::Struct) }) }
   end
 end

@@ -20,7 +20,13 @@ module ShinyGems
       end
 
       def index(per_page: 20, page: 1, order: "name", order_dir: "asc")
-        gems.per_page(per_page).page(page).order(gems[order.to_sym].send(order_dir.to_sym))
+        gems
+          .left_join(:issues)
+          .exclude(issues[:id] => nil)
+          .distinct
+          .per_page(per_page)
+          .page(page)
+          .order(gems[order.to_sym].send(order_dir.to_sym))
       end
 
       def belonging_to_user(user_id)

@@ -6,7 +6,7 @@ threads min_threads_count, max_threads_count
 
 port ENV.fetch("HANAMI_PORT", 2300)
 environment ENV.fetch("HANAMI_ENV", "development")
-workers ENV.fetch("HANAMI_WEB_CONCURRENCY", 1)
+workers ENV.fetch("HANAMI_WEB_CONCURRENCY", 2)
 
 on_worker_boot do
   Hanami.shutdown

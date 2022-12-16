@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Views::Parts::Label do
-  let(:label_light) { { "name" => "test", "color" => "dddddd" } }
-  let(:label_dark) { { "name" => "dark", "color" => "222222" } }
+  let(:label_light) { {"name" => "test", "color" => "dddddd"} }
+  let(:label_dark) { {"name" => "dark", "color" => "222222"} }
   let(:instance_light) { described_class.new(value: label_light) }
   let(:instance_dark) { described_class.new(value: label_dark) }
 

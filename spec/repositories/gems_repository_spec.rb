@@ -39,11 +39,12 @@ RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
   end
 
   describe "#index" do
-    let!(:gem1) { Factory[:gem, stars: 10] }
-    let!(:gem2) { Factory[:gem, stars: 30] }
-    let!(:gem3) { Factory[:gem, stars: 20] }
+    let!(:gem1) { Factory[:gem, :with_issues, stars: 10] }
+    let!(:gem2) { Factory[:gem, :with_issues, stars: 30] }
+    let!(:gem3) { Factory[:gem, :with_issues, stars: 20] }
+    let!(:gem4) { Factory[:gem, stars: 20] }
 
-    it "returns paginated data" do
+    it "returns paginated data except for gems without issues" do
       expect(subject.index(per_page: 2, page: 1, order: "stars", order_dir: "desc").to_a)
         .to match([match_entity(gem2), match_entity(gem3)])
       expect(subject.index(per_page: 2, page: 2, order: "stars", order_dir: "desc").to_a)

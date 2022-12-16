@@ -2,7 +2,7 @@
 
 RSpec.describe ShinyGems::Actions::Gems::Index, type: :database do
   let(:gems_repository) { ShinyGems::Repositories::GemsRepository.new }
-  let!(:gem) { Factory[:gem] }
+  let!(:gem) { Factory[:gem, :with_issues] }
 
   subject { described_class.new(gems_repository: gems_repository).call(env) }
 
