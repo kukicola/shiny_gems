@@ -8,8 +8,9 @@ module ShinyGems
           include Deps["services.gems.issues.updater", "errors_mapper"]
 
           before :require_user!
-          before :load_gem_and_check_ownership!
           before :validate_params!
+
+          include Mixins::GemAction
 
           params do
             required(:id).filled(:integer)

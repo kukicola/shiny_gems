@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Actions::Gems::New do
-  let(:fake_repos_list_fetcher) { instance_double(ShinyGems::Services::Github::ReposListFetcher) }
+  include_context "authorized user"
 
-  with_user
+  let(:fake_repos_list_fetcher) { instance_double(ShinyGems::Services::Github::ReposListFetcher) }
 
   subject { described_class.new(repos_list_fetcher: fake_repos_list_fetcher).call(env) }
 

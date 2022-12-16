@@ -1,23 +1,17 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Actions::Gems::Issues::Update do
+  include_context "authorized user"
+
   let(:fake_updater) { instance_double(ShinyGems::Services::Gems::Issues::Updater) }
-  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository) }
-  let(:gem) { Factory.structs[:gem, repo: "test/repo", user: user.attributes] }
-
-  with_user
-
-  subject { described_class.new(updater: fake_updater).call(env.merge(id: gem.id, issues_ids: ["1"])) }
-
-  around do |example|
-    Hanami.app.container.stub("repositories.gems_repository", fake_gem_repo) do
-      example.call
+  let(:fake_gem_repo) do
+    fake_repository(:gems) do |repo|
+      allow(repo).to receive(:by_id).with(gem.id, with: [:issues]).and_return(gem)
     end
   end
+  let(:gem) { Factory.structs[:gem, repo: "test/repo", user: user.attributes] }
 
-  before do
-    allow(fake_gem_repo).to receive(:by_id).with(gem.id, with: [:issues]).and_return(gem)
-  end
+  subject { described_class.new(updater: fake_updater, gems_repository: fake_gem_repo).call(env.merge(id: gem.id, issues_ids: ["1"])) }
 
   context "update called successfully" do
     before do

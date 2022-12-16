@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Actions::Gems::Create do
-  with_user
+  include_context "authorized user"
 
   let(:instance) { described_class.new(creator: fake_creator, new: fake_new_action.new) }
   let(:fake_new_action) do

@@ -1,23 +1,18 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Actions::Gems::Issues::Edit do
+  include_context "authorized user"
+
   let(:fake_issues_list_fetcher) { instance_double(ShinyGems::Services::Github::IssuesListFetcher) }
-  let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository) }
-  let(:gem) { Factory.structs[:gem, repo: "test/repo", user: user.attributes] }
-
-  with_user
-
-  subject { described_class.new(issues_list_fetcher: fake_issues_list_fetcher).call(env.merge(id: gem.id)) }
-
-  around do |example|
-    Hanami.app.container.stub("repositories.gems_repository", fake_gem_repo) do
-      example.call
+  let(:fake_gem_repo) do
+    fake_repository(:gems) do |repo|
+      allow(repo).to receive(:by_id).with(gem.id, with: [:issues]).and_return(gem)
     end
   end
+  let(:gem) { Factory.structs[:gem, repo: "test/repo", user: user.attributes] }
 
-  before do
-    allow(fake_gem_repo).to receive(:by_id).with(gem.id, with: [:issues]).and_return(gem)
-  end
+  subject { described_class.new(issues_list_fetcher: fake_issues_list_fetcher, gems_repository: fake_gem_repo).call(env.merge(id: gem.id)) }
+
 
   context "issues list fetched successfully" do
     before do

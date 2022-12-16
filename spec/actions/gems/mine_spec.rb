@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Actions::Gems::Mine do
-  let(:fake_gems_repository) { instance_double(ShinyGems::Repositories::GemsRepository) }
+  include_context "authorized user"
 
-  with_user
+  let(:gem) { Factory.structs[:gem] }
+  let(:fake_gems_repository) do
+    fake_repository(:gems) do |repo|
+      allow(repo).to receive(:belonging_to_user).with(user.id).and_return([gem])
+    end
+  end
 
   subject { described_class.new(gems_repository: fake_gems_repository).call(env) }
 
   context "user logged in" do
-    let(:gem) { Factory.structs[:gem] }
-
-    before do
-      allow(fake_gems_repository).to receive(:belonging_to_user).with(user.id).and_return([gem])
-    end
-
     it "is successful" do
       expect(subject).to be_successful
     end

@@ -8,7 +8,8 @@ module ShinyGems
           include Deps["services.github.issues_list_fetcher", "errors_mapper"]
 
           before :require_user!
-          before :load_gem_and_check_ownership!
+
+          include Mixins::GemAction
 
           # TODO: select issues that are already in DB
           def handle(request, response)

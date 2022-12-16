@@ -5,7 +5,7 @@ require "hanami/action"
 
 module ShinyGems
   class Action < Hanami::Action
-    include Deps["repositories.users_repository"]
+    include Deps["repositories.users_repository", "repositories.gems_repository"]
 
     ForbiddenError = Class.new(StandardError)
     BadRequestError = Class.new(StandardError)
@@ -19,7 +19,6 @@ module ShinyGems
 
     def set_current_user(request, response)
       user_id = request.session[:user_id]
-      # TODO: test if can be used with Deps
       response[:current_user] = user_id && users_repository.by_id(user_id)
     end
 
@@ -28,17 +27,6 @@ module ShinyGems
 
       response.flash[:warning] = "You need to sign in first"
       response.redirect_to("/")
-    end
-
-    def load_gem_and_check_ownership!(request, response)
-      id = request.params[:id]
-      gem = Hanami.app["repositories.gems_repository"].by_id(id, with: [:issues])
-
-      if gem.user_id == response[:current_user].id
-        response[:current_gem] = gem
-      else
-        raise ForbiddenError
-      end
     end
 
     def validate_params!(request, _response)

@@ -3,6 +3,7 @@
 RSpec.describe ShinyGems::Services::Gems::Issues::Updater, type: :database do
   let(:gems_repo) { ShinyGems::Repositories::GemsRepository.new }
   let(:issues_relation) { Hanami.app["persistence.rom"].relations[:issues] }
+  # TODO: issues?
   let!(:existing_issue1) { Factory[:issue, gem: gem, github_id: 100] }
   let!(:existing_issue2) { Factory[:issue, gem: gem, github_id: 101] }
   let!(:existing_issue3) { Factory[:issue, gem: gem, github_id: 102] }
