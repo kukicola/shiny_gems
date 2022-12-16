@@ -3,7 +3,7 @@
 module ShinyGems
   module Services
     module Gems
-      class GemfileParse < ShinyGems::Service
+      class GemfileParser < ShinyGems::Service
         def call(content)
           ast = RubyVM::AbstractSyntaxTree.parse(content)
           Success(seek_gems(ast))

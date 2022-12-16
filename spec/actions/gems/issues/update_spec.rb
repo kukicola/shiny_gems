@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Actions::Gems::Issues::Update do
-  let(:fake_update) { instance_double(ShinyGems::Services::Gems::Issues::Update) }
+  let(:fake_updater) { instance_double(ShinyGems::Services::Gems::Issues::Updater) }
   let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository) }
   let(:gem) { Factory.structs[:gem, repo: "test/repo", user: user.attributes] }
 
   with_user
 
-  subject { described_class.new(update: fake_update).call(env.merge(id: gem.id, issues_ids: ["1"])) }
+  subject { described_class.new(updater: fake_updater).call(env.merge(id: gem.id, issues_ids: ["1"])) }
 
   around do |example|
     Hanami.app.container.stub("repositories.gems_repository", fake_gem_repo) do
@@ -21,7 +21,7 @@ RSpec.describe ShinyGems::Actions::Gems::Issues::Update do
 
   context "update called successfully" do
     before do
-      allow(fake_update).to receive(:call).with(gem: gem, issues_ids: [1])
+      allow(fake_updater).to receive(:call).with(gem: gem, issues_ids: [1])
         .and_return(Dry::Monads::Success([]))
     end
 
@@ -36,7 +36,7 @@ RSpec.describe ShinyGems::Actions::Gems::Issues::Update do
 
   context "update failed" do
     before do
-      allow(fake_update).to receive(:call).with(gem: gem, issues_ids: [1])
+      allow(fake_updater).to receive(:call).with(gem: gem, issues_ids: [1])
         .and_return(Dry::Monads::Failure(:issues_list_failed))
     end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Views::AppContext do
+RSpec.describe ShinyGems::Views::Context do
   describe "#current_user" do
     subject { described_class.new(request: request, response: response).current_user }
 

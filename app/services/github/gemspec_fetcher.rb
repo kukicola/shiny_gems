@@ -5,7 +5,7 @@ require "base64"
 module ShinyGems
   module Services
     module Github
-      class Gemspec < ShinyGems::Service
+      class GemspecFetcher < ShinyGems::Service
         include Deps[octokit: "octokit.global"]
 
         def call(repo)

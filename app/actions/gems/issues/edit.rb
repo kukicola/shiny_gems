@@ -5,14 +5,14 @@ module ShinyGems
     module Gems
       module Issues
         class Edit < ShinyGems::Action
-          include Deps["services.github.issues_list", "errors_mapper",
-            view: "views.gems.issues.edit_view", view_context: "views.app_context"]
+          include Deps["services.github.issues_list_fetcher", "errors_mapper"]
 
           before :require_user!
           before :load_gem_and_check_ownership!
 
+          # TODO: select issues that are already in DB
           def handle(request, response)
-            issues = issues_list.call(response[:current_gem].repo)
+            issues = issues_list_fetcher.call(response[:current_gem].repo)
 
             if issues.success?
               response[:issues] = issues.value!

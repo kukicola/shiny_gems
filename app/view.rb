@@ -8,6 +8,6 @@ module ShinyGems
     config.layout = "application"
     config.part_namespace = Views::Parts
     # config.scope_namespace = View::Scopes
-    config.default_context = Views::AppContext.new
+    config.default_context = Views::Context.new
   end
 end

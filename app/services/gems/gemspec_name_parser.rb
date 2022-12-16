@@ -3,7 +3,7 @@
 module ShinyGems
   module Services
     module Gems
-      class GemspecParseName < ShinyGems::Service
+      class GemspecNameParser < ShinyGems::Service
         def call(content)
           ast = RubyVM::AbstractSyntaxTree.parse(content)
           Maybe(seek_name(ast)).to_result(:name_not_found_in_gemspec)

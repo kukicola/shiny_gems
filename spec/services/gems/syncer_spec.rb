@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Services::Gems::Sync do
-  let(:fake_rubygems_info) { instance_double(ShinyGems::Services::Gems::RubygemsInfo) }
-  let(:fake_repo) { instance_double(ShinyGems::Services::Github::Repo) }
+RSpec.describe ShinyGems::Services::Gems::Syncer do
+  let(:fake_rubygems_info_fetcher) { instance_double(ShinyGems::Services::Gems::RubygemsInfoFetcher) }
+  let(:fake_repo_fetcher) { instance_double(ShinyGems::Services::Github::RepoFetcher) }
   let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository) }
   let(:gem) { Factory.structs[:gem, name: "some_gem", repo: "test/some_gem"] }
   let(:repo_data) do
@@ -26,16 +26,16 @@ RSpec.describe ShinyGems::Services::Gems::Sync do
 
   subject do
     described_class.new(
-      rubygems_info: fake_rubygems_info,
-      repo: fake_repo,
+      rubygems_info_fetcher: fake_rubygems_info_fetcher,
+      repo_fetcher: fake_repo_fetcher,
       gems_repository: fake_gem_repo
     ).call(gem)
   end
 
   context "one of services returns failure" do
     before do
-      allow(fake_repo).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(repo_data))
-      allow(fake_rubygems_info).to receive(:call).with("some_gem").and_return(Dry::Monads::Failure(:gem_info_fetch_failed))
+      allow(fake_repo_fetcher).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(repo_data))
+      allow(fake_rubygems_info_fetcher).to receive(:call).with("some_gem").and_return(Dry::Monads::Failure(:gem_info_fetch_failed))
     end
 
     it "returns failure" do
@@ -46,8 +46,8 @@ RSpec.describe ShinyGems::Services::Gems::Sync do
 
   context "everything goes ok" do
     before do
-      allow(fake_repo).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(repo_data))
-      allow(fake_rubygems_info).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(gem_info))
+      allow(fake_repo_fetcher).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(repo_data))
+      allow(fake_rubygems_info_fetcher).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(gem_info))
       allow(fake_gem_repo).to receive(:update).with(gem.id, expected_attributes).and_return(gem)
     end
 

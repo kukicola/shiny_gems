@@ -3,7 +3,7 @@
 module ShinyGems
   module Services
     module Gems
-      class RubygemsInfo < ShinyGems::Service
+      class RubygemsInfoFetcher < ShinyGems::Service
         include Deps["gems_api"]
 
         def call(name)

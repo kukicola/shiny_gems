@@ -3,7 +3,7 @@
 RSpec.describe ShinyGems::Actions::Gems::Create do
   with_user
 
-  let(:instance) { described_class.new(create: fake_create, new: fake_new_action.new) }
+  let(:instance) { described_class.new(creator: fake_creator, new: fake_new_action.new) }
   let(:fake_new_action) do
     Class.new do
       def handle(_, response)
@@ -11,7 +11,7 @@ RSpec.describe ShinyGems::Actions::Gems::Create do
       end
     end
   end
-  let(:fake_create) { instance_double(ShinyGems::Services::Gems::Create) }
+  let(:fake_creator) { instance_double(ShinyGems::Services::Gems::Creator) }
 
   context "when params invalid" do
     subject { instance.call(env.merge({params: {}})) }
@@ -23,7 +23,7 @@ RSpec.describe ShinyGems::Actions::Gems::Create do
 
   context "when gem create failed" do
     before do
-      allow(fake_create).to receive(:call).with(user: user, repo: "test/abc")
+      allow(fake_creator).to receive(:call).with(user: user, repo: "test/abc")
         .and_return(Dry::Monads::Failure(:gem_already_exists))
     end
 
@@ -51,7 +51,7 @@ RSpec.describe ShinyGems::Actions::Gems::Create do
     let(:gem) { Factory.structs[:gem, id: 5] }
 
     before do
-      allow(fake_create).to receive(:call).with(user: user, repo: "test/abc")
+      allow(fake_creator).to receive(:call).with(user: user, repo: "test/abc")
         .and_return(Dry::Monads::Success(gem))
     end
 

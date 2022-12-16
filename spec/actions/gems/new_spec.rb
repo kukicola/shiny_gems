@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe ShinyGems::Actions::Gems::New do
-  let(:fake_repos_list) { instance_double(ShinyGems::Services::Github::ReposList) }
+  let(:fake_repos_list_fetcher) { instance_double(ShinyGems::Services::Github::ReposListFetcher) }
 
   with_user
 
-  subject { described_class.new(repos_list: fake_repos_list).call(env) }
+  subject { described_class.new(repos_list_fetcher: fake_repos_list_fetcher).call(env) }
 
   context "repo list fetched successfully" do
     before do
-      allow(fake_repos_list).to receive(:call).with(user)
+      allow(fake_repos_list_fetcher).to receive(:call).with(user)
         .and_return(Dry::Monads::Success([]))
     end
 
@@ -28,7 +28,7 @@ RSpec.describe ShinyGems::Actions::Gems::New do
 
   context "repo list fetched failed" do
     before do
-      allow(fake_repos_list).to receive(:call).with(user)
+      allow(fake_repos_list_fetcher).to receive(:call).with(user)
         .and_return(Dry::Monads::Failure(:repos_list_failed))
     end
 

@@ -3,7 +3,7 @@
 module ShinyGems
   module Services
     module Github
-      class IssuesList < ShinyGems::Service
+      class IssuesListFetcher < ShinyGems::Service
         include Deps[octokit: "octokit.global"]
 
         def call(repo, all: false)

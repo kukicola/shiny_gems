@@ -2,7 +2,7 @@
 
 Hanami.app["octokit"]
 
-RSpec.describe ShinyGems::Services::Github::Gemspec do
+RSpec.describe ShinyGems::Services::Github::GemspecFetcher do
   let(:fake_octokit) { instance_double(Octokit::Client) }
 
   subject { described_class.new(octokit: fake_octokit).call("some/repo") }

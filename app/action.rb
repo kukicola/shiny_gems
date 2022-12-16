@@ -5,6 +5,8 @@ require "hanami/action"
 
 module ShinyGems
   class Action < Hanami::Action
+    include Deps["repositories.users_repository"]
+
     ForbiddenError = Class.new(StandardError)
     BadRequestError = Class.new(StandardError)
 
@@ -17,7 +19,8 @@ module ShinyGems
 
     def set_current_user(request, response)
       user_id = request.session[:user_id]
-      response[:current_user] = user_id && Hanami.app["repositories.users_repository"].by_id(user_id)
+      # TODO: test if can be used with Deps
+      response[:current_user] = user_id && users_repository.by_id(user_id)
     end
 
     def require_user!(_, response)

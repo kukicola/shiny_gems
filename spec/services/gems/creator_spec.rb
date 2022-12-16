@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Services::Gems::Create do
-  let(:fake_gemspec_parse_name) { instance_double(ShinyGems::Services::Gems::GemspecParseName) }
-  let(:fake_rubygems_info) { instance_double(ShinyGems::Services::Gems::RubygemsInfo) }
-  let(:fake_gemspec) { instance_double(ShinyGems::Services::Github::Gemspec) }
-  let(:fake_repos_list) { instance_double(ShinyGems::Services::Github::ReposList) }
+RSpec.describe ShinyGems::Services::Gems::Creator do
+  let(:fake_gemspec_name_parser) { instance_double(ShinyGems::Services::Gems::GemspecNameParser) }
+  let(:fake_rubygems_info_fetcher) { instance_double(ShinyGems::Services::Gems::RubygemsInfoFetcher) }
+  let(:fake_gemspec_fetcher) { instance_double(ShinyGems::Services::Github::GemspecFetcher) }
+  let(:fake_repos_list_fetcher) { instance_double(ShinyGems::Services::Github::ReposListFetcher) }
   let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository) }
   let(:user) { Factory.structs[:user] }
   let(:gem) { Factory.structs[:gem] }
@@ -36,17 +36,17 @@ RSpec.describe ShinyGems::Services::Gems::Create do
 
   subject do
     described_class.new(
-      gemspec_parse_name: fake_gemspec_parse_name,
-      rubygems_info: fake_rubygems_info,
-      gemspec: fake_gemspec,
-      repos_list: fake_repos_list,
+      gemspec_name_parser: fake_gemspec_name_parser,
+      rubygems_info_fetcher: fake_rubygems_info_fetcher,
+      gemspec_fetcher: fake_gemspec_fetcher,
+      repos_list_fetcher: fake_repos_list_fetcher,
       gems_repository: fake_gem_repo
     ).call(user: user, repo: "test/some_gem")
   end
 
   context "repo doesnt belong to user" do
     before do
-      allow(fake_repos_list).to receive(:call).with(user).and_return(Dry::Monads::Success([]))
+      allow(fake_repos_list_fetcher).to receive(:call).with(user).and_return(Dry::Monads::Success([]))
     end
 
     it "returns failure" do
@@ -57,10 +57,10 @@ RSpec.describe ShinyGems::Services::Gems::Create do
 
   context "repo already exists" do
     before do
-      allow(fake_repos_list).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
-      allow(fake_gemspec).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(gemspec_dbl))
-      allow(fake_gemspec_parse_name).to receive(:call).with(gemspec_dbl).and_return(Dry::Monads::Success("some_gem"))
-      allow(fake_rubygems_info).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(gem_info))
+      allow(fake_repos_list_fetcher).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
+      allow(fake_gemspec_fetcher).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(gemspec_dbl))
+      allow(fake_gemspec_name_parser).to receive(:call).with(gemspec_dbl).and_return(Dry::Monads::Success("some_gem"))
+      allow(fake_rubygems_info_fetcher).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(gem_info))
       allow(fake_gem_repo).to receive(:create).with(expected_attributes).and_raise(ROM::SQL::UniqueConstraintError, Sequel::ConstraintViolation.new)
     end
 
@@ -81,10 +81,10 @@ RSpec.describe ShinyGems::Services::Gems::Create do
     end
 
     before do
-      allow(fake_repos_list).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
-      allow(fake_gemspec).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(gemspec_dbl))
-      allow(fake_gemspec_parse_name).to receive(:call).with(gemspec_dbl).and_return(Dry::Monads::Success("some_gem"))
-      allow(fake_rubygems_info).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(invalid_gem_info))
+      allow(fake_repos_list_fetcher).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
+      allow(fake_gemspec_fetcher).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(gemspec_dbl))
+      allow(fake_gemspec_name_parser).to receive(:call).with(gemspec_dbl).and_return(Dry::Monads::Success("some_gem"))
+      allow(fake_rubygems_info_fetcher).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(invalid_gem_info))
     end
 
     it "returns failure" do
@@ -95,8 +95,8 @@ RSpec.describe ShinyGems::Services::Gems::Create do
 
   context "one of services returns failure" do
     before do
-      allow(fake_repos_list).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
-      allow(fake_gemspec).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Failure(:gemspec_fetch_failed))
+      allow(fake_repos_list_fetcher).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
+      allow(fake_gemspec_fetcher).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Failure(:gemspec_fetch_failed))
     end
 
     it "returns failure" do
@@ -107,10 +107,10 @@ RSpec.describe ShinyGems::Services::Gems::Create do
 
   context "everything goes ok" do
     before do
-      allow(fake_repos_list).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
-      allow(fake_gemspec).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(gemspec_dbl))
-      allow(fake_gemspec_parse_name).to receive(:call).with(gemspec_dbl).and_return(Dry::Monads::Success("some_gem"))
-      allow(fake_rubygems_info).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(gem_info))
+      allow(fake_repos_list_fetcher).to receive(:call).with(user).and_return(Dry::Monads::Success(repo_list))
+      allow(fake_gemspec_fetcher).to receive(:call).with("test/some_gem").and_return(Dry::Monads::Success(gemspec_dbl))
+      allow(fake_gemspec_name_parser).to receive(:call).with(gemspec_dbl).and_return(Dry::Monads::Success("some_gem"))
+      allow(fake_rubygems_info_fetcher).to receive(:call).with("some_gem").and_return(Dry::Monads::Success(gem_info))
       allow(fake_gem_repo).to receive(:create).with(expected_attributes).and_return(gem)
     end
 

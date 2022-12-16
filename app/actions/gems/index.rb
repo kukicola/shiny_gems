@@ -4,7 +4,7 @@ module ShinyGems
   module Actions
     module Gems
       class Index < ShinyGems::Action
-        include Deps["repositories.gems_repository", view: "views.gems.index_view", view_context: "views.app_context"]
+        include Deps["repositories.gems_repository"]
 
         before :validate_params!
 

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Services::Gems::Issues::Update, type: :database do
+RSpec.describe ShinyGems::Services::Gems::Issues::Updater, type: :database do
   let(:gems_repo) { ShinyGems::Repositories::GemsRepository.new }
   let(:issues_relation) { Hanami.app["persistence.rom"].relations[:issues] }
   let!(:existing_issue1) { Factory[:issue, gem: gem, github_id: 100] }
   let!(:existing_issue2) { Factory[:issue, gem: gem, github_id: 101] }
   let!(:existing_issue3) { Factory[:issue, gem: gem, github_id: 102] }
-  let(:fake_issues_list) { instance_double(ShinyGems::Services::Github::IssuesList) }
+  let(:fake_issues_list_fetcher) { instance_double(ShinyGems::Services::Github::IssuesListFetcher) }
   let(:gem) { Factory[:gem] }
   let(:issues_ids) { [100, 101, 103] }
   let(:fake_gh_list) do
@@ -19,10 +19,10 @@ RSpec.describe ShinyGems::Services::Gems::Issues::Update, type: :database do
   end
 
   before do
-    allow(fake_issues_list).to receive(:call).with(gem.repo, all: true).and_return(Dry::Monads::Success(fake_gh_list))
+    allow(fake_issues_list_fetcher).to receive(:call).with(gem.repo, all: true).and_return(Dry::Monads::Success(fake_gh_list))
   end
 
-  subject { described_class.new(issues_list: fake_issues_list).call(gem: gems_repo.by_id(gem.id, with: [:issues]), issues_ids: issues_ids) }
+  subject { described_class.new(issues_list_fetcher: fake_issues_list_fetcher).call(gem: gems_repo.by_id(gem.id, with: [:issues]), issues_ids: issues_ids) }
 
   it "returns success" do
     expect(subject.success?).to be_truthy

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Services::Gems::GemfileParse do
+RSpec.describe ShinyGems::Services::Gems::GemfileParser do
   subject { described_class.new.call(content) }
 
   context "content is valid gemfile" do

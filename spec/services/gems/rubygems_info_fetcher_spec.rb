@@ -2,7 +2,7 @@
 
 Hanami.app["gems_api"]
 
-RSpec.describe ShinyGems::Services::Gems::RubygemsInfo do
+RSpec.describe ShinyGems::Services::Gems::RubygemsInfoFetcher do
   subject { described_class.new(gems_api: fake_gem_api).call("some_gem") }
 
   let(:fake_gem_api) { class_double(::Gems) }

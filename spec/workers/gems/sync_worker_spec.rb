@@ -2,10 +2,10 @@
 
 RSpec.describe ShinyGems::Workers::Gems::SyncWorker do
   let(:fake_gem_repo) { instance_double(ShinyGems::Repositories::GemsRepository, pluck_ids: [1, 2, 3]) }
-  let(:fake_sync) { instance_double(ShinyGems::Services::Gems::Sync) }
+  let(:fake_syncer) { instance_double(ShinyGems::Services::Gems::Syncer) }
   let(:gem) { Factory.structs[:gem] }
 
-  subject { described_class.new(gems_repository: fake_gem_repo, sync: fake_sync).perform(1) }
+  subject { described_class.new(gems_repository: fake_gem_repo, syncer: fake_syncer).perform(1) }
 
   context "sync successful" do
     before do
@@ -13,7 +13,7 @@ RSpec.describe ShinyGems::Workers::Gems::SyncWorker do
     end
 
     it "calls sync" do
-      expect(fake_sync).to receive(:call).with(gem).and_return(Dry::Monads::Success())
+      expect(fake_syncer).to receive(:call).with(gem).and_return(Dry::Monads::Success())
       subject
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe ShinyGems::Workers::Gems::SyncWorker do
     end
 
     it "raises error" do
-      expect(fake_sync).to receive(:call).with(gem).and_return(Dry::Monads::Failure(:abc))
+      expect(fake_syncer).to receive(:call).with(gem).and_return(Dry::Monads::Failure(:abc))
       expect { subject }.to raise_error(ShinyGems::Workers::Gems::SyncWorker::SyncError, "abc")
     end
   end

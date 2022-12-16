@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe ShinyGems::Services::Gems::GemspecParseName do
+RSpec.describe ShinyGems::Services::Gems::GemspecNameParser do
   subject { described_class.new.call(content) }
 
   context "content contains name" do

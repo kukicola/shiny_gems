@@ -3,6 +3,7 @@
 
 module ShinyGems
   class AdminMiddleware
+    # TODO: check other inject methods
     include Deps["repositories.users_repository"]
 
     def initialize(app, deps)

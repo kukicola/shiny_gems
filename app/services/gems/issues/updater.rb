@@ -4,11 +4,11 @@ module ShinyGems
   module Services
     module Gems
       module Issues
-        class Update < ShinyGems::Service
-          include Deps["services.github.issues_list", "repositories.issues_repository"]
+        class Updater < ShinyGems::Service
+          include Deps["services.github.issues_list_fetcher", "repositories.issues_repository"]
 
           def call(gem:, issues_ids:)
-            list = yield issues_list.call(gem.repo, all: true)
+            list = yield issues_list_fetcher.call(gem.repo, all: true)
 
             issues_repository.transaction do
               list.each do |gh_issue|

@@ -3,15 +3,15 @@
 module ShinyGems
   module Services
     module Gems
-      class Create < ShinyGems::Service
-        include Deps["services.gems.gemspec_parse_name", "services.gems.rubygems_info", "services.github.gemspec",
-          "services.github.repos_list", "repositories.gems_repository"]
+      class Creator < ShinyGems::Service
+        include Deps["services.gems.gemspec_name_parser", "services.gems.rubygems_info_fetcher", "services.github.gemspec_fetcher",
+          "services.github.repos_list_fetcher", "repositories.gems_repository"]
 
         def call(user:, repo:)
           repo_data = yield fetch_repo(user: user, repo: repo)
-          gemspec_content = yield gemspec.call(repo)
-          gem_name = yield gemspec_parse_name.call(gemspec_content)
-          basic_info = yield rubygems_info.call(gem_name)
+          gemspec_content = yield gemspec_fetcher.call(repo)
+          gem_name = yield gemspec_name_parser.call(gemspec_content)
+          basic_info = yield rubygems_info_fetcher.call(gem_name)
           yield validate_source_code_url(info: basic_info, repo: repo)
           gem = yield save_gem(info: basic_info, repo_data: repo_data, user: user)
           Success(gem)
@@ -20,7 +20,7 @@ module ShinyGems
         private
 
         def fetch_repo(user:, repo:)
-          list = yield repos_list.call(user)
+          list = yield repos_list_fetcher.call(user)
           repo_data = list.find { |r| r[:full_name] == repo }
           Maybe(repo_data).to_result(:repo_ownership_check_failed)
         end

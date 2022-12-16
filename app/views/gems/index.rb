@@ -3,7 +3,7 @@
 module ShinyGems
   module Views
     module Gems
-      class IndexView < ShinyGems::View
+      class Index < ShinyGems::View
         config.template = "gems/index"
 
         expose :gems, :pager, :sort_by

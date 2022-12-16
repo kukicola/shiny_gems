@@ -3,7 +3,7 @@
 module ShinyGems
   module Views
     module Gems
-      class MineView < ShinyGems::View
+      class Mine < ShinyGems::View
         config.template = "gems/mine"
 
         expose :gems

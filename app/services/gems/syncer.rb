@@ -3,12 +3,12 @@
 module ShinyGems
   module Services
     module Gems
-      class Sync < ShinyGems::Service
-        include Deps["services.gems.rubygems_info", "services.github.repo", "repositories.gems_repository"]
+      class Syncer < ShinyGems::Service
+        include Deps["services.gems.rubygems_info_fetcher", "services.github.repo_fetcher", "repositories.gems_repository"]
 
         def call(gem)
-          info = yield rubygems_info.call(gem.name)
-          github_info = yield repo.call(gem.repo)
+          info = yield rubygems_info_fetcher.call(gem.name)
+          github_info = yield repo_fetcher.call(gem.repo)
 
           attributes = {
             description: info["info"],

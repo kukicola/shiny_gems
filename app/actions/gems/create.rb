@@ -4,8 +4,7 @@ module ShinyGems
   module Actions
     module Gems
       class Create < ShinyGems::Action
-        include Deps["services.gems.create", "actions.gems.new", "errors_mapper",
-          view: "views.gems.new_view", view_context: "views.app_context"]
+        include Deps["services.gems.creator", "actions.gems.new", "errors_mapper"]
 
         before :require_user!
         before :validate_params!
@@ -15,7 +14,7 @@ module ShinyGems
         end
 
         def handle(request, response)
-          repos = create.call(user: response[:current_user], repo: request.params[:repository])
+          repos = creator.call(user: response[:current_user], repo: request.params[:repository])
 
           if repos.success?
             response.redirect_to("/gems/#{repos.value!.id}/issues/edit")

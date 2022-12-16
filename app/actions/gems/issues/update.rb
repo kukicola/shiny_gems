@@ -5,7 +5,7 @@ module ShinyGems
     module Gems
       module Issues
         class Update < ShinyGems::Action
-          include Deps["services.gems.issues.update", "errors_mapper"]
+          include Deps["services.gems.issues.updater", "errors_mapper"]
 
           before :require_user!
           before :load_gem_and_check_ownership!
@@ -17,7 +17,7 @@ module ShinyGems
           end
 
           def handle(request, response)
-            result = update.call(gem: response[:current_gem], issues_ids: (request.params[:issues_ids] || []).map(&:to_i))
+            result = updater.call(gem: response[:current_gem], issues_ids: (request.params[:issues_ids] || []).map(&:to_i))
 
             if result.success?
               response.flash[:success] = "Issues saved"

@@ -3,7 +3,7 @@
 module ShinyGems
   module Services
     module Github
-      class ReposList < ShinyGems::Service
+      class ReposListFetcher < ShinyGems::Service
         include Deps["octokit"]
 
         def call(user)

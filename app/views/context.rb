@@ -2,7 +2,7 @@
 
 module ShinyGems
   module Views
-    class AppContext < Hanami::View::Context
+    class Context < Hanami::View::Context
       def current_user
         response[:current_user]
       end

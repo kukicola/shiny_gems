@@ -4,7 +4,7 @@ module ShinyGems
   module Views
     module Gems
       module Issues
-        class EditView < ShinyGems::View
+        class Edit < ShinyGems::View
           config.template = "gems/issues/edit"
 
           expose :current_gem, :issues
