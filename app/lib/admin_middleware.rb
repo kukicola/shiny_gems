@@ -3,10 +3,9 @@
 
 module ShinyGems
   class AdminMiddleware
-    # TODO: check other inject methods
     include Deps["repositories.users_repository"]
 
-    def initialize(app, deps)
+    def initialize(app, **deps)
       @app = app
       @user_repository = deps[:users_repository]
     end

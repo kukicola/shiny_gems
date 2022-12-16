@@ -13,6 +13,10 @@ module ShinyGems
         def downloads
           formatter.separator(value.downloads)
         end
+
+        def repo_url
+          "https://github.com/#{value.repo}"
+        end
       end
     end
   end

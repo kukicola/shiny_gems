@@ -11,10 +11,10 @@ RSpec.describe ShinyGems::Services::Gems::Issues::Updater, type: :database do
   let(:issues_ids) { [100, 101, 103] }
   let(:fake_gh_list) do
     [
-      {id: 100, title: "Issue1", comments: 5, html_url: "repo/issues/1", state: "open"},
-      {id: 101, title: "Issue2", comments: 53, html_url: "repo/issues/2", state: "closed"},
-      {id: 102, title: "Issue3", comments: 52, html_url: "repo/issues/3", state: "open"},
-      {id: 103, title: "Issue4", comments: 65, html_url: "repo/issues/4", state: "open"}
+      {id: 100, title: "Issue1", comments: 5, html_url: "repo/issues/1", state: "open", labels: [{name: "test", color: "324532"}]},
+      {id: 101, title: "Issue2", comments: 53, html_url: "repo/issues/2", state: "closed", labels: []},
+      {id: 102, title: "Issue3", comments: 52, html_url: "repo/issues/3", state: "open", labels: []},
+      {id: 103, title: "Issue4", comments: 65, html_url: "repo/issues/4", state: "open", labels: []}
     ]
   end
 
@@ -45,7 +45,8 @@ RSpec.describe ShinyGems::Services::Gems::Issues::Updater, type: :database do
       comments: 5,
       url: "repo/issues/1",
       gem_id: gem.id,
-      github_id: 100
+      github_id: 100,
+      labels: [{"name" => "test", "color" => "324532"}]
     }))
   end
 
@@ -56,7 +57,8 @@ RSpec.describe ShinyGems::Services::Gems::Issues::Updater, type: :database do
       comments: 65,
       url: "repo/issues/4",
       gem_id: gem.id,
-      github_id: 103
+      github_id: 103,
+      labels: []
     }))
   end
 end

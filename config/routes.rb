@@ -19,6 +19,7 @@ module ShinyGems
 
     scope "gems" do
       get "/", to: "gems.index"
+      get "/:id", to: "gems.show"
       get "new", to: "gems.new"
       post "/", to: "gems.create"
       get "mine", to: "gems.mine"

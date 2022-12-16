@@ -36,7 +36,8 @@ module ShinyGems
               github_id: gh_issue[:id],
               title: gh_issue[:title],
               url: gh_issue[:html_url],
-              comments: gh_issue[:comments]
+              comments: gh_issue[:comments],
+              labels: gh_issue[:labels].map { |label| label.to_h.slice(:name, :color) }
             }
           end
 

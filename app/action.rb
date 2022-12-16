@@ -9,7 +9,9 @@ module ShinyGems
 
     ForbiddenError = Class.new(StandardError)
     BadRequestError = Class.new(StandardError)
+    NotFoundError = Class.new(StandardError)
 
+    handle_exception NotFoundError => :handle_not_found
     handle_exception ForbiddenError => :handle_forbidden
     handle_exception BadRequestError => :handle_bad_request
 
@@ -39,6 +41,10 @@ module ShinyGems
 
     def handle_bad_request(_request, _response, _exception)
       halt 400
+    end
+
+    def handle_not_found(_request, _response, _exception)
+      halt 404
     end
   end
 end

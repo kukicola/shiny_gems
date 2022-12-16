@@ -27,6 +27,7 @@ module ShinyGems
         def handle(request, response)
           params = DEFAULT_PARAMS.merge(request.params.to_h)
 
+          # TODO: only gems with issues
           response[:gems] = gems_repository.index(page: params[:page], order: params[:sort_by], order_dir: SORTING_DIRECTIONS[params[:sort_by]])
           response[:pager] = response[:gems].pager
           response[:sort_by] = params[:sort_by]

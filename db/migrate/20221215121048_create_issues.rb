@@ -8,6 +8,7 @@ ROM::SQL.migration do
       column :url, String, null: false
       column :github_id, Integer, null: false, index: {unique: true}
       column :comments, Integer, null: false
+      column :labels, :jsonb, null: false
       foreign_key :gem_id, :gems
     end
   end
