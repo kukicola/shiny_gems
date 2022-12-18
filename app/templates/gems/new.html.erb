@@ -6,7 +6,7 @@
         <div class="card">
           <div class="card-body">
             <form action="/gems" method="POST">
-              <input type="hidden" name="_csrf_token" value="<%= csrf_token %>">
+              <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
               <label for="repository" class="form-label">Select repository</label>
               <select class="form-select <%= "is-invalid" if error %>" name="repository">
                 <% repos.each do |repo| %>
@@ -20,7 +20,7 @@
                   <%= error %>
                 </div>
               <% end %>
-              <input type="submit" class="btn btn-primary mt-3" value="Submit">
+              <input type="submit" class="btn btn-primary mt-3" value="Submit"/>
             </form>
           </div>
         </div>

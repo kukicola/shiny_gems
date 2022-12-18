@@ -16,11 +16,10 @@ module ShinyGems
           id = request.params[:id]
           gem = gems_repository.by_id(id, with: [:issues])
 
-          if gem.user_id == response[:current_user].id
-            response[:current_gem] = gem
-          else
-            raise ShinyGems::Action::ForbiddenError
-          end
+          raise ShinyGems::Action::NotFoundError unless gem
+          raise ShinyGems::Action::ForbiddenError unless gem.user_id == response[:current_user].id
+
+          response[:current_gem] = gem
         end
       end
     end
