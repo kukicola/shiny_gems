@@ -27,7 +27,7 @@
                 <span class="text-big me-1">
                   <%= issue.title %>
                 </span>
-                <% issue.labels.map { |label| ShinyGems::Views::Parts::Label.new(value: label) }.each do |label| %>
+                <% issue.labels.each do |label| %>
                   <span class="badge ms-1 <%= 'text-black' if label.bg_light? %>" style="background: <%= label.bg_color %>"><%= label.name %></span>
                 <% end %>
               </div>

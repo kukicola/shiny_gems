@@ -53,3 +53,5 @@ end
 # TODO: for mainteners
 # TODO: footer
 # TODO: responsivnes
+# TODO: seo
+# TODO: deploy stuff - sentry, configs

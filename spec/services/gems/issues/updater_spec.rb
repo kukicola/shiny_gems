@@ -31,8 +31,8 @@ RSpec.describe ShinyGems::Services::Gems::Issues::Updater do
 
   subject do
     described_class.new(issues_list_fetcher: fake_issues_list_fetcher, issues_repository: fake_issues_repository)
-                           .call(gem: gem, issues_ids: issues_ids)
-    end
+      .call(gem: gem, issues_ids: issues_ids)
+  end
 
   it "returns success" do
     expect(subject.success?).to be_truthy

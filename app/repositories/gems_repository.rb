@@ -5,7 +5,7 @@ module ShinyGems
     class GemsRepository < ROM::Repository[:gems]
       include Deps[container: "persistence.rom"]
 
-      commands :create, update: :by_pk
+      commands :create, update: :by_pk, delete: :by_pk
       struct_namespace ::ShinyGems::Entities
       auto_struct true
 

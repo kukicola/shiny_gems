@@ -9,7 +9,7 @@ ROM::SQL.migration do
       column :github_id, Integer, null: false, index: {unique: true}
       column :comments, Integer, null: false
       column :labels, :jsonb, null: false
-      foreign_key :gem_id, :gems
+      foreign_key :gem_id, :gems, on_delete: :cascade
     end
   end
 end

@@ -14,6 +14,7 @@ module ShinyGems
           def handle(request, response)
             issues = issues_list_fetcher.call(response[:current_gem].repo)
 
+            # TODO: add labels
             if issues.success?
               response[:issues] = mark_selected(issues.value!, response[:current_gem])
             else
