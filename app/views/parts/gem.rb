@@ -6,6 +6,8 @@ module ShinyGems
       class Gem < Hanami::View::Part
         include Deps["formatter"]
 
+        decorate :issues
+
         def stars
           formatter.separator(value.stars)
         end

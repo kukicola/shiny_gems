@@ -54,4 +54,4 @@ end
 # TODO: footer
 # TODO: responsivnes
 # TODO: seo
-# TODO: deploy stuff - sentry, configs
+# TODO: deploy stuff - sentry, configs, timeouts
