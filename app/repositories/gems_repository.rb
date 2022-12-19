@@ -32,6 +32,10 @@ module ShinyGems
       def belonging_to_user(user_id)
         gems.order { name.asc }.where(user_id: user_id)
       end
+
+      def by_list(items)
+        gems.where(name: items)
+      end
     end
   end
 end

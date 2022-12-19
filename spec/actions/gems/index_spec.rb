@@ -36,7 +36,7 @@ RSpec.describe ShinyGems::Actions::Gems::Index do
 
     it "exposes proper data" do
       expect(subject[:sort_by]).to eq("downloads")
-      expect(subject[:gems].to_a).to match([match_entity(gem)])
+      expect(subject[:gems].to_a).to eq([gem])
     end
 
     it "render view" do

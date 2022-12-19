@@ -17,6 +17,17 @@ RSpec.describe ShinyGems::Services::Gems::GemfileParser do
     end
   end
 
+  context "content is valid gemfile but empty" do
+    let(:content) do
+      'source "https://rubygems.org"'
+    end
+
+    it "returns gems" do
+      expect(subject.success?).to be_falsey
+      expect(subject.failure).to eq(:no_gems_in_gemfile)
+    end
+  end
+
   context "content is not a valid ruby code" do
     let(:content) do
       'source https://rubygems.org"

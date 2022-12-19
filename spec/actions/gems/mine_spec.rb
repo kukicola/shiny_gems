@@ -18,7 +18,7 @@ RSpec.describe ShinyGems::Actions::Gems::Mine do
     end
 
     it "exposes list" do
-      expect(subject[:gems]).to match([match_entity(gem)])
+      expect(subject[:gems]).to eq([gem])
     end
 
     it "render view" do

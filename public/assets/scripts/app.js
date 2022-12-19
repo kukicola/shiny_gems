@@ -11,7 +11,7 @@
 
   const autoSaveForms = document.querySelectorAll('[data-autosave]')
   autoSaveForms.forEach(function (form) {
-    form.querySelectorAll("select").forEach(function (select) {
+    form.querySelectorAll("select, input").forEach(function (select) {
       select.addEventListener('change', function() {
         select.closest('form').submit();
       })
@@ -22,6 +22,14 @@
   formConfirmElems.forEach(function (form) {
     form.addEventListener('submit', function(event) {
       return confirm(form.dataset.confirm) || event.preventDefault();
+    })
+  })
+
+  const uploadButtons = document.querySelectorAll('button[data-upload]')
+  uploadButtons.forEach(function (button) {
+    button.addEventListener('click', function(event) {
+      event.preventDefault();
+      button.closest("form").querySelector("input[type=file]").click()
     })
   })
 })()

@@ -23,6 +23,8 @@ module ShinyGems
       provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret, scope: "read:org"
     end
 
+    config.middleware.use :body_parser, :form
+
     Sidekiq.configure_server do |c|
       c.redis = {url: settings.redis_url}
     end
@@ -45,7 +47,6 @@ module ShinyGems
   end
 end
 
-# TODO: upload gemfile
 # TODO: feature specs
 # TODO: homepage
 # TODO: for mainteners

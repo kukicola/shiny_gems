@@ -65,4 +65,13 @@ RSpec.describe ShinyGems::Repositories::GemsRepository, type: :database do
       expect(subject.belonging_to_user(gem1.user_id).to_a).to match_array([match_entity(gem1), match_entity(gem2)])
     end
   end
+
+  describe "#by_list" do
+    let!(:gem1) { Factory[:gem] }
+    let!(:gem2) { Factory[:gem] }
+
+    it "returns gems from given list" do
+      expect(subject.by_list([gem1.name]).to_a).to match_array([match_entity(gem1)])
+    end
+  end
 end

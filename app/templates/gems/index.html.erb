@@ -1,7 +1,16 @@
 <div class="py-5 border-top">
   <div class="container">
     <div class="d-flex justify-content-between align-items-end mb-3">
-      <div class="h2 mb-0">Browse gems</div>
+      <div class="d-flex align-items-start">
+        <div class="h2 mb-0">Browse gems</div>
+        <form action="/gems/gemfile" method="POST" enctype="multipart/form-data" class="ms-3" data-autosave>
+          <input type="file" name="gemfile" class="d-none"/>
+          <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
+          <button data-upload class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Upload your Gemfile to see if there are any gems in our database">
+            Upload gemfile
+          </button>
+        </form>
+      </div>
       <div>
         <form action="/gems" method="GET" data-autosave="true">
           <span class="fw-semibold">Sort by:</span>

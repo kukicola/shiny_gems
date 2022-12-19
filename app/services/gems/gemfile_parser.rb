@@ -6,7 +6,11 @@ module ShinyGems
       class GemfileParser < ShinyGems::Service
         def call(content)
           ast = RubyVM::AbstractSyntaxTree.parse(content)
-          Success(seek_gems(ast))
+          result = seek_gems(ast)
+
+          return Failure(:no_gems_in_gemfile) if result.empty?
+
+          Success(result)
         rescue SyntaxError
           Failure(:gemfile_parse_failed)
         end
