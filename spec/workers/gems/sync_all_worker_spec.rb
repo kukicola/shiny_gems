@@ -10,5 +10,8 @@ RSpec.describe ShinyGems::Workers::Gems::SyncAllWorker do
     expect(ShinyGems::Workers::Gems::SyncWorker).to have_enqueued_sidekiq_job(1)
     expect(ShinyGems::Workers::Gems::SyncWorker).to have_enqueued_sidekiq_job(2)
     expect(ShinyGems::Workers::Gems::SyncWorker).to have_enqueued_sidekiq_job(3)
+    expect(ShinyGems::Workers::Gems::SyncIssuesWorker).to have_enqueued_sidekiq_job(1)
+    expect(ShinyGems::Workers::Gems::SyncIssuesWorker).to have_enqueued_sidekiq_job(2)
+    expect(ShinyGems::Workers::Gems::SyncIssuesWorker).to have_enqueued_sidekiq_job(3)
   end
 end

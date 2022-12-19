@@ -45,7 +45,6 @@ module ShinyGems
   end
 end
 
-# TODO: sync issues job
 # TODO: upload gemfile
 # TODO: feature specs
 # TODO: homepage
