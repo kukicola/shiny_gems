@@ -47,4 +47,6 @@ group :test do
   gem "capybara"
   gem "rspec-sidekiq"
   gem "simplecov"
+  gem "webmock"
+  gem "cuprite"
 end

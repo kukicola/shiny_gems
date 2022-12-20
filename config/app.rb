@@ -47,10 +47,10 @@ module ShinyGems
   end
 end
 
-# TODO: feature specs
 # TODO: homepage
 # TODO: for mainteners
 # TODO: footer
+# TODO: more partials!
 # TODO: responsivnes
 # TODO: seo
 # TODO: deploy stuff - sentry, configs, timeouts

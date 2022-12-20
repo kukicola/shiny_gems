@@ -6,12 +6,12 @@ RSpec.describe ShinyGems::Actions::Gems::Gemfile::Create do
   let(:fake_gems_repository) { fake_repository(:gems) }
   let(:gem) { Factory.structs[:gem, name: "hanami"] }
 
-  subject { instance.call({ gemfile: { tempfile: File.open("#{SPEC_ROOT}/support/files/Gemfile.test") }}) }
+  subject { instance.call({gemfile: {tempfile: File.open("#{SPEC_ROOT}/support/files/Gemfile.test")}}) }
 
   context "gemfile parse successful" do
     before do
       allow(fake_parser).to receive(:call).with("gem \"hanami\", \"~> 2.0\"\n")
-                                          .and_return(Dry::Monads::Success(["hanami"]))
+        .and_return(Dry::Monads::Success(["hanami"]))
       allow(fake_gems_repository).to receive(:by_list).with(["hanami"]).and_return([gem])
     end
 
@@ -28,7 +28,7 @@ RSpec.describe ShinyGems::Actions::Gems::Gemfile::Create do
   context "gemfile parse successful but there are no gems in DB" do
     before do
       allow(fake_parser).to receive(:call).with("gem \"hanami\", \"~> 2.0\"\n")
-                                          .and_return(Dry::Monads::Success(["hanami"]))
+        .and_return(Dry::Monads::Success(["hanami"]))
       allow(fake_gems_repository).to receive(:by_list).with(["hanami"]).and_return([])
     end
 
@@ -45,7 +45,7 @@ RSpec.describe ShinyGems::Actions::Gems::Gemfile::Create do
   context "gemfile parse failed" do
     before do
       allow(fake_parser).to receive(:call).with("gem \"hanami\", \"~> 2.0\"\n")
-                                          .and_return(Dry::Monads::Failure(:no_gems_in_gemfile))
+        .and_return(Dry::Monads::Failure(:no_gems_in_gemfile))
     end
 
     it "redirects to gem index" do

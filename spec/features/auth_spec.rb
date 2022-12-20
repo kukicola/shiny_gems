@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.feature "auth", type: :feature do
+RSpec.feature "auth", type: :feature, js: true do
   scenario "sign in and out" do
     visit "/"
     expect(page).to have_content("ShinyGems")

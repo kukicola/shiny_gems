@@ -19,6 +19,8 @@ require_relative "support/sidekiq"
 require_relative "support/auth"
 require_relative "support/matchers"
 require_relative "support/fake_repositories"
+require_relative "support/webmock"
+require_relative "support/csrf_fix"
 
 Hanami.app.container.enable_stubs!
 
