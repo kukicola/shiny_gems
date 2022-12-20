@@ -1,0 +1,66 @@
+<div class="intro-maintainers  py-10">
+  <div class="container justify-content-center align-content-center d-flex text-center text-white">
+    <div class="col-10">
+      <div class="display-2 home-title">
+        <span class="badge bg-success">help wanted</span> label hunts you?
+      </div>
+      <div class="h3 mt-5">
+        ShinyGems connects maintainers with passionate developers<br/>
+        who want to make ruby ecosystem better.
+      </div>
+      <div class="mt-5">
+        <form action="/auth/github" method="POST">
+          <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
+          <button type="submit" class="btn btn-light btn-lg fw-bolder px-4">
+            Sign in with GitHub
+            <i class="bi-github"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="py-5 bg-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-6 text-huge">
+        <div class="h2">Sign in</div>
+        <p>
+          Sign in with your GitHub account. It's required to confirm ownership of gem.
+        </p>
+      </div>
+      <div class="col-6 d-flex justify-content-center">
+        <div class="home-image w-75">
+          <img src="/assets/images/maintainers/1.png" class="w-100"/>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center mt-5">
+      <div class="col-6 text-huge">
+        <div class="h2">Pick repository</div>
+        <p>
+          Select your gem's repository. ShinyGems will automatically pull data from GitHub and RubyGems.
+        </p>
+      </div>
+      <div class="col-6 d-flex justify-content-center">
+        <div class="home-image w-75">
+          <img src="/assets/images/maintainers/2.png" class="w-100"/>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center mt-5">
+      <div class="col-6 text-huge">
+        <div class="h2">Select issues and wait</div>
+        <p>
+          Select issues pulled from repository to finish setup.
+          From now everyone will see your gem on ShinyGems!
+        </p>
+      </div>
+      <div class="col-6 d-flex justify-content-center">
+        <div class="home-image w-75">
+          <img src="/assets/images/maintainers/3.png" class="w-100"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

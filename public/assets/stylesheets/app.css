@@ -27,6 +27,10 @@ a.text-gray:hover {
   background-color: #cc342d;
   background-image: linear-gradient(0deg, #cc342d 0%, #e76562 100%); }
 
+.intro-maintainers {
+  background-color: #1a4475;
+  background-image: linear-gradient(180deg, #1a4475 0%, #09132e 100%); }
+
 .py-10 {
   padding-top: 10rem;
   padding-bottom: 10rem; }
@@ -69,5 +73,8 @@ footer {
 
 .bg-red {
   background: #CC342D; }
+
+.bg-dark-blue {
+  background-color: #1a4475; }
 
 /*# sourceMappingURL=app.css.map */

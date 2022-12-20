@@ -15,7 +15,7 @@
           <a class="nav-link" href="/gems">Browse gems</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">For maintainers</a>
+          <a class="nav-link" href="/maintainers">For maintainers</a>
         </li>
         <% if current_user %>
           <li class="nav-item">
@@ -33,7 +33,7 @@
       <% else %>
         <form action="/auth/github" method="POST">
           <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
-          <button type="submit" class="btn btn-outline-secondary ms-3" href="#">
+          <button type="submit" class="btn btn-outline-secondary ms-3">
             Sign in with GitHub
             <i class="bi-github"></i>
           </button>

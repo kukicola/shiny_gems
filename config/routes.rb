@@ -10,6 +10,7 @@ module ShinyGems
     mount Sidekiq::Web, at: "/admin/sidekiq"
 
     root to: "pages.index"
+    get "/maintainers", to: "pages.maintainers"
 
     scope "auth" do
       get ":provider/callback", to: "session.create"

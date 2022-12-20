@@ -37,6 +37,11 @@ a.text-gray:hover {
   background-image: linear-gradient(0deg, rgba(204, 52, 45, 1) 0%, rgba(231, 101, 98, 1) 100%);
 }
 
+.intro-maintainers {
+  background-color: rgba(26, 68, 117, 1);
+  background-image: linear-gradient(180deg, rgba(26, 68, 117, 1) 0%, rgba(9, 19, 46, 1) 100%);
+}
+
 .py-10 {
   padding-top: 10rem;
   padding-bottom: 10rem;
@@ -92,4 +97,8 @@ footer {
 
 .bg-red {
   background: $red;
+}
+
+.bg-dark-blue {
+  background-color: rgba(26, 68, 117, 1);
 }
