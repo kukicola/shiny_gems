@@ -47,7 +47,6 @@ module ShinyGems
   end
 end
 
-# TODO: footer
 # TODO: more partials!
 # TODO: responsivnes
 # TODO: seo
