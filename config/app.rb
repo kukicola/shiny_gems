@@ -47,7 +47,5 @@ module ShinyGems
   end
 end
 
-# TODO: more partials!
-# TODO: responsivnes
 # TODO: seo
 # TODO: deploy stuff - sentry, configs, timeouts
