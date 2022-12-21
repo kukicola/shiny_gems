@@ -4,7 +4,7 @@ Hanami.app.register_provider :persistence, namespace: true do
   prepare do
     require "rom"
 
-    config = ROM::Configuration.new(:sql, target["settings"].database_url)
+    config = ROM::Configuration.new(:sql, target["settings"].database_url, max_connections: 10)
 
     register "config", config
     register "db", config.gateways[:default].connection

@@ -1,0 +1,9 @@
+**/.sass-cache
+**/.bundle
+log
+node_modules
+**/.env
+**/coverage
+.idea
+
+fly.toml
