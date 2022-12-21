@@ -5,7 +5,7 @@ require "hanami/action"
 
 module ShinyGems
   class Action < Hanami::Action
-    include Deps["repositories.users_repository", "repositories.gems_repository"]
+    include Deps["repositories.users_repository", "repositories.gems_repository", "sentry"]
 
     ForbiddenError = Class.new(StandardError)
     BadRequestError = Class.new(StandardError)
@@ -14,6 +14,7 @@ module ShinyGems
     handle_exception NotFoundError => :handle_not_found
     handle_exception ForbiddenError => :handle_forbidden
     handle_exception BadRequestError => :handle_bad_request
+    handle_exception StandardError => :handle_standard_error
 
     before :set_current_user
 
@@ -45,6 +46,15 @@ module ShinyGems
 
     def handle_not_found(_request, _response, _exception)
       halt 404
+    end
+
+    def handle_standard_error(_request, _response, exception)
+      if Hanami.env?(:development)
+        raise exception
+      else
+        sentry.capture_exception(exception)
+        halt 500
+      end
     end
   end
 end

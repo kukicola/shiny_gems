@@ -22,6 +22,8 @@ gem "puma"
 gem "rake"
 gem "sidekiq"
 gem "faraday-retry"
+gem "sentry-ruby"
+gem "sentry-sidekiq"
 
 group :development, :test do
   gem "dotenv"

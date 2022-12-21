@@ -4,6 +4,7 @@ require "hanami"
 require "omniauth"
 require "omniauth-github"
 require "sidekiq"
+require "sentry-sidekiq"
 
 module ShinyGems
   class App < Hanami::App
@@ -46,5 +47,3 @@ module ShinyGems
     end
   end
 end
-
-# TODO: deploy stuff - sentry, configs, timeouts
