@@ -5,6 +5,7 @@ module ShinyGems
     module Pages
       class Index < ShinyGems::View
         config.template = "pages/index"
+        config.title = "ShinyGems - Help maintain your favourite gems and make them shine"
       end
     end
   end

@@ -47,5 +47,4 @@ module ShinyGems
   end
 end
 
-# TODO: seo
 # TODO: deploy stuff - sentry, configs, timeouts

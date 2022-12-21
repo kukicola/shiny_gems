@@ -5,6 +5,7 @@ module ShinyGems
     module Gems
       class Mine < ShinyGems::View
         config.template = "gems/mine"
+        config.title = "My gems - ShinyGems"
 
         expose :gems
       end

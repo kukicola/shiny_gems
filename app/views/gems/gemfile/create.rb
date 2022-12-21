@@ -6,6 +6,7 @@ module ShinyGems
       module Gemfile
         class Create < ShinyGems::View
           config.template = "gems/gemfile/create"
+          config.title = "Gems from your Gemfile - ShinyGems"
 
           expose :gems
         end
