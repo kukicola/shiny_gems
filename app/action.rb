@@ -48,11 +48,13 @@ module ShinyGems
       halt 404
     end
 
-    def handle_standard_error(_request, _response, exception)
+    def handle_standard_error(request, _response, exception)
       if Hanami.env?(:development)
         raise exception
       else
-        sentry.capture_exception(exception)
+        sentry.capture_exception(exception) do |scope|
+          scope.contexts[:request] = request.env
+        end
         halt 500
       end
     end
