@@ -24,6 +24,7 @@ gem "sidekiq"
 gem "faraday-retry"
 gem "sentry-ruby"
 gem "sentry-sidekiq"
+gem "sidekiq-cron"
 
 group :development, :test do
   gem "dotenv"

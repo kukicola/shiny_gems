@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "sidekiq/web"
+require "sidekiq/cron/web"
 require_relative "../app/lib/admin_middleware"
 
 Sidekiq::Web.use ShinyGems::AdminMiddleware

@@ -5,6 +5,7 @@ require "omniauth"
 require "omniauth-github"
 require "sidekiq"
 require "sentry-sidekiq"
+require "sidekiq-cron"
 
 module ShinyGems
   class App < Hanami::App
@@ -48,4 +49,4 @@ module ShinyGems
   end
 end
 
-# TODO: cron jobs
+# TODO: redirect on invalid hostname
