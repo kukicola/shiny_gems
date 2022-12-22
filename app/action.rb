@@ -62,9 +62,8 @@ module ShinyGems
 
     def check_host!(request, response)
       return if Hanami.env?(:test)
-      sentry.capture_message("HOST: #{request.host}")
 
-      # response.redirect_to("//#{settings.host}") unless request.host == settings.host
+      response.redirect_to("//#{settings.host}") unless request.host == settings.host
     end
   end
 end
