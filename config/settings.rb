@@ -9,5 +9,6 @@ module ShinyGems
     setting :lockbox_master_key, constructor: Types::String
     setting :redis_url, constructor: Types::String
     setting :sentry_url, constructor: Types::String
+    setting :host, constructor: Types::String
   end
 end

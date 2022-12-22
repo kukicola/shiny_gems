@@ -5,7 +5,7 @@ require "hanami/action"
 
 module ShinyGems
   class Action < Hanami::Action
-    include Deps["repositories.users_repository", "repositories.gems_repository", "sentry"]
+    include Deps["repositories.users_repository", "repositories.gems_repository", "sentry", "settings"]
 
     ForbiddenError = Class.new(StandardError)
     BadRequestError = Class.new(StandardError)
@@ -16,6 +16,7 @@ module ShinyGems
     handle_exception BadRequestError => :handle_bad_request
     handle_exception StandardError => :handle_standard_error
 
+    before :check_host!
     before :set_current_user
 
     private
@@ -57,6 +58,12 @@ module ShinyGems
         end
         halt 500
       end
+    end
+
+    def check_host!(request, response)
+      return if Hanami.env?(:test)
+
+      response.redirect_to("//#{settings.host}") unless request.host_with_port == settings.host
     end
   end
 end

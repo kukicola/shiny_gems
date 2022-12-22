@@ -48,5 +48,3 @@ module ShinyGems
     end
   end
 end
-
-# TODO: redirect on invalid hostname
