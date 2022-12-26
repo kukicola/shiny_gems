@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-white">
   <div class="container">
     <a href="/" class="text-decoration-none d-flex justify-content-center">
-      <img src="/assets/images/logo.svg" class="navbar-logo"/>
+      <img src="/assets/images/logo.svg" class="navbar-logo" alt="ShinyGems"/>
       <strong class="navbar-brand ms-2">
         Shiny<span class="text-red">Gems</span>
       </strong>
@@ -27,7 +27,7 @@
         <div class="vr mx-3 my-2 d-none d-lg-inline-block"></div>
         <div class="d-flex align-items-center ms-3">
           <span class="navbar-text">Logged as <%= current_user.username %></span>
-          <img src="<%= current_user.avatar %>" class="avatar ms-2"/>
+          <img src="<%= current_user.avatar %>" class="avatar ms-2" alt="<%= current_user.username %>"/>
           <a href="/auth/destroy" class="nav-link ms-3" aria-label="sign out"><i class="bi bi-box-arrow-right"></i></a>
         </div>
       <% else %>
