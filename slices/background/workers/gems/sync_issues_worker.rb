@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Cron
+module Background
   module Workers
     module Gems
-      class SyncIssuesWorker < Cron::Worker
+      class SyncIssuesWorker < Background::Worker
         SyncError = Class.new(StandardError)
 
         include Deps["repositories.gems_repository", "core.services.gems.issues.updater"]
