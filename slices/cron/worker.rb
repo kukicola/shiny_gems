@@ -1,7 +1,7 @@
 # auto_register: false
 # frozen_string_literal: true
 
-module Background
+module Cron
   class Worker
     include Sidekiq::Job
 

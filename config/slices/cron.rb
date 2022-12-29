@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require "sidekiq-cron"
-require "sentry-sidekiq"
-
-module Background
+module Cron
   class Slice < Hanami::Slice
     import from: :core
 

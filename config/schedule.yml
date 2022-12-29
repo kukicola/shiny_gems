@@ -1,4 +1,4 @@
 daily_sync:
   cron: "0 0 * * *"
-  class: "Background::Workers::Gems::SyncAllWorker"
+  class: "Cron::Workers::Gems::SyncAllWorker"
   queue: default

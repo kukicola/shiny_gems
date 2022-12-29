@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Background::Workers::Gems::SyncIssuesWorker do
+RSpec.describe Cron::Workers::Gems::SyncIssuesWorker do
   let(:fake_gem_repo) do
     fake_repository(:gems) do |repo|
       allow(repo).to receive(:by_id).with(1, with: [:issues]).and_return(gem)
@@ -25,7 +25,7 @@ RSpec.describe Background::Workers::Gems::SyncIssuesWorker do
   context "update failed" do
     it "raises error" do
       expect(fake_updater).to receive(:call).with(gem: gem, issues_ids: issues_ids).and_return(Dry::Monads::Failure(:abc))
-      expect { subject }.to raise_error(Background::Workers::Gems::SyncIssuesWorker::SyncError, "abc")
+      expect { subject }.to raise_error(Cron::Workers::Gems::SyncIssuesWorker::SyncError, "abc")
     end
   end
 end

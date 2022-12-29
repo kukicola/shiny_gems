@@ -4,7 +4,6 @@ require "pathname"
 SPEC_ROOT = Pathname(__dir__).realpath.freeze
 
 ENV["HANAMI_ENV"] ||= "test"
-ENV["HANAMI_SLICES"] ||= "core,web,background,auth"
 
 require_relative "support/cov"
 require "hanami/prepare"

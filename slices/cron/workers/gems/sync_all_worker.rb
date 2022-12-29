@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Background
+module Cron
   module Workers
     module Gems
-      class SyncAllWorker < Background::Worker
+      class SyncAllWorker < Cron::Worker
         include Deps["workers.gems.sync_worker", "workers.gems.sync_issues_worker", "repositories.gems_repository"]
 
         def perform
