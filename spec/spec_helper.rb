@@ -4,7 +4,6 @@ require "pathname"
 SPEC_ROOT = Pathname(__dir__).realpath.freeze
 
 ENV["HANAMI_ENV"] ||= "test"
-ENV["HANAMI_SLICES"] ||= "core,web,background,auth"
 
 require_relative "support/cov"
 require "hanami/prepare"
@@ -23,11 +22,11 @@ require_relative "support/fake_repositories"
 require_relative "support/webmock"
 require_relative "support/csrf_fix"
 
-Web::Slice.container.enable_stubs!
+Hanami.app.container.enable_stubs!
 
 RSpec.configure do |config|
   config.after do
-    Web::Slice.container.unstub
+    Hanami.app.container.unstub
   end
 end
 
