@@ -1,4 +1,4 @@
 daily_sync:
   cron: "0 0 * * *"
-  class: "ShinyGems::Workers::Gems::SyncAllWorker"
+  class: "Background::Workers::Gems::SyncAllWorker"
   queue: default

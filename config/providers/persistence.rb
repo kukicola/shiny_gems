@@ -18,6 +18,11 @@ Hanami.app.register_provider :persistence, namespace: true do
       namespace: "ShinyGems::Persistence"
     )
 
+    target.config.component_dirs.add("lib/shiny_gems/repositories") do |dir|
+      dir.namespaces.add_root(key: "repositories", const: "ShinyGems::Repositories")
+      dir.auto_register = true
+    end
+
     register "rom", ROM.container(config)
   end
 end
