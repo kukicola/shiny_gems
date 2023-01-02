@@ -244,7 +244,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.1)
-    rack (2.2.4)
+    rack (2.2.5)
     rack-protection (3.0.4)
       rack
     rack-test (2.0.2)
@@ -328,11 +328,8 @@ GEM
       faraday (>= 0.17.3, < 3)
     sentry-ruby (5.7.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-ruby-core (4.6.5)
-      concurrent-ruby
-      faraday
-    sentry-sidekiq (4.6.5)
-      sentry-ruby-core (~> 4.6.0)
+    sentry-sidekiq (5.7.0)
+      sentry-ruby (~> 5.7.0)
       sidekiq (>= 3.0)
     sequel (5.63.0)
     shellany (0.0.1)
