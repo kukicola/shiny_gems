@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hanami/view.git
-  revision: 774c998ffc64de0567726292efedae80e1d80ff6
+  revision: c1a6f60a989f1face809a6d8d61652748aee19a7
   specs:
     hanami-view (2.0.0.alpha8)
       concurrent-ruby (~> 1.0)
