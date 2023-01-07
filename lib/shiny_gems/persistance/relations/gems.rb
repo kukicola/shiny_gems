@@ -8,7 +8,6 @@ module ShinyGems
 
         schema(:gems, infer: true) do
           associations do
-            belongs_to :user
             has_many :issues
           end
         end

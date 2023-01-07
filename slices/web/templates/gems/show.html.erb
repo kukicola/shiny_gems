@@ -1,0 +1,64 @@
+<div class="py-5 border-top">
+  <div class="container">
+    <div class="mb-3">
+      <div class="h2 mb-0">
+        <%= current_gem.name %>
+      </div>
+      <div class="h5 text-muted">
+        <%= current_gem.description %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        <div class="list-group">
+          <div class="list-group-item bg-secondary">
+            <strong class="text-white text-uppercase">Pending issues</strong>
+          </div>
+          <% current_gem.issues.each do |issue| %>
+            <a href="<%= issue.url %>" class="list-group-item list-group-item-action p-3 d-block" target="_blank">
+              <div class="d-flex align-items-center">
+                <span class="text-big me-1">
+                  <%= issue.title %>
+                </span>
+                <% issue.labels.each do |label| %>
+                  <span class="badge ms-1 <%= 'text-black' if label.bg_light? %>" style="background: <%= label.bg_color %>"><%= label.name %></span>
+                <% end %>
+              </div>
+              <div class="text-muted">
+                <%= issue.comments %> comment(s)
+              </div>
+            </a>
+          <% end %>
+
+          <% if current_gem.issues.empty? %>
+            <div class="list-group-item py-5 text-center">
+              <div class="h3 mb-0">There are no pending issues</div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-3 mt-3 mt-lg-0">
+        <div class="card">
+          <div class="card-body text-muted">
+            <dl class="mb-0">
+              <dt>GitHub Repository</dt>
+              <dd class="mb-3">
+                <a href="<%= current_gem.repo_url %>" class="link-secondary" target="_blank"><%= current_gem.repo %></a>
+              </dd>
+
+              <dt>GitHub Stars</dt>
+              <dd class="mb-3 h4 fw-normal">
+                <%= current_gem.stars %> <i class="bi bi-star ms-1"></i>
+              </dd>
+
+              <dt>RubyGems Downloads</dt>
+              <dd class="mb-0 h4 fw-normal">
+                <%= current_gem.downloads %> <i class="bi bi-download ms-1"></i>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
