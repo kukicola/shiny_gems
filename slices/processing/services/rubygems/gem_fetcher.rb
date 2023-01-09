@@ -2,7 +2,7 @@
 
 module Processing
   module Services
-    module Gems
+    module Rubygems
       class GemFetcher < ShinyGems::Service
         include Deps["gems_api"]
 

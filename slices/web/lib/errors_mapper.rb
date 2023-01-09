@@ -2,6 +2,7 @@
 
 module Web
   class ErrorsMapper
+    # TODO: check whats still needed
     MAP = {
       source_code_url_doesnt_match: "Neither Source code URL or Homepage URL from RubyGems match GitHub URL",
       gem_already_exists: "Gem already exists",

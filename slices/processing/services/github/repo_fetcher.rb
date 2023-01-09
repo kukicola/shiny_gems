@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ShinyGems
+module Processing
   module Services
     module Github
       class RepoFetcher < ShinyGems::Service

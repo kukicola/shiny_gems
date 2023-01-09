@@ -2,7 +2,7 @@
 
 module Processing
   module Services
-    module Gems
+    module Rubygems
       class ListFetcher < ShinyGems::Service
         include Deps["gems_api"]
 
@@ -11,7 +11,7 @@ module Processing
         def call(page: 1)
           Success(gems_api.search("downloads:>#{MIN_DOWNLOADS}", {page: page}))
         rescue ::Gems::GemError
-          Failure(:gem_info_fetch_failed)
+          Failure(:gem_list_fetch_failed)
         end
       end
     end
