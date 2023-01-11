@@ -28,7 +28,7 @@ RSpec.describe Processing::Services::Github::RepoFetcher do
 
     it "returns failure" do
       expect(subject.success?).to be_falsey
-      expect(subject.failure).to eq(:repo_fetch_failed)
+      expect(subject.failure).to be_instance_of(Octokit::NotFound)
     end
   end
 end

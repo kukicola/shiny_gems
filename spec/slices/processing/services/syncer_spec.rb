@@ -6,7 +6,7 @@ RSpec.describe Processing::Services::Syncer do
   let(:fake_gem_repo) { instance_double(Processing::Repositories::GemsRepository) }
   let(:gem) { Factory.structs[:gem, name: "some_gem", repo: "test/some_gem"] }
   let(:repo_data) do
-    { "full_name" => "test/some_gem", "stargazers_count" => 50}
+    {"full_name" => "test/some_gem", "stargazers_count" => 50, "pushed_at" => DateTime.new(2022, 12, 12, 12, 0, 0)}
   end
   let(:gem_info) do
     {
@@ -20,7 +20,8 @@ RSpec.describe Processing::Services::Syncer do
     {
       description: "some description",
       stars: 50,
-      downloads: 50000
+      downloads: 50000,
+      pushed_at: DateTime.new(2022, 12, 12, 12, 0, 0)
     }
   end
 

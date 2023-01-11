@@ -10,8 +10,8 @@ module Processing
 
         def call(page: 1)
           Success(gems_api.search("downloads:>#{MIN_DOWNLOADS}", {page: page}))
-        rescue ::Gems::GemError
-          Failure(:gem_list_fetch_failed)
+        rescue ::Gems::GemError => e
+          Failure(e)
         end
       end
     end

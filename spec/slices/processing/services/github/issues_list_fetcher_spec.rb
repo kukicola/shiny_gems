@@ -35,7 +35,7 @@ RSpec.describe Processing::Services::Github::IssuesListFetcher do
 
     it "returns failure" do
       expect(subject.success?).to be_falsey
-      expect(subject.failure).to eq(:issues_list_failed)
+      expect(subject.failure).to be_instance_of(Octokit::NotFound)
     end
   end
 end

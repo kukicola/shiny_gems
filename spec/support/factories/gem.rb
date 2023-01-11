@@ -7,6 +7,7 @@ Factory.define(:gem) do |f|
   f.stars { 1521 }
   f.downloads { 2453432 }
   f.association(:issues, count: 0)
+  f.pushed_at { DateTime.now - 30 }
 
   f.trait :with_issues do |t|
     t.association(:issues, count: 3)

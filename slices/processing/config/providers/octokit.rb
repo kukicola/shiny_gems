@@ -10,6 +10,6 @@ Processing::Slice.register_provider :octokit do
   end
 
   start do
-    register "octokit", Octokit::Client.new
+    register "octokit", Octokit::Client.new(client_id: target["settings"].github_key, client_secret: target["settings"].github_secret)
   end
 end

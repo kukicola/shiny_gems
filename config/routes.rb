@@ -3,6 +3,12 @@
 module ShinyGems
   class Routes < Hanami::Routes
     slice :web, at: "/" do
+      require "sidekiq/web"
+      require "sidekiq/cron/web"
+
+      # TODO: add basic auth
+      mount Sidekiq::Web, at: "/sidekiq"
+
       root to: "pages.index"
 
       scope "gems" do

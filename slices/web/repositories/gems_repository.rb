@@ -13,19 +13,25 @@ module Web
         query.one
       end
 
-      # TODO: indexes!
       def index(per_page: 20, page: 1, order: "name", order_dir: "asc")
-        gems
-          .left_join(:issues)
-          .exclude(issues[:id] => nil)
-          .distinct
+        base_query
           .per_page(per_page)
           .page(page)
           .order(gems[order.to_sym].send(order_dir.to_sym))
       end
 
       def by_list(items)
-        gems.where(name: items)
+        base_query.where(name: items)
+      end
+
+      private
+
+      def base_query
+        gems
+          .where { pushed_at > DateTime.now - 365 }
+          .left_join(:issues)
+          .exclude(issues[:id] => nil)
+          .distinct
       end
     end
   end

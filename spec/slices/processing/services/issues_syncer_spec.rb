@@ -21,7 +21,7 @@ RSpec.describe Processing::Services::IssuesSyncer do
         title: "Issue1",
         comments: 5,
         html_url: "repo/issues/1",
-        created_at: "2011-04-22T13:33:48Z",
+        created_at: DateTime.new(2011, 4, 22, 13, 33, 48, 0),
         labels: [{name: "test", color: "324532"}]
       },
       {
@@ -29,7 +29,7 @@ RSpec.describe Processing::Services::IssuesSyncer do
         title: "Issue4",
         comments: 65,
         html_url: "repo/issues/4",
-        created_at: "2011-04-22T13:33:48Z",
+        created_at: DateTime.new(2011, 4, 22, 13, 33, 48, 0),
         labels: []
       }
     ]

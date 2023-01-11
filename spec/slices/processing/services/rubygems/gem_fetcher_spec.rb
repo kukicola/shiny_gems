@@ -21,7 +21,7 @@ RSpec.describe Processing::Services::Rubygems::GemFetcher do
 
     it "returns failure" do
       expect(subject.success?).to be_falsey
-      expect(subject.failure).to eq(:gem_info_fetch_failed)
+      expect(subject.failure).to be_instance_of(Gems::NotFound)
     end
   end
 end

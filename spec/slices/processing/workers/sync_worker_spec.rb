@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+Processing::Slice.prepare(:octokit)
+
 RSpec.describe Processing::Workers::SyncWorker do
   let(:fake_gem_repo) do
     fake_repository(:processing, :gems) do |repo|
@@ -20,8 +22,8 @@ RSpec.describe Processing::Workers::SyncWorker do
 
   context "sync failed" do
     it "raises error" do
-      expect(fake_syncer).to receive(:call).with(gem).and_return(Dry::Monads::Failure(:abc))
-      expect { subject }.to raise_error(Processing::Workers::SyncWorker::SyncError, "abc")
+      expect(fake_syncer).to receive(:call).with(gem).and_return(Dry::Monads::Failure(Octokit::Forbidden.new))
+      expect { subject }.to raise_error(Octokit::Forbidden)
     end
   end
 end

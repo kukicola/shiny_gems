@@ -34,8 +34,9 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
     let!(:gem2) { Factory[:gem, :with_issues, stars: 30] }
     let!(:gem3) { Factory[:gem, :with_issues, stars: 20] }
     let!(:gem4) { Factory[:gem, stars: 20] }
+    let!(:gem5) { Factory[:gem, :with_issues, pushed_at: DateTime.now - 400] }
 
-    it "returns paginated data except for gems without issues" do
+    it "returns paginated data except for gems without issues or outdated" do
       expect(subject.index(per_page: 2, page: 1, order: "stars", order_dir: "desc").to_a)
         .to match([match_entity(gem2), match_entity(gem3)])
       expect(subject.index(per_page: 2, page: 2, order: "stars", order_dir: "desc").to_a)
@@ -48,11 +49,14 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
   end
 
   describe "#by_list" do
-    let!(:gem1) { Factory[:gem] }
-    let!(:gem2) { Factory[:gem] }
+    let!(:gem1) { Factory[:gem, :with_issues] }
+    let!(:gem2) { Factory[:gem, :with_issues] }
+    let!(:gem3) { Factory[:gem, stars: 20] }
+    let!(:gem4) { Factory[:gem, :with_issues, pushed_at: DateTime.now - 400] }
 
-    it "returns gems from given list" do
-      expect(subject.by_list([gem1.name]).to_a).to match_array([match_entity(gem1)])
+    it "returns gems from given list except for gems without issues or outdated" do
+      expect(subject.by_list([gem1.name, gem2.name, gem3.name, gem4.name]).to_a)
+        .to match_array([match_entity(gem1), match_entity(gem2)])
     end
   end
 end

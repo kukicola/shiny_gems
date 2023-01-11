@@ -8,8 +8,8 @@ module Processing
 
         def call(name)
           Success(gems_api.info(name))
-        rescue ::Gems::GemError
-          Failure(:gem_info_fetch_failed)
+        rescue ::Gems::GemError => e
+          Failure(e)
         end
       end
     end

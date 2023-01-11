@@ -37,7 +37,7 @@ module Processing
           title: gh_issue[:title],
           url: gh_issue[:html_url],
           comments: gh_issue[:comments],
-          created_at: DateTime.parse(gh_issue[:created_at]),
+          created_at: gh_issue[:created_at],
           labels: gh_issue[:labels].map { |label| label.to_h.slice(:name, :color) }
         }
       end

@@ -12,7 +12,8 @@ module Processing
         attributes = {
           description: info["info"],
           stars: github_info["stargazers_count"],
-          downloads: info["downloads"]
+          downloads: info["downloads"],
+          pushed_at: github_info["pushed_at"]
         }
 
         Success(gems_repository.update(gem.id, attributes))

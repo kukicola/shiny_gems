@@ -8,7 +8,7 @@ RSpec.describe Processing::Services::Rubygems::ListFetcher do
   let(:fake_gem_api) { class_double(::Gems) }
 
   context "API returned data" do
-    before { allow(fake_gem_api).to receive(:search).with("downloads:>1000000", { page: 2 }).and_return({"some" => "data"}) }
+    before { allow(fake_gem_api).to receive(:search).with("downloads:>1000000", {page: 2}).and_return({"some" => "data"}) }
 
     it "returns data from API" do
       expect(subject.success?).to be_truthy
@@ -17,11 +17,11 @@ RSpec.describe Processing::Services::Rubygems::ListFetcher do
   end
 
   context "API returned error" do
-    before { allow(fake_gem_api).to receive(:search).with("downloads:>1000000", { page: 2 }).and_raise(::Gems::NotFound) }
+    before { allow(fake_gem_api).to receive(:search).with("downloads:>1000000", {page: 2}).and_raise(::Gems::NotFound) }
 
     it "returns failure" do
       expect(subject.success?).to be_falsey
-      expect(subject.failure).to eq(:gem_list_fetch_failed)
+      expect(subject.failure).to be_instance_of(Gems::NotFound)
     end
   end
 end

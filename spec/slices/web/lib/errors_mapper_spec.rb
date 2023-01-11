@@ -2,6 +2,6 @@
 
 RSpec.describe Web::ErrorsMapper do
   it "returns human error for key" do
-    expect(described_class.new.call(:gem_already_exists)).to eq("Gem already exists")
+    expect(described_class.new.call(:gemfile_parse_failed)).to eq("Couldn't parse gemfile")
   end
 end
