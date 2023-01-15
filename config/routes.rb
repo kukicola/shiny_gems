@@ -6,7 +6,10 @@ module ShinyGems
       require "sidekiq/web"
       require "sidekiq/cron/web"
 
-      # TODO: add basic auth
+      Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+        Rack::Utils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(Hanami.app["settings"].sidekiq_web_user)) &
+          Rack::Utils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(Hanami.app["settings"].sidekiq_web_pass))
+      end
       mount Sidekiq::Web, at: "/sidekiq"
 
       root to: "pages.index"

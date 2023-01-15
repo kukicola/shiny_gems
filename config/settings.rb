@@ -9,5 +9,7 @@ module ShinyGems
     setting :sentry_url, constructor: Types::String
     setting :host, constructor: Types::String
     setting :session_secret, constructor: Types::String
+    setting :sidekiq_web_user, constructor: Types::String
+    setting :sidekiq_web_pass, constructor: Types::String
   end
 end
