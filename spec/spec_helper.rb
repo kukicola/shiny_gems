@@ -17,8 +17,3 @@ require_relative "support/matchers"
 require_relative "support/fake_repositories"
 require_relative "support/webmock"
 require_relative "support/csrf_fix"
-
-# TODO: update rspec
-class RSpec::Mocks::VerifyingMethodDouble
-  ruby2_keywords :proxy_method_invoked if respond_to?(:ruby2_keywords, true)
-end
