@@ -7,7 +7,7 @@
           <input type="file" name="gemfile" class="d-none"/>
           <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
           <button data-upload class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Upload your Gemfile to see if there are any gems in our database">
-            Upload Gemfile
+            Search with Gemfile
           </button>
         </form>
       </div>
@@ -26,11 +26,16 @@
     <div class="d-flex justify-content-center mt-5">
       <nav>
         <ul class="pagination">
-          <!-- TODO: skip pages -->
-          <% pager.total_pages.times do |i| %>
-            <li class="page-item <%= 'active' if pager.current_page == i + 1 %>">
-              <a class="page-link" href="/gems?page=<%= i + 1 %>&sort_by=<%= sort_by %>"><%= i + 1 %></a>
-            </li>
+          <% pages.each do |i| %>
+            <% if i == :gap %>
+              <li class="page-item disabled">
+                <span class="page-link">...</span>
+              </li>
+            <% else %>
+              <li class="page-item <%= 'active' if pager.current_page == i %>">
+                <a class="page-link" href="/gems?page=<%= i %>&sort_by=<%= sort_by %>"><%= i %></a>
+              </li>
+            <% end %>
           <% end %>
         </ul>
       </nav>

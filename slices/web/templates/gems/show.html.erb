@@ -12,12 +12,6 @@
       <div class="alert alert-primary">
         <h4 class="alert-heading"><i class="bi bi-exclamation-triangle-fill me-2"></i> Monorepo!</h4>
         <p class="mb-0">ShinyGems detected multiple gems in GitHub repository, which means listed issues may not correspond to current gem.</p>
-        <p class="mb-0">
-          Gems found:
-          <% current_gem.repo.gems.each do |gem| %>
-            <a href="/gems/<%= gem.id %>" class="alert-link"><%= gem.name %></a>,
-          <% end %>
-        </p>
       </div>
     <% end %>
     <div class="row">
