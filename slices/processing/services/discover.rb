@@ -7,7 +7,6 @@ module Processing
 
       GITHUB_REPO_REGEX = %r{https?://github.com/([^/#]+/[^/#]+)}
 
-      # TODO: specs
       def call(page: 1)
         gems = yield list_fetcher.call(page: page)
 

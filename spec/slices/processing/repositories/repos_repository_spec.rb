@@ -37,4 +37,28 @@ RSpec.describe Processing::Repositories::ReposRepository, type: :database do
       expect(subject.pluck_ids).to eq([repo1.id, repo2.id])
     end
   end
+
+  describe "#find_or_create" do
+    context "already exists" do
+      let!(:repo) { Factory[:repo] }
+
+      it "returns repo" do
+        expect(subject.find_or_create({name: repo.name})).to match(match_entity(repo))
+      end
+
+      it "doesn't create new repo" do
+        expect { subject.find_or_create({name: repo.name}) }.not_to change { Hanami.app["persistence.rom"].relations[:repos].count }
+      end
+    end
+
+    context "doesnt exist" do
+      it "returns repo" do
+        expect(subject.find_or_create({name: "name"})).to have_attributes(name: "name", id: kind_of(Integer))
+      end
+
+      it "creates new repo" do
+        expect { subject.find_or_create({name: "name"}) }.to change { Hanami.app["persistence.rom"].relations[:repos].count }.by(1)
+      end
+    end
+  end
 end

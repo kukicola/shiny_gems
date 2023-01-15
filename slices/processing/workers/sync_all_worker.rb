@@ -4,7 +4,7 @@ module Processing
   module Workers
     class SyncAllWorker < Processing::Worker
       include Deps["workers.sync_worker", "workers.sync_issues_worker", "workers.sync_repo_worker",
-        "repositories.gems_repository", "repositories.repos_repository",]
+        "repositories.gems_repository", "repositories.repos_repository"]
 
       # TODO: split sync across the day
       def perform

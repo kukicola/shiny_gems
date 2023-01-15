@@ -18,7 +18,6 @@ module Processing
         gems.pluck(:id)
       end
 
-      # TODO: specs
       def pluck_name_by_list(items)
         gems.where(name: items).pluck(:name)
       end

@@ -5,7 +5,6 @@ module Processing
     class DiscoverWorker < Processing::Worker
       include Deps["workers.sync_worker", "workers.sync_issues_worker", "workers.sync_repo_worker", "services.discover"]
 
-      # TODO: specs
       def perform(page = 1)
         result = discover.call(page: page)
 

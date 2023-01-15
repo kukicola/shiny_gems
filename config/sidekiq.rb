@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "sidekiq"
 require "sentry-sidekiq"
 require "sidekiq-cron"
 require "hanami/boot"
