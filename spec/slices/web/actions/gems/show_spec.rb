@@ -3,8 +3,8 @@
 RSpec.describe Web::Actions::Gems::Show do
   let(:fake_gems_repository) do
     fake_repository(:web, :gems) do |repo|
-      allow(repo).to receive(:by_id).with(gem.id, with: {repo: :issues}).and_return(gem)
-      allow(repo).to receive(:by_id).with(-1, with: {repo: :issues}).and_return(nil)
+      allow(repo).to receive(:by_id).with(gem.id, with: {repo: [:issues, :gems]}).and_return(gem)
+      allow(repo).to receive(:by_id).with(-1, with: {repo: [:issues, :gems]}).and_return(nil)
     end
   end
   let(:repo) { Factory.structs[:repo] }

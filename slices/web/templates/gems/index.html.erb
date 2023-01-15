@@ -26,6 +26,7 @@
     <div class="d-flex justify-content-center mt-5">
       <nav>
         <ul class="pagination">
+          <!-- TODO: skip pages -->
           <% pager.total_pages.times do |i| %>
             <li class="page-item <%= 'active' if pager.current_page == i + 1 %>">
               <a class="page-link" href="/gems?page=<%= i + 1 %>&sort_by=<%= sort_by %>"><%= i + 1 %></a>
