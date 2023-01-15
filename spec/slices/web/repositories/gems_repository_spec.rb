@@ -36,10 +36,10 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
     let!(:gem5) { Factory[:gem, repo: Factory[:repo, pushed_at: DateTime.now - 400]] }
 
     it "returns paginated data except for gems without issues or outdated" do
-      expect(subject.index(per_page: 2, page: 1).to_a)
-        .to match([match_entity(gem2), match_entity(gem3)])
-      expect(subject.index(per_page: 2, page: 2).to_a)
-        .to match([match_entity(gem1)])
+      expect(subject.index(per_page: 2, page: 1).to_a.map(&:id))
+        .to eq([gem2.id, gem3.id])
+      expect(subject.index(per_page: 2, page: 2).to_a.map(&:id))
+        .to eq([gem1.id])
     end
 
     it "returns pager" do
@@ -54,8 +54,8 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
     let!(:gem4) { Factory[:gem, repo: Factory[:repo, pushed_at: DateTime.now - 400]] }
 
     it "returns gems from given list except for gems without issues or outdated" do
-      expect(subject.by_list([gem1.name, gem2.name, gem3.name, gem4.name]).to_a)
-        .to match_array([match_entity(gem1), match_entity(gem2)])
+      expect(subject.by_list([gem1.name, gem2.name, gem3.name, gem4.name]).to_a.map(&:id))
+        .to eq([gem1.id, gem2.id])
     end
   end
 end

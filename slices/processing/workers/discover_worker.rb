@@ -3,7 +3,7 @@
 module Processing
   module Workers
     class DiscoverWorker < Processing::Worker
-      include Deps["workers.sync_worker", "workers.sync_issues_worker", "services.discover"]
+      include Deps["workers.sync_worker", "workers.sync_issues_worker", "workers.sync_repo_worker", "services.discover"]
 
       # TODO: specs
       def perform(page = 1)
@@ -13,8 +13,8 @@ module Processing
         in Dry::Monads::Success[*gems]
           gems.each do |gem|
             sync_worker.perform_async(gem.id)
-            # TODO: create or find repo and sync it
-            #sync_issues_worker.perform_async(gem.id)
+            sync_repo_worker.perform_async(gem.repo_id)
+            sync_issues_worker.perform_async(gem.repo_id)
           end
           self.class.perform_async(page + 1)
         in Dry::Monads::Failure(StandardError => exception)

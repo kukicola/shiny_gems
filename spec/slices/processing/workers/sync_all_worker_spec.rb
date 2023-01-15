@@ -14,5 +14,8 @@ RSpec.describe Processing::Workers::SyncAllWorker do
     expect(Processing::Workers::SyncIssuesWorker).to have_enqueued_sidekiq_job(5)
     expect(Processing::Workers::SyncIssuesWorker).to have_enqueued_sidekiq_job(6)
     expect(Processing::Workers::SyncIssuesWorker).to have_enqueued_sidekiq_job(7)
+    expect(Processing::Workers::SyncRepoWorker).to have_enqueued_sidekiq_job(5)
+    expect(Processing::Workers::SyncRepoWorker).to have_enqueued_sidekiq_job(6)
+    expect(Processing::Workers::SyncRepoWorker).to have_enqueued_sidekiq_job(7)
   end
 end

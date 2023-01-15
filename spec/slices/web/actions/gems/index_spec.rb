@@ -21,11 +21,11 @@ RSpec.describe Web::Actions::Gems::Index do
   end
 
   context "valid params" do
-    let(:env) { {page: 1} }
+    let(:env) { {page: 1, sort_by: "name"} }
 
     it "calls repo with proper attributes" do
       expect(fake_gems_repository).to receive(:index)
-        .with(page: 1)
+        .with(page: 1, order: "name")
         .and_return(result)
       subject
     end

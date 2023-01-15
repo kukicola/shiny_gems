@@ -17,6 +17,14 @@ module Processing
       def pluck_ids
         repos.pluck(:id)
       end
+
+      # TODO: specs
+      def find_or_create(attributes)
+        existing = repos.where(attributes).one
+        return existing if existing
+
+        create(attributes)
+      end
     end
   end
 end

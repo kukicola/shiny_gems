@@ -5,6 +5,12 @@ module Web
     class GemsRepository < ROM::Repository[:gems]
       include Deps[container: "persistence.rom"]
 
+      SORT = {
+        "downloads" => proc { |db| db.gems[:downloads].desc },
+        "stars" => proc { |db| db.repos[:stars].desc },
+        "name" => proc { |db| db.gems[:name].asc }
+      }
+
       auto_struct true
 
       def by_id(id, with: nil)
@@ -13,11 +19,11 @@ module Web
         query.one
       end
 
-      def index(per_page: 20, page: 1)
+      def index(per_page: 20, page: 1, order: "downloads")
         base_query
           .per_page(per_page)
           .page(page)
-          .order { downloads.desc }
+          .order(&SORT[order])
       end
 
       def by_list(items)
@@ -29,8 +35,9 @@ module Web
       def base_query
         gems
           .where { pushed_at > DateTime.now - 365 }
+          .select_append(repos[:stars])
           .join(repos)
-          .left_join(:issues, { repo_id: :id })
+          .left_join(:issues, {repo_id: :id})
           .exclude(issues[:id] => nil)
           .distinct
           .combine(:repo)

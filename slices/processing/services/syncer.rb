@@ -2,7 +2,6 @@
 
 module Processing
   module Services
-    # TODO: add similar for repo
     class Syncer < ShinyGems::Service
       include Deps["services.rubygems.gem_fetcher", "repositories.gems_repository"]
 
@@ -11,7 +10,7 @@ module Processing
 
         attributes = {
           description: info["info"],
-          downloads: info["downloads"],
+          downloads: info["downloads"]
         }
 
         Success(gems_repository.update(gem.id, attributes))

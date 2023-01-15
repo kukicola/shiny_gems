@@ -3,7 +3,7 @@
 module Processing
   module Services
     class Discover < ShinyGems::Service
-      include Deps["services.rubygems.list_fetcher", "repositories.gems_repository"]
+      include Deps["services.rubygems.list_fetcher", "repositories.gems_repository", "repositories.repos_repository"]
 
       GITHUB_REPO_REGEX = %r{https?://github.com/([^/#]+/[^/#]+)}
 
@@ -27,9 +27,11 @@ module Processing
         github_repo = extract_github_repo(gem)
         return unless github_repo
 
+        repo = repos_repository.find_or_create({name: github_repo})
+
         gems_repository.create({
           name: gem["name"],
-          repo: github_repo
+          repo_id: repo.id
         })
       end
 

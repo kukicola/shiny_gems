@@ -3,7 +3,8 @@
 module Processing
   module Workers
     class SyncAllWorker < Processing::Worker
-      include Deps["workers.sync_worker", "workers.sync_issues_worker", "repositories.gems_repository", "repositories.repos_repository"]
+      include Deps["workers.sync_worker", "workers.sync_issues_worker", "workers.sync_repo_worker",
+        "repositories.gems_repository", "repositories.repos_repository",]
 
       # TODO: split sync across the day
       def perform
@@ -12,7 +13,7 @@ module Processing
         end
 
         repos_repository.pluck_ids.each do |id|
-          # TODO: sync repo itself
+          sync_repo_worker.perform_async(id)
           sync_issues_worker.perform_async(id)
         end
       end

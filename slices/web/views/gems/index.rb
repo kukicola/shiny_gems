@@ -7,7 +7,7 @@ module Web
         config.template = "gems/index"
         config.title = "Browse gems - ShinyGems"
 
-        expose :gems, :pager
+        expose :gems, :pager, :sort_by
       end
     end
   end
