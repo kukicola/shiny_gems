@@ -1,4 +1,5 @@
+# TODO: update
 daily_sync:
   cron: "0 0 * * *"
-  class: "ShinyGems::Workers::Gems::SyncAllWorker"
+  class: "Processing::Workers::SyncAllWorker"
   queue: default

@@ -35,11 +35,6 @@ a.text-gray:hover {
   background-image: linear-gradient(0deg, rgb(204, 52, 45) 0%, rgb(231, 101, 98) 100%);
 }
 
-.intro-maintainers {
-  background-color: rgb(26, 68, 117);
-  background-image: linear-gradient(180deg, rgb(26, 68, 117) 0%, rgb(9, 19, 46) 100%);
-}
-
 .py-10 {
   padding-top: 10rem;
   padding-bottom: 10rem;
@@ -56,15 +51,6 @@ a.text-gray:hover {
 .btn-intro-main:hover {
   color: #CC342D;
   background: #ffffff;
-}
-
-.btn-intro-secondary {
-  font-weight: bolder;
-}
-.btn-intro-secondary:hover {
-  border-color: #ffffff;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
 }
 
 .text-big {
@@ -93,10 +79,6 @@ footer {
 
 .bg-red {
   background: #CC342D;
-}
-
-.bg-dark-blue {
-  background-color: rgb(26, 68, 117);
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -3,7 +3,7 @@
 
 module Web
   class View < Hanami::View
-    DEFAULT_DESCRIPTION = "ShinyGems connects maintainers with passionate developers who want to make ruby ecosystem better."
+    DEFAULT_DESCRIPTION = "Help maintain your favourite gems and make them shine ✨"
 
     setting :title
     setting :description
