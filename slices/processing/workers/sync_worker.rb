@@ -9,7 +9,7 @@ module Processing
         gem = gems_repository.by_id(gem_id)
         result = syncer.call(gem)
 
-        raise result.failure if !result.success? && !result.failure.is_a?(Octokit::NotFound)
+        raise result.failure unless result.success?
       end
     end
   end

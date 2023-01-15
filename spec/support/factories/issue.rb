@@ -6,8 +6,9 @@ Factory.define(:issue) do |f|
   f.sequence(:github_id) { |n| 1000 + n }
   f.comments 5
   f.labels { [{"name" => "test", "color" => "dddddd"}] }
+  f.created_at { DateTime.now }
 
-  f.trait :with_gem do |t|
-    t.association(:gem)
+  f.trait :with_repo do |t|
+    t.association(:repo)
   end
 end

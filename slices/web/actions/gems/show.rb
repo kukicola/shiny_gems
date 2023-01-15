@@ -7,7 +7,7 @@ module Web
         include Deps["repositories.gems_repository"]
 
         def handle(request, response)
-          gem = gems_repository.by_id(request.params[:id], with: [:issues])
+          gem = gems_repository.by_id(request.params[:id], with: {repo: :issues})
           raise NotFoundError unless gem
 
           response[:current_gem] = gem

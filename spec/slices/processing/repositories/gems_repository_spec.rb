@@ -19,12 +19,10 @@ RSpec.describe Processing::Repositories::GemsRepository, type: :database do
     end
 
     context "when 'with' present" do
-      let!(:issue) { Factory[:issue, gem_id: gem.id] }
-
       it "returns gem with associations" do
-        result = repo.by_id(gem.id, with: [:issues])
+        result = repo.by_id(gem.id, with: [:repo])
         expect(result.name).to eq(gem.name)
-        expect(result.issues).to match([match_entity(issue)])
+        expect(result.repo).to eq(gem.repo)
       end
     end
   end

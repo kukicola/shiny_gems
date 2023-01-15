@@ -2,18 +2,16 @@
 
 module Processing
   module Services
+    # TODO: add similar for repo
     class Syncer < ShinyGems::Service
-      include Deps["services.rubygems.gem_fetcher", "services.github.repo_fetcher", "repositories.gems_repository"]
+      include Deps["services.rubygems.gem_fetcher", "repositories.gems_repository"]
 
       def call(gem)
         info = yield gem_fetcher.call(gem.name)
-        github_info = yield repo_fetcher.call(gem.repo)
 
         attributes = {
           description: info["info"],
-          stars: github_info["stargazers_count"],
           downloads: info["downloads"],
-          pushed_at: github_info["pushed_at"]
         }
 
         Success(gems_repository.update(gem.id, attributes))

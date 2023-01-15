@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.feature "gemfile upload", type: :feature, js: true do
-  let!(:gem) { Factory[:gem, :with_issues, name: "hanami", repo: "my/repo"] }
-  let!(:other_gem) { Factory[:gem, :with_issues] }
+  let!(:gem) { Factory[:gem, name: "hanami", repo: Factory[:repo, name: "my/repo"]] }
+  let!(:other_gem) { Factory[:gem] }
 
   scenario "browse gems by uploaded gemfile" do
     visit "/gems"

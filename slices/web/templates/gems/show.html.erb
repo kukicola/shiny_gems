@@ -14,7 +14,7 @@
           <div class="list-group-item bg-secondary">
             <strong class="text-white text-uppercase">Pending issues</strong>
           </div>
-          <% current_gem.issues.each do |issue| %>
+          <% current_gem.repo.issues.each do |issue| %>
             <a href="<%= issue.url %>" class="list-group-item list-group-item-action p-3 d-block" target="_blank">
               <div class="d-flex align-items-center">
                 <span class="text-big me-1">
@@ -25,12 +25,12 @@
                 <% end %>
               </div>
               <div class="text-muted">
-                <%= issue.comments %> comment(s)
+                <%= issue.created_at.to_date %> <span class="mx-2">&#183;</span> <%= issue.comments %> comment(s)
               </div>
             </a>
           <% end %>
 
-          <% if current_gem.issues.empty? %>
+          <% if current_gem.repo.issues.empty? %>
             <div class="list-group-item py-5 text-center">
               <div class="h3 mb-0">There are no pending issues</div>
             </div>
@@ -43,12 +43,12 @@
             <dl class="mb-0">
               <dt>GitHub Repository</dt>
               <dd class="mb-3">
-                <a href="<%= current_gem.repo_url %>" class="link-secondary" target="_blank"><%= current_gem.repo %></a>
+                <a href="<%= current_gem.repo.url %>" class="link-secondary" target="_blank"><%= current_gem.repo.name %></a>
               </dd>
 
               <dt>GitHub Stars</dt>
               <dd class="mb-3 h4 fw-normal">
-                <%= current_gem.stars %> <i class="bi bi-star ms-1"></i>
+                <%= current_gem.repo.stars %> <i class="bi bi-star ms-1"></i>
               </dd>
 
               <dt>RubyGems Downloads</dt>

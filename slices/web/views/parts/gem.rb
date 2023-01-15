@@ -6,18 +6,10 @@ module Web
       class Gem < Hanami::View::Part
         include Deps["formatter"]
 
-        decorate :issues
-
-        def stars
-          formatter.separator(value.stars)
-        end
+        decorate :repo
 
         def downloads
           formatter.separator(value.downloads)
-        end
-
-        def repo_url
-          "https://github.com/#{value.repo}"
         end
       end
     end

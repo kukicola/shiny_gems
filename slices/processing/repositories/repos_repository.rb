@@ -2,25 +2,20 @@
 
 module Processing
   module Repositories
-    class GemsRepository < ROM::Repository[:gems]
+    class ReposRepository < ROM::Repository[:repos]
       include Deps[container: "persistence.rom"]
 
       commands :create, update: :by_pk, delete: :by_pk
       auto_struct true
 
       def by_id(id, with: nil)
-        query = gems.by_pk(id)
+        query = repos.by_pk(id)
         query = query.combine(with) if with
         query.one
       end
 
       def pluck_ids
-        gems.pluck(:id)
-      end
-
-      # TODO: specs
-      def pluck_name_by_list(items)
-        gems.where(name: items).pluck(:name)
+        repos.pluck(:id)
       end
     end
   end

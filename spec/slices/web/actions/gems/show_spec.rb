@@ -3,11 +3,17 @@
 RSpec.describe Web::Actions::Gems::Show do
   let(:fake_gems_repository) do
     fake_repository(:web, :gems) do |repo|
-      allow(repo).to receive(:by_id).with(gem.id, with: [:issues]).and_return(gem)
-      allow(repo).to receive(:by_id).with(-1, with: [:issues]).and_return(nil)
+      allow(repo).to receive(:by_id).with(gem.id, with: {repo: :issues}).and_return(gem)
+      allow(repo).to receive(:by_id).with(-1, with: {repo: :issues}).and_return(nil)
     end
   end
-  let(:gem) { Factory.structs[:gem, :with_issues] }
+  let(:repo) { Factory.structs[:repo] }
+  let(:gem) { Factory.structs[:gem, repo: repo] }
+
+  before do
+    # bug in factory?
+    allow(gem).to receive(:repo).and_return(repo)
+  end
 
   context "gem not found" do
     subject { described_class.new(gems_repository: fake_gems_repository).call({id: -1}) }
