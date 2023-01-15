@@ -6,7 +6,6 @@ module ShinyGems
   class App < Hanami::App
     config.shared_app_component_keys += ["sentry", "persistence.rom"]
 
-    # TODO: can be moved to slice?
     config.actions.sessions = :cookie, {
       key: "session",
       secret: settings.session_secret,

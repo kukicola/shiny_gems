@@ -5,4 +5,5 @@ Factory.define(:repo) do |f|
   f.stars { 1521 }
   f.association(:issues, count: 3)
   f.pushed_at { DateTime.now - 30 }
+  f.association(:gems, count: 0)
 end
