@@ -8,8 +8,8 @@ module Processing
       def call(repo)
         info = yield repo_fetcher.call(repo.name)
 
-        # TODO: follow redirects to new organizations
         attributes = {
+          name: info[:full_name],
           stars: info[:stargazers_count],
           pushed_at: info[:pushed_at]
         }

@@ -6,3 +6,5 @@
 - add more information about gems and repositories
 - UI improvements
 - social sharing (?)
+- better support for monorepos
+- documentation

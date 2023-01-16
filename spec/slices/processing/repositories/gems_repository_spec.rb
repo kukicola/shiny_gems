@@ -27,12 +27,13 @@ RSpec.describe Processing::Repositories::GemsRepository, type: :database do
     end
   end
 
-  describe "#pluck_ids" do
-    let!(:gem1) { Factory[:gem] }
-    let!(:gem2) { Factory[:gem] }
+  describe "#pluck_ids_for_hour" do
+    let!(:gem1) { Factory[:gem, id: 1] }
+    let!(:gem2) { Factory[:gem, id: 2] }
+    let!(:gem3) { Factory[:gem, id: 25] }
 
     it "returns ids as array" do
-      expect(subject.pluck_ids).to eq([gem1.id, gem2.id])
+      expect(subject.pluck_ids_for_hour(1)).to eq([gem1.id, gem3.id])
     end
   end
 

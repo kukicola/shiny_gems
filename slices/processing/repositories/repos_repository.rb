@@ -14,8 +14,8 @@ module Processing
         query.one
       end
 
-      def pluck_ids
-        repos.pluck(:id)
+      def pluck_ids_for_hour(hour)
+        repos.where(Sequel.lit("id % 24 = ?", hour)).pluck(:id)
       end
 
       def find_or_create(attributes)

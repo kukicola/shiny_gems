@@ -7,7 +7,6 @@ module Web
         class Create < Web::Action
           include Deps["services.gemfile_parser", "errors_mapper", "repositories.gems_repository"]
 
-          # TODO: use search
           def handle(request, response)
             result = gemfile_parser.call(request.params[:gemfile][:tempfile].read)
 

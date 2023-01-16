@@ -309,6 +309,9 @@ GEM
       sentry-ruby (~> 5.7.0)
       sidekiq (>= 3.0)
     sequel (5.63.0)
+    sequel_pg (1.17.1)
+      pg (>= 0.18.0, != 1.2.0)
+      sequel (>= 4.38.0)
     shellany (0.0.1)
     sidekiq (7.0.2)
       concurrent-ruby (< 2)
@@ -380,6 +383,7 @@ DEPENDENCIES
   rspec-sidekiq
   sentry-ruby
   sentry-sidekiq
+  sequel_pg
   sidekiq
   sidekiq-cron
   simplecov

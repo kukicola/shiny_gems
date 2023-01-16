@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
 RSpec.describe Processing::Workers::SyncAllWorker do
-  let(:fake_gem_repo) { instance_double(Processing::Repositories::GemsRepository, pluck_ids: [1, 2, 3]) }
-  let(:fake_repos_repo) { instance_double(Processing::Repositories::ReposRepository, pluck_ids: [5, 6, 7]) }
+  let(:fake_gem_repo) { instance_double(Processing::Repositories::GemsRepository) }
+  let(:fake_repos_repo) { instance_double(Processing::Repositories::ReposRepository) }
 
-  subject { described_class.new(gems_repository: fake_gem_repo, repos_repository: fake_repos_repo).perform }
+  subject { described_class.new(gems_repository: fake_gem_repo, repos_repository: fake_repos_repo).perform(1673908001) }
+
+  before do
+    allow(fake_gem_repo).to receive(:pluck_ids_for_hour).with(23).and_return([1,2,3])
+    allow(fake_repos_repo).to receive(:pluck_ids_for_hour).with(23).and_return([5,6,7])
+  end
 
   it "schedules single sync jobs" do
     subject

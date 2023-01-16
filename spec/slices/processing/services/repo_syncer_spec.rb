@@ -7,12 +7,14 @@ RSpec.describe Processing::Services::RepoSyncer do
   let(:github_info) do
     {
       stargazers_count: 50000,
+      full_name: "new/some_gem",
       pushed_at: DateTime.new(2022, 12, 12, 12, 0, 0)
     }
   end
   let(:expected_attributes) do
     {
       stars: 50000,
+      name: "new/some_gem",
       pushed_at: DateTime.new(2022, 12, 12, 12, 0, 0)
     }
   end

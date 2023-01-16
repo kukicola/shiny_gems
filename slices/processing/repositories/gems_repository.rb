@@ -14,8 +14,8 @@ module Processing
         query.one
       end
 
-      def pluck_ids
-        gems.pluck(:id)
+      def pluck_ids_for_hour(hour)
+        gems.where(Sequel.lit("id % 24 = ?", hour)).pluck(:id)
       end
 
       def pluck_name_by_list(items)

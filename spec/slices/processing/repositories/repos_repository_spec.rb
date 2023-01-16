@@ -30,11 +30,12 @@ RSpec.describe Processing::Repositories::ReposRepository, type: :database do
   end
 
   describe "#pluck_ids" do
-    let!(:repo1) { Factory[:repo] }
-    let!(:repo2) { Factory[:repo] }
+    let!(:repo1) { Factory[:repo, id: 1] }
+    let!(:repo2) { Factory[:repo, id: 2] }
+    let!(:repo3) { Factory[:repo, id: 25] }
 
     it "returns ids as array" do
-      expect(subject.pluck_ids).to eq([repo1.id, repo2.id])
+      expect(subject.pluck_ids_for_hour(1)).to eq([repo1.id, repo3.id])
     end
   end
 
