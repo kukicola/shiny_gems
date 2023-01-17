@@ -7,8 +7,8 @@ RSpec.describe Processing::Workers::SyncAllWorker do
   subject { described_class.new(gems_repository: fake_gem_repo, repos_repository: fake_repos_repo).perform(1673908001) }
 
   before do
-    allow(fake_gem_repo).to receive(:pluck_ids_for_hour).with(23).and_return([1,2,3])
-    allow(fake_repos_repo).to receive(:pluck_ids_for_hour).with(23).and_return([5,6,7])
+    allow(fake_gem_repo).to receive(:pluck_ids_for_hour).with(23).and_return([1, 2, 3])
+    allow(fake_repos_repo).to receive(:pluck_ids_for_hour).with(23).and_return([5, 6, 7])
   end
 
   it "schedules single sync jobs" do
