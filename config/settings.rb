@@ -4,11 +4,12 @@ module ShinyGems
   class Settings < Hanami::Settings
     setting :github_key, constructor: Types::String
     setting :github_secret, constructor: Types::String
-    setting :session_secret, constructor: Types::String
     setting :database_url, constructor: Types::String
-    setting :lockbox_master_key, constructor: Types::String
     setting :redis_url, constructor: Types::String
     setting :sentry_url, constructor: Types::String
     setting :host, constructor: Types::String
+    setting :session_secret, constructor: Types::String
+    setting :sidekiq_web_user, constructor: Types::String
+    setting :sidekiq_web_pass, constructor: Types::String
   end
 end

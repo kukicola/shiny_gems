@@ -1,4 +1,9 @@
 daily_sync:
-  cron: "0 0 * * *"
-  class: "ShinyGems::Workers::Gems::SyncAllWorker"
+  cron: "0 * * * *"
+  class: "Processing::Workers::SyncAllWorker"
+  queue: default
+  date_as_argument: true
+weekly_discover:
+  cron: "0 0 * * 1"
+  class: "Processing::Workers::DiscoverWorker"
   queue: default

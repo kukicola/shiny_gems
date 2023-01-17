@@ -18,13 +18,6 @@
     })
   })
 
-  const formConfirmElems = document.querySelectorAll('form[data-confirm]')
-  formConfirmElems.forEach(function (form) {
-    form.addEventListener('submit', function(event) {
-      return confirm(form.dataset.confirm) || event.preventDefault();
-    })
-  })
-
   const uploadButtons = document.querySelectorAll('button[data-upload]')
   uploadButtons.forEach(function (button) {
     button.addEventListener('click', function(event) {

@@ -6,7 +6,7 @@ module ShinyGems
       class Issues < ROM::Relation[:sql]
         schema(:issues, infer: true) do
           associations do
-            belongs_to :gem
+            belongs_to :repo
           end
         end
       end

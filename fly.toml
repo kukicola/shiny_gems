@@ -4,8 +4,8 @@ app = "shiny-gems"
 kill_signal = "SIGINT"
 kill_timeout = 5
 [processes]
-    web = "bundle exec puma -C config/puma.rb"
-    worker = "bundle exec sidekiq -r ./config/sidekiq.rb -e production"
+    web = "HANAMI_SLICES=web bundle exec puma -C config/puma.rb"
+    worker = "HANAMI_SLICES=processing bundle exec sidekiq -r ./config/sidekiq.rb -e production"
 
 [build]
   builder = "heroku/buildpacks:20"
