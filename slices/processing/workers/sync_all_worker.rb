@@ -7,7 +7,7 @@ module Processing
         "repositories.gems_repository", "repositories.repos_repository"]
 
       def perform(time)
-        hour = Time.at(time).hour
+        hour = Time.at(time).utc.hour
 
         gems_repository.pluck_ids_for_hour(hour).each do |id|
           sync_worker.perform_async(id)
