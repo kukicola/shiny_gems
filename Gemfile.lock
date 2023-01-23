@@ -233,7 +233,7 @@ GEM
       ffi (~> 1.0)
     redis-client (0.12.1)
       connection_pool
-    regexp_parser (2.6.1)
+    regexp_parser (2.6.2)
     rexml (3.2.5)
     rom (5.3.0)
       rom-changeset (~> 5.3, >= 5.3.0)
@@ -327,7 +327,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    standard (1.22.0)
+    standard (1.22.1)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.42.0)
       rubocop-performance (= 1.15.2)
