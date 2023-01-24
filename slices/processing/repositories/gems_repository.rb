@@ -21,6 +21,10 @@ module Processing
       def pluck_name_by_list(items)
         gems.where(name: items).pluck(:name)
       end
+
+      def replace_repo(old_id, new_id)
+        gems.where(repo_id: old_id).update(repo_id: new_id)
+      end
     end
   end
 end

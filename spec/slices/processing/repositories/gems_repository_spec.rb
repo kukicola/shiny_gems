@@ -45,4 +45,17 @@ RSpec.describe Processing::Repositories::GemsRepository, type: :database do
       expect(subject.pluck_name_by_list(["some_name", gem2.name])).to eq([gem2.name])
     end
   end
+
+  describe "#replace_repo" do
+    let!(:gem1) { Factory[:gem] }
+    let!(:gem2) { Factory[:gem] }
+    let!(:new_repo) { Factory[:repo] }
+
+    it "replaces repos for proper gems" do
+      subject.replace_repo(gem1.repo_id, new_repo.id)
+
+      expect(repo.by_id(gem1.id).repo_id).to eq(new_repo.id)
+      expect(repo.by_id(gem2.id).repo_id).not_to eq(new_repo.id)
+    end
+  end
 end
