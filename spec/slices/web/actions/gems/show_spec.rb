@@ -36,7 +36,7 @@ RSpec.describe Web::Actions::Gems::Show do
 
     it "render view" do
       expect(subject.body[0]).to include(gem.name)
-      expect(subject.body[0]).to include("Pending issues")
+      expect(subject.body[0]).to include(repo.issues[0].title)
     end
   end
 end

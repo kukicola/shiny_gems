@@ -11,6 +11,10 @@ module Web
         def downloads
           formatter.separator(value.downloads)
         end
+
+        def url
+          "https://rubygems.org/gems/#{value.name}"
+        end
       end
     end
   end

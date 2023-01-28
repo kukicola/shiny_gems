@@ -17,22 +17,19 @@
     <div class="row">
       <div class="col-lg-9">
         <div class="list-group">
-          <div class="list-group-item bg-secondary">
-            <strong class="text-white text-uppercase">Pending issues</strong>
-          </div>
           <% current_gem.repo.issues.each do |issue| %>
             <a href="<%= issue.url %>" class="list-group-item list-group-item-action p-3 d-block" target="_blank">
-              <div class="d-flex align-items-center">
-                <span class="text-big me-1">
-                  <%= issue.title %>
-                </span>
+              <div class="text-big me-1">
+                <%= issue.title %>
+              </div>
+              <div class="mb-1">
                 <% issue.labels.each do |label| %>
-                  <span class="badge ms-1 <%= 'text-black' if label.bg_light? %>" style="background: <%= label.bg_color %>"><%= label.name %></span>
+                  <span class="badge me-1 <%= 'text-black' if label.bg_light? %>" style="background: <%= label.bg_color %>"><%= label.name %></span>
                 <% end %>
               </div>
-              <div class="text-muted">
+              <small class="text-muted">
                 <%= issue.created_at.to_date %> <span class="mx-2">&#183;</span> <%= issue.comments %> comment(s)
-              </div>
+              </small>
             </a>
           <% end %>
 
@@ -47,6 +44,11 @@
         <div class="card">
           <div class="card-body text-muted">
             <dl class="mb-0">
+              <dt>RubyGems</dt>
+              <dd class="mb-3">
+                <a href="<%= current_gem.url %>" class="link-secondary" target="_blank"><%= current_gem.name %></a>
+              </dd>
+
               <dt>GitHub Repository</dt>
               <dd class="mb-3">
                 <a href="<%= current_gem.repo.url %>" class="link-secondary" target="_blank"><%= current_gem.repo.name %></a>

@@ -18,7 +18,6 @@ RSpec.feature "browse", type: :feature, js: true do
     expect(page).to have_content(gem.name)
 
     click_link(gem.name)
-    expect(page).to have_content("PENDING ISSUES")
     expect(page).to have_content("Some issue")
 
     expect(page).to have_content("GitHub Repository\nmy/repo")
