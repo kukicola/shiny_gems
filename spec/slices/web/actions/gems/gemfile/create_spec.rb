@@ -4,7 +4,7 @@ RSpec.describe Web::Actions::Gems::Gemfile::Create do
   let(:fake_parser) { instance_double(Web::Services::GemfileParser) }
   let(:instance) { described_class.new(gemfile_parser: fake_parser, gems_repository: fake_gems_repository) }
   let(:fake_gems_repository) { fake_repository(:web, :gems) }
-  let(:gem) { Factory.structs[:gem, name: "hanami"] }
+  let!(:gem) { OpenStruct.new(**Factory.structs[:gem].attributes, issues_count: 10, name: "hanami") }
 
   subject { instance.call({gemfile: {tempfile: File.open("#{SPEC_ROOT}/support/files/Gemfile.test")}}) }
 

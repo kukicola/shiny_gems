@@ -6,7 +6,7 @@ RSpec.describe Web::Actions::Gems::Index do
       allow(repo).to receive(:index).with(any_args).and_return(result)
     end
   end
-  let!(:gem) { Factory.structs[:gem] }
+  let!(:gem) { OpenStruct.new(**Factory.structs[:gem].attributes, issues_count: 10) }
   let(:result) { double(to_a: [gem], pager: pager_dbl) }
   let(:pager_dbl) { instance_double(ROM::SQL::Plugin::Pagination::Pager, total_pages: 3, current_page: 1) }
 
@@ -16,6 +16,7 @@ RSpec.describe Web::Actions::Gems::Index do
     let(:env) { {page: "hehe"} }
 
     it "returns bad request" do
+      puts gem.attributes
       expect(subject.status).to eq(400)
     end
   end

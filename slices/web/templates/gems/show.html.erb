@@ -60,8 +60,13 @@
               </dd>
 
               <dt>RubyGems Downloads</dt>
-              <dd class="mb-0 h4 fw-normal">
+              <dd class="mb-3 h4 fw-normal">
                 <%= current_gem.downloads %> <i class="bi bi-download ms-1"></i>
+              </dd>
+
+              <dt>Issues count</dt>
+              <dd class="mb-0 h4 fw-normal">
+                <%= current_gem.repo.issues.size %> <i class="bi bi-record-circle ms-1"></i>
               </dd>
             </dl>
           </div>

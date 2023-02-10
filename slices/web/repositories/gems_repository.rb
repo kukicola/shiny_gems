@@ -6,9 +6,11 @@ module Web
       include Deps[container: "persistence.rom"]
 
       SORT = {
-        "downloads" => proc { |db| db.gems[:downloads].desc },
-        "stars" => proc { |db| db.repos[:stars].desc },
-        "name" => proc { |db| db.gems[:name].asc }
+        "downloads" => proc { `downloads DESC` },
+        "stars" => proc { `stars DESC` },
+        "name" => proc { `name ASC` },
+        "issues_count" => proc { `issues_count DESC` },
+        "recent_issues" => proc { `max_issue_created_at DESC` }
       }
 
       auto_struct true
@@ -35,11 +37,12 @@ module Web
       def base_query
         gems
           .where { pushed_at > DateTime.now - 365 }
-          .select_append(repos[:stars])
+          .select_append { function(:max, `repos.stars`).as(:stars) }
+          .select_append { function(:count, `issues.id`).as(:issues_count) }
+          .select_append { function(:max, `issues.created_at`).as(:max_issue_created_at) }
           .join(repos)
-          .left_join(:issues, {repo_id: :id})
-          .exclude(issues[:id] => nil)
-          .distinct
+          .join(:issues, {repo_id: :id})
+          .group(gems[:id])
           .combine(:repo)
       end
     end
