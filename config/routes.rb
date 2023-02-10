@@ -19,6 +19,8 @@ module ShinyGems
         get "/:id", to: "gems.show"
         post "/gemfile", to: "gems.gemfile.create"
       end
+
+      get "/*any", to: "pages.not_found"
     end
   end
 end

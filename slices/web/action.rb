@@ -5,7 +5,7 @@ require "hanami/action"
 
 module Web
   class Action < Hanami::Action
-    include Deps["sentry", "settings"]
+    include Deps["sentry", "settings", "views.pages.error"]
 
     BadRequestError = Class.new(StandardError)
     NotFoundError = Class.new(StandardError)
@@ -22,22 +22,25 @@ module Web
       raise BadRequestError unless request.params.valid?
     end
 
-    def handle_bad_request(_request, _response, _exception)
-      halt 400
+    def handle_bad_request(_request, response, _exception)
+      response.render(error, code: 400)
+      response.status = 400
     end
 
-    def handle_not_found(_request, _response, _exception)
-      halt 404
+    def handle_not_found(_request, response, _exception)
+      response.render(error, code: 404)
+      response.status = 404
     end
 
-    def handle_standard_error(request, _response, exception)
+    def handle_standard_error(request, response, exception)
       if Hanami.env?(:development)
         raise exception
       else
         sentry.capture_exception(exception) do |scope|
-          scope.contexts[:request] = request.env
+          scope.set_rack_env(request.env)
         end
-        halt 500
+        response.render(error, code: 500)
+        response.status = 500
       end
     end
 
