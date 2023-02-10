@@ -9,6 +9,10 @@ module ShinyGems
             belongs_to :repo
           end
         end
+
+        def ordered
+          order { created_at.desc }
+        end
       end
     end
   end

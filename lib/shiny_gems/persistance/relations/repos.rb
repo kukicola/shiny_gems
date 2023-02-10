@@ -7,7 +7,7 @@ module ShinyGems
         schema(:repos, infer: true) do
           associations do
             has_many :gems
-            has_many :issues
+            has_many :issues, view: :ordered
           end
         end
       end
