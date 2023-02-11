@@ -1,4 +1,4 @@
-<div class="intro py-10">
+<div class="intro">
   <div class="container justify-content-center align-content-center d-flex text-center text-white">
     <div class="col-lg-10">
       <div class="display-2 home-title">
@@ -7,8 +7,29 @@
       <div class="h3 mt-5">
         Make your first steps in open source.<br/>Start browsing gems and help with their development.
       </div>
-      <div class="mt-5">
+      <div class="mt-4">
         <a href="/gems" class="btn btn-light btn-lg px-4 btn-intro-main">Browse gems</a>
+      </div>
+      <div class="h3 mt-5">
+        or pick random one
+      </div>
+      <div class="mt-4">
+        <div class="container">
+          <div class="row">
+            <% random_gems.each do |gem| %>
+              <div class="col-12 col-md-4">
+                <a href="/gems/<%= gem.id %>" class="card text-decoration-none text-black mt-2 text-start">
+                  <div class="card-body">
+                    <h5 class="card-title text-truncate"><%= gem.name %></h5>
+                    <div class="card-subtitle mt-1 text-muted">
+                      <%= gem.issues_count %> pending issues <i class="bi bi-record-circle ms-1"></i>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -32,6 +32,10 @@ module Web
         base_query.where(gems[:name] => items)
       end
 
+      def random(limit)
+        base_query.order { `RANDOM()` }.limit(limit)
+      end
+
       private
 
       def base_query

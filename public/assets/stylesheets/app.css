@@ -33,11 +33,7 @@ a.text-gray:hover {
 .intro {
   background-color: rgb(204, 52, 45);
   background-image: linear-gradient(0deg, rgb(204, 52, 45) 0%, rgb(231, 101, 98) 100%);
-}
-
-.py-10 {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding: 7rem 0;
 }
 
 .home-title {
@@ -45,11 +41,10 @@ a.text-gray:hover {
 }
 
 .btn-intro-main {
-  color: #CC342D;
-  font-weight: bolder;
+  background: #ffffff;
+  font-weight: 500;
 }
 .btn-intro-main:hover {
-  color: #CC342D;
   background: #ffffff;
 }
 

@@ -58,4 +58,13 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
         .to eq([gem1.id, gem2.id])
     end
   end
+
+  describe "#random" do
+    let!(:gem1) { Factory[:gem, repo: Factory[:repo]] }
+    let!(:gem2) { Factory[:gem, repo: Factory[:repo]] }
+
+    it "returns random N gems" do
+      expect(subject.random(1).to_a.map(&:id)).to eq([gem1.id]).or(eq([gem2.id]))
+    end
+  end
 end
