@@ -313,7 +313,7 @@ GEM
       pg (>= 0.18.0, != 1.2.0)
       sequel (>= 4.38.0)
     shellany (0.0.1)
-    sidekiq (7.0.3)
+    sidekiq (7.0.4)
       concurrent-ruby (< 2)
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
