@@ -88,11 +88,11 @@ GEM
       dry-inflector (~> 1.0, < 2)
     dry-transformer (1.0.1)
       zeitwerk (~> 2.6)
-    dry-types (1.7.0)
+    dry-types (1.7.1)
       concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0, < 2)
-      dry-inflector (~> 1.0, < 2)
-      dry-logic (>= 1.4, < 2)
+      dry-core (~> 1.0)
+      dry-inflector (~> 1.0)
+      dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
     dry-validation (1.10.0)
       concurrent-ruby (~> 1.0)
@@ -348,7 +348,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   arm64-darwin-22
@@ -360,7 +360,7 @@ DEPENDENCIES
   database_cleaner-sequel
   dotenv
   dry-monads
-  dry-types (~> 1.0, >= 1.6.1)
+  dry-types (~> 1.7)
   erbse
   faraday-retry
   gems
