@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between align-items-md-end mb-3 flex-md-row flex-column">
       <div class="d-flex align-items-center">
         <div class="h2 mb-0">Browse gems</div>
-        <form action="/gems/gemfile" method="POST" enctype="multipart/form-data" class="ms-3" data-autosave>
+        <form action="/gemfile" method="POST" enctype="multipart/form-data" class="ms-3" data-autosave>
           <input type="file" name="gemfile" class="d-none"/>
           <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
           <button data-upload class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Upload your Gemfile to see if there are any gems in our database">

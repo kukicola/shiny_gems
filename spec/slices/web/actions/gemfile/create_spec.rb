@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Web::Actions::Gems::Gemfile::Create do
+RSpec.describe Web::Actions::Gemfile::Create do
   let(:fake_parser) { instance_double(Web::Services::GemfileParser) }
   let(:instance) { described_class.new(gemfile_parser: fake_parser, gems_repository: fake_gems_repository) }
   let(:fake_gems_repository) { fake_repository(:web, :gems) }

@@ -28,6 +28,31 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
     end
   end
 
+  describe "#by_name" do
+    let!(:repo) { Factory[:repo] }
+    let!(:gem) { Factory[:gem, repo_id: repo.id] }
+
+    context "gem exists" do
+      it "returns gem" do
+        expect(repository.by_name(gem.name)).to match_entity(gem)
+      end
+    end
+
+    context "gem doesnt exist" do
+      it "returns nil" do
+        expect(repository.by_name("invalid")).to be_nil
+      end
+    end
+
+    context "when 'with' present" do
+      it "returns gem with associations" do
+        result = repository.by_name(gem.name, with: [:repo])
+        expect(result.name).to eq(gem.name)
+        expect(result.repo).to match(match_entity(repo))
+      end
+    end
+  end
+
   describe "#index" do
     let!(:gem1) { Factory[:gem, repo: Factory[:repo], downloads: 3000] }
     let!(:gem2) { Factory[:gem, repo: Factory[:repo], downloads: 5000] }

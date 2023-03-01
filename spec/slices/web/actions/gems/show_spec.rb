@@ -3,8 +3,8 @@
 RSpec.describe Web::Actions::Gems::Show do
   let(:fake_gems_repository) do
     fake_repository(:web, :gems) do |repo|
-      allow(repo).to receive(:by_id).with(gem.id, with: {repo: [:issues, :gems]}).and_return(gem)
-      allow(repo).to receive(:by_id).with(-1, with: {repo: [:issues, :gems]}).and_return(nil)
+      allow(repo).to receive(:by_name).with(gem.name, with: {repo: [:issues, :gems]}).and_return(gem)
+      allow(repo).to receive(:by_name).with("eo", with: {repo: [:issues, :gems]}).and_return(nil)
     end
   end
   let(:repo) { Factory.structs[:repo] }
@@ -16,7 +16,7 @@ RSpec.describe Web::Actions::Gems::Show do
   end
 
   context "gem not found" do
-    subject { described_class.new(gems_repository: fake_gems_repository).call({id: -1}) }
+    subject { described_class.new(gems_repository: fake_gems_repository).call({name: "eo"}) }
 
     it "returns not found" do
       expect(subject.status).to eq(404)
@@ -24,7 +24,7 @@ RSpec.describe Web::Actions::Gems::Show do
   end
 
   context "gem exists" do
-    subject { described_class.new(gems_repository: fake_gems_repository).call({id: gem.id}) }
+    subject { described_class.new(gems_repository: fake_gems_repository).call({name: gem.name}) }
 
     it "is successful" do
       expect(subject).to be_successful

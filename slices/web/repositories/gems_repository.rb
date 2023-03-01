@@ -21,6 +21,12 @@ module Web
         query.one
       end
 
+      def by_name(name, with: nil)
+        query = gems.where(name: name)
+        query = query.combine(with) if with
+        query.one
+      end
+
       def index(per_page: 20, page: 1, order: "downloads")
         base_query
           .per_page(per_page)
