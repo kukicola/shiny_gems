@@ -6,9 +6,9 @@ RSpec.describe Web::Actions::Gems::ShowOld do
       allow(repo).to receive(:by_id).with(gem.id).and_return(gem)
     end
   end
-  let(:gem) { Factory.structs[:gem, name: 'test'] }
+  let(:gem) { Factory.structs[:gem, name: "test"] }
 
-  subject { described_class.new(gems_repository: fake_gems_repository).call({ id: gem.id }) }
+  subject { described_class.new(gems_repository: fake_gems_repository).call({id: gem.id}) }
 
   it "is redirects to new endpoint" do
     expect(subject.status).to eq(301)
