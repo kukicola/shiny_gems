@@ -12,7 +12,9 @@ RSpec.feature "processing", type: :feature, js: true do
       name: "some_gem",
       source_code_uri: "https://github.com/some/some_gem",
       info: "Just a sample gem",
-      downloads: 1_526_321
+      downloads: 1_526_321,
+      version: "2.0.0",
+      licenses: ["MIT"]
     }
   end
 

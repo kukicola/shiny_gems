@@ -10,7 +10,9 @@ module Processing
 
         attributes = {
           description: info["info"],
-          downloads: info["downloads"]
+          downloads: info["downloads"],
+          version: info["version"],
+          licenses: info["licenses"]
         }
 
         Success(gems_repository.update(gem.id, attributes))

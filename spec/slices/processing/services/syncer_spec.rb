@@ -9,13 +9,17 @@ RSpec.describe Processing::Services::Syncer do
       "name" => "some_gem",
       "info" => "some description",
       "downloads" => 50000,
-      "homepage_uri" => "https://github.com/test/some_gem"
+      "homepage_uri" => "https://github.com/test/some_gem",
+      "version" => "2.0.0",
+      "licenses" => ["MIT"]
     }
   end
   let(:expected_attributes) do
     {
       description: "some description",
-      downloads: 50000
+      downloads: 50000,
+      licenses: ["MIT"],
+      version: "2.0.0"
     }
   end
 
