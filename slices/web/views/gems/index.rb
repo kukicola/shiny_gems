@@ -10,8 +10,9 @@ module Web
         expose :gems, :pager, :sort_by
 
         expose :pages, decorate: false do |pager:|
-          pager.total_pages.times.map { |i| i + 1 }.map do |page|
-            next :gap unless page == 1 || page == pager.total_pages || page.between?(pager.current_page - 1, pager.current_page + 1)
+          total = pager.total_pages
+          total.times.map { |i| i + 1 }.map do |page|
+            next :gap unless page == 1 || page == total || page.between?(pager.current_page - 1, pager.current_page + 1)
             page
           end.chunk(&:itself).map(&:first)
         end

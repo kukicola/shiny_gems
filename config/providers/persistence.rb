@@ -18,6 +18,8 @@ Hanami.app.register_provider :persistence, namespace: true do
       namespace: "ShinyGems::Persistence"
     )
 
-    register "rom", ROM.container(config)
+    container = ROM.container(config)
+    # container.gateways[:default].use_logger(target["logger"])
+    register "rom", container
   end
 end
