@@ -106,11 +106,11 @@ GEM
       tzinfo
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
-    faraday (2.7.2)
+    faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    faraday-retry (2.0.0)
+    faraday-retry (2.1.0)
       faraday (~> 2.0)
     ferrum (0.13)
       addressable (~> 2.5)
