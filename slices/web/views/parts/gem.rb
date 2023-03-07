@@ -15,6 +15,10 @@ module Web
         def url
           "https://rubygems.org/gems/#{value.name}"
         end
+
+        def license
+          value.licenses&.join(", ")
+        end
       end
     end
   end

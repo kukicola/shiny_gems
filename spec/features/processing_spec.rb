@@ -80,5 +80,7 @@ RSpec.feature "processing", type: :feature, js: true do
     expect(page).to have_content("RubyGems Downloads 1,526,321", normalize_ws: true)
     expect(page).to have_content("GitHub Stars 1,234", normalize_ws: true)
     expect(page).to have_content("GitHub Repository some/some_gem", normalize_ws: true)
+    expect(page).to have_content("Current Version 2.0.0", normalize_ws: true)
+    expect(page).to have_content("License MIT", normalize_ws: true)
   end
 end

@@ -56,17 +56,27 @@
 
               <dt>GitHub Stars</dt>
               <dd class="mb-3 h4 fw-normal">
-                <%= current_gem.repo.stars %> <i class="bi bi-star ms-1"></i>
+                <%= current_gem.repo.stars %>
               </dd>
 
               <dt>RubyGems Downloads</dt>
               <dd class="mb-3 h4 fw-normal">
-                <%= current_gem.downloads %> <i class="bi bi-download ms-1"></i>
+                <%= current_gem.downloads %>
+              </dd>
+
+              <dt>Current Version</dt>
+              <dd class="mb-3 h4 fw-normal">
+                <%= current_gem.version %>
+              </dd>
+
+              <dt>License</dt>
+              <dd class="mb-3 h4 fw-normal">
+                <%= current_gem.license %>
               </dd>
 
               <dt>Number of issues</dt>
               <dd class="mb-0 h4 fw-normal">
-                <%= current_gem.repo.issues.size %> <i class="bi bi-record-circle ms-1"></i>
+                <%= current_gem.repo.issues.size %>
               </dd>
             </dl>
           </div>
