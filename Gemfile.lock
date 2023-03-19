@@ -182,10 +182,12 @@ GEM
       zeitwerk (~> 2.6.0)
     hansi (0.2.1)
     hashdiff (1.0.1)
+    hashie (5.0.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     json (2.6.3)
+    jwt (2.7.0)
     language_server-protocol (3.17.0.3)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -195,6 +197,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.1)
+    multi_xml (0.6.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     mustermann-contrib (3.0.0)
@@ -208,9 +211,26 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oauth2 (2.0.9)
+      faraday (>= 0.17.3, < 3.0)
+      jwt (>= 1.0, < 3.0)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 4)
+      snaky_hash (~> 2.0)
+      version_gem (~> 1.1)
     octokit (6.0.1)
       faraday (>= 1, < 3)
       sawyer (~> 0.9)
+    omniauth (2.1.1)
+      hashie (>= 3.4.6)
+      rack (>= 2.2.3)
+      rack-protection
+    omniauth-github (2.0.1)
+      omniauth (~> 2.0)
+      omniauth-oauth2 (~> 1.8)
+    omniauth-oauth2 (1.8.0)
+      oauth2 (>= 1.4, < 3)
+      omniauth (~> 2.0)
     parallel (1.22.1)
     parser (3.2.1.0)
       ast (~> 2.4.1)
@@ -224,6 +244,8 @@ GEM
     raabro (1.4.0)
     racc (1.6.1)
     rack (2.2.6.3)
+    rack-protection (3.0.5)
+      rack
     rack-test (2.0.2)
       rack (>= 1.3)
     rainbow (3.1.1)
@@ -327,6 +349,9 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
+    snaky_hash (2.0.1)
+      hashie
+      version_gem (~> 1.1, >= 1.1.1)
     standard (1.24.3)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.44.1)
@@ -338,6 +363,7 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
+    version_gem (1.1.2)
     webmock (3.18.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -373,6 +399,8 @@ DEPENDENCIES
   hanami-validations (~> 2.0)
   hanami-view!
   octokit
+  omniauth
+  omniauth-github
   pg
   puma
   rack-test

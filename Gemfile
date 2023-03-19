@@ -25,6 +25,8 @@ gem "sentry-ruby"
 gem "sentry-sidekiq"
 gem "sidekiq-cron"
 gem "sequel_pg"
+gem "omniauth"
+gem "omniauth-github"
 
 group :development, :test do
   gem "dotenv"

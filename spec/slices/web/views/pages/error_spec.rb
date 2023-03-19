@@ -8,6 +8,10 @@ RSpec.describe Web::Views::Pages::Error do
     let(:response_dbl) { instance_double(Hanami::Action::Response, flash: []) }
     let(:request_dbl) { instance_double(Hanami::Action::Request, session: {}) }
 
+    before do
+      allow(response_dbl).to receive(:[]).with(:current_user).and_return(nil)
+    end
+
     it "exposes code and message" do
       expect(subject[:code].value).to eq(404)
       expect(subject[:msg].value).to eq("Not Found")

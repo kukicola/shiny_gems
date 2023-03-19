@@ -5,7 +5,7 @@ require "hanami/action"
 
 module Web
   class Action < Hanami::Action
-    include Deps["sentry", "settings", "views.pages.error"]
+    include Deps["sentry", "settings", "views.pages.error", "repositories.users_repository"]
 
     BadRequestError = Class.new(StandardError)
     NotFoundError = Class.new(StandardError)
@@ -15,8 +15,21 @@ module Web
     handle_exception StandardError => :handle_standard_error
 
     before :check_host!
+    before :set_current_user
 
     private
+
+    def set_current_user(request, response)
+      user_id = request.session[:user_id]
+      response[:current_user] = user_id && users_repository.by_id(user_id)
+    end
+
+    def require_user!(_, response)
+      return if response[:current_user]
+
+      response.flash[:warning] = "You need to sign in first"
+      response.redirect_to("/")
+    end
 
     def validate_params!(request, _response)
       raise BadRequestError unless request.params.valid?

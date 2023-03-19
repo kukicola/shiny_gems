@@ -17,7 +17,6 @@ module ShinyGems
     config.actions.content_security_policy[:font_src] += " https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/fonts/"
 
     config.middleware.use Rack::Static, {urls: ["/assets", "/favicon.ico"], root: "public"}
-
     config.middleware.use :body_parser, :form
   end
 end

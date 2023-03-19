@@ -9,6 +9,10 @@ RSpec.describe Web::Views::Gems::Index do
     let(:request_dbl) { instance_double(Hanami::Action::Request, session: {}) }
     let(:fake_pager) { instance_double(ROM::SQL::Plugin::Pagination::Pager, current_page: 5, total_pages: 25) }
 
+    before do
+      allow(response_dbl).to receive(:[]).with(:current_user).and_return(nil)
+    end
+
     it "returns array with proper gaps" do
       expect(subject[:pages]).to eq([1, :gap, 4, 5, 6, :gap, 25])
     end
