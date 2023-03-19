@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/hanami/view.git
-  revision: c1a6f60a989f1face809a6d8d61652748aee19a7
+  revision: 2c7e9d1d231ae60046f6b237124937fc775c106b
   specs:
     hanami-view (2.0.0.alpha8)
       concurrent-ruby (~> 1.0)
@@ -358,7 +358,7 @@ GEM
       rubocop-performance (= 1.15.2)
     temple (0.9.1)
     thor (1.2.1)
-    tilt (2.0.11)
+    tilt (2.1.0)
     transproc (1.1.1)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
