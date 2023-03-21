@@ -14,8 +14,8 @@ RSpec.describe Web::Actions::Favorites::Index do
 
   it "calls repo with proper attributes" do
     expect(fake_gems_repository).to receive(:user_favorites)
-                                      .with(user.id)
-                                      .and_return([gem])
+      .with(user.id)
+      .and_return([gem])
     subject
   end
 
