@@ -7,6 +7,15 @@ ENV["HANAMI_ENV"] ||= "test"
 
 require_relative "support/cov"
 require "hanami/prepare"
+require "dry/system/stubs"
+
+Web::Slice.container.enable_stubs!
+
+RSpec.configure do |config|
+  config.after do
+    Web::Slice.container.unstub
+  end
+end
 
 require_relative "support/rspec"
 require_relative "support/database_cleaner"
@@ -18,3 +27,4 @@ require_relative "support/fake_repositories"
 require_relative "support/webmock"
 require_relative "support/csrf_fix"
 require_relative "support/omniauth_mock"
+require_relative "support/auth"

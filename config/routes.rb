@@ -35,6 +35,9 @@ module ShinyGems
         get "/:name", to: "gems.show"
       end
       post "/gemfile", to: "gemfile.create"
+      scope "favorites" do
+        get "/", to: "favorites.index"
+      end
 
       get "/*any", to: "pages.not_found"
     end

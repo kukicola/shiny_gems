@@ -1,4 +1,4 @@
-<nav class="navbar bg-white">
+<nav class="navbar navbar-expand-lg bg-white">
   <div class="container">
     <a href="/" class="text-decoration-none d-flex justify-content-center">
       <img src="/assets/images/logo.svg" class="navbar-logo" alt="ShinyGems"/>
@@ -6,26 +6,36 @@
         Shiny<span class="text-red">Gems</span>
       </strong>
     </a>
-    <ul class="navbar-nav ms-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/gems">Browse gems</a>
-      </li>
-    </ul>
-    <% if current_user %>
-      <div class="vr mx-3 my-2 d-none d-lg-inline-block"></div>
-      <div class="d-flex align-items-center ms-3">
-        <span class="navbar-text">Logged as <%= current_user.username %></span>
-        <img src="<%= current_user.avatar %>" class="avatar ms-2" alt="<%= current_user.username %>"/>
-        <a href="/auth/destroy" class="nav-link ms-3" aria-label="sign out"><i class="bi bi-box-arrow-right"></i></a>
-      </div>
-    <% else %>
-      <form action="/auth/github" method="POST">
-        <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
-        <button type="submit" class="btn btn-outline-secondary ms-3">
-          Sign in with GitHub
-          <i class="bi bi-github"></i>
-        </button>
-      </form>
-    <% end %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/gems">Browse gems</a>
+        </li>
+        <% if current_user %>
+          <li class="nav-item">
+            <a class="nav-link" href="/favorites">Favorites</a>
+          </li>
+        <% end %>
+      </ul>
+      <% if current_user %>
+        <div class="vr mx-3 my-2 d-none d-lg-inline-block"></div>
+        <div class="d-flex align-items-center ms-3">
+          <span class="navbar-text">Logged as <%= current_user.username %></span>
+          <img src="<%= current_user.avatar %>" class="avatar ms-2" alt="<%= current_user.username %>"/>
+          <a href="/auth/destroy" class="nav-link ms-3" aria-label="sign out"><i class="bi bi-box-arrow-right"></i></a>
+        </div>
+      <% else %>
+        <form action="/auth/github" method="POST">
+          <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
+          <button type="submit" class="btn btn-outline-secondary ms-3">
+            Sign in with GitHub
+            <i class="bi bi-github"></i>
+          </button>
+        </form>
+      <% end %>
+    </div>
   </div>
 </nav>

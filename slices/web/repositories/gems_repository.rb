@@ -42,6 +42,13 @@ module Web
         base_query.order { `RANDOM()` }.limit(limit)
       end
 
+      def user_favorites(user_id)
+        base_query
+          .join(favorites)
+          .where(favorites[:user_id] => user_id)
+          .order(&SORT["name"])
+      end
+
       private
 
       def base_query

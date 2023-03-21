@@ -84,6 +84,21 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
     end
   end
 
+  describe "#user_favorites" do
+    let!(:gem1) { Factory[:gem, repo: Factory[:repo]] }
+    let!(:gem2) { Factory[:gem, repo: Factory[:repo]] }
+    let!(:gem3) { Factory[:gem, repo: Factory[:repo, stars: 20, issues: []]] }
+    let!(:gem4) { Factory[:gem, repo: Factory[:repo, pushed_at: DateTime.now - 400]] }
+    let!(:user) { Factory[:user] }
+
+    before { Factory[:favorite, user_id: user.id, gem_id: gem1.id] }
+
+    it "returns favorite gems from user id except for gems without issues or outdated" do
+      expect(subject.user_favorites(user.id).to_a.map(&:id))
+        .to eq([gem1.id])
+    end
+  end
+
   describe "#random" do
     let!(:gem1) { Factory[:gem, repo: Factory[:repo]] }
     let!(:gem2) { Factory[:gem, repo: Factory[:repo]] }

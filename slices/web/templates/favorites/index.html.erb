@@ -1,0 +1,18 @@
+<div class="py-5 border-top">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <div class="h2 mb-0">Favorites</div>
+    </div>
+    <% if gems.empty? %>
+      <div class="card">
+        <div class="card-body py-5 text-center">
+          <div class="h3">You don't have any favorites</div>
+          <div class="text-big">Start browsing gems and pick your favorites</div>
+          <a href="/gems" class="btn btn-primary btn-lg mt-3">Browse all gems</a>
+        </div>
+      </div>
+    <% else %>
+      <%= render "gems/gems_list" %>
+    <% end %>
+  </div>
+</div>

@@ -3,7 +3,7 @@
 
 module Web
   class View < Hanami::View
-    DEFAULT_DESCRIPTION = "Help maintain your favourite gems and make them shine ✨"
+    DEFAULT_DESCRIPTION = "Help maintain your favorite gems and make them shine ✨"
 
     setting :title
     setting :description

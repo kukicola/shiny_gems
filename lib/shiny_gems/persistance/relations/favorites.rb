@@ -3,13 +3,11 @@
 module ShinyGems
   module Persistence
     module Relations
-      class Gems < ROM::Relation[:sql]
-        use :pagination
-
-        schema(:gems, infer: true) do
+      class Favorites < ROM::Relation[:sql]
+        schema(:favorites, infer: true) do
           associations do
-            belongs_to :repo
-            has_many :favorites
+            belongs_to :user
+            belongs_to :gem
           end
         end
       end
