@@ -46,7 +46,7 @@ module Web
     end
 
     def handle_standard_error(request, response, exception)
-      if Hanami.env?(:development)
+      if Hanami.env?(:development) || Hanami.env?(:test)
         raise exception
       else
         sentry.capture_exception(exception) do |scope|

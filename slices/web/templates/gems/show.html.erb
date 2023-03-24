@@ -41,6 +41,20 @@
         </div>
       </div>
       <div class="col-lg-3 mt-3 mt-lg-0">
+        <div class="card mb-3">
+          <div class="card-body text-center">
+            <div class="h2 mb-0">
+              <%= total_favorites %>
+            </div>
+            users added this gem as favorite
+
+            <% if favorite %>
+              <a href="#" class="btn btn-danger w-100 mt-2">Remove from favorites</a>
+            <% else %>
+              <a href="#" class="btn btn-primary w-100 mt-2">Add to favorites</a>
+            <% end %>
+          </div>
+        </div>
         <div class="card">
           <div class="card-body text-muted">
             <dl class="mb-0">
