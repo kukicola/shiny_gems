@@ -33,6 +33,8 @@ module ShinyGems
         get "/", to: "gems.index"
         get "/:id", id: /\d+/, to: "gems.show_old"
         get "/:name", to: "gems.show"
+        post "/:name/favorite", to: "favorites.create"
+        post "/:name/unfavorite", to: "favorites.delete"
       end
       post "/gemfile", to: "gemfile.create"
       scope "favorites" do
