@@ -1,12 +1,13 @@
 GIT
   remote: https://github.com/hanami/view.git
-  revision: c1a6f60a989f1face809a6d8d61652748aee19a7
+  revision: 92419242bb23c1a7c712fc6e9aef23161472c776
   specs:
     hanami-view (2.0.0.alpha8)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
       dry-inflector (~> 1.0, < 2)
+      temple (~> 0.10.0)
       tilt (~> 2.0, >= 2.0.6)
 
 GEM
@@ -365,9 +366,9 @@ GEM
       language_server-protocol (~> 3.17.0.2)
       rubocop (~> 1.48.1)
       rubocop-performance (~> 1.16.0)
-    temple (0.9.1)
+    temple (0.10.0)
     thor (1.2.1)
-    tilt (2.0.11)
+    tilt (2.1.0)
     transproc (1.1.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
