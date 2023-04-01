@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="my-5 py-5 text-center">
+    <div class="display-5">Sign in</div>
+    <div class="h3">You need to sign in to see this page.</div>
+    <div class="mt-5">
+      <form action="/auth/github" method="POST">
+        <input type="hidden" name="_csrf_token" value="<%= csrf_token %>"/>
+        <button type="submit" class="btn btn-primary ms-3 btn-lg">
+          Sign in with GitHub
+          <i class="bi bi-github"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

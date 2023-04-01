@@ -5,7 +5,7 @@ require "hanami/action"
 
 module Web
   class Action < Hanami::Action
-    include Deps["sentry", "settings", "views.pages.error", "repositories.users_repository"]
+    include Deps["sentry", "settings", "views.pages.error", "views.pages.not_authorized", "repositories.users_repository"]
 
     BadRequestError = Class.new(StandardError)
     NotFoundError = Class.new(StandardError)
@@ -27,8 +27,7 @@ module Web
     def require_user!(_, response)
       return if response[:current_user]
 
-      response.flash[:warning] = "You need to sign in first"
-      response.redirect_to("/")
+      halt 200, response.render(not_authorized)
     end
 
     def validate_params!(request, _response)
