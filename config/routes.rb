@@ -22,6 +22,7 @@ module ShinyGems
       end
 
       root to: "pages.index"
+      get "privacy", to: "pages.privacy"
 
       scope "auth" do
         get ":provider/callback", to: "session.create"
