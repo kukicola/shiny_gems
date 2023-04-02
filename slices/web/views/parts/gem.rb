@@ -19,6 +19,10 @@ module Web
         def license
           value.licenses&.join(", ")
         end
+
+        def favorites_count
+          formatter.separator(value.favorites_count || 0)
+        end
       end
     end
   end

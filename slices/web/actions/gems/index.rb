@@ -13,7 +13,7 @@ module Web
           sort_by: "downloads"
         }.freeze
 
-        SORTING_DIRECTIONS = ["name", "stars", "downloads", "issues_count", "recent_issues"].freeze
+        SORTING_DIRECTIONS = ["name", "stars", "downloads", "issues_count", "recent_issues", "favorites"].freeze
 
         params do
           optional(:page).filled(:integer)

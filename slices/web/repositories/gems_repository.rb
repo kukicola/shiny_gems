@@ -10,7 +10,8 @@ module Web
         "stars" => proc { `stars DESC` },
         "name" => proc { `name ASC` },
         "issues_count" => proc { `issues_count DESC` },
-        "recent_issues" => proc { `max_issue_created_at DESC` }
+        "recent_issues" => proc { `max_issue_created_at DESC` },
+        "favorites" => proc { `favorites_count DESC NULLS LAST` }
       }
 
       auto_struct true
@@ -52,15 +53,31 @@ module Web
       private
 
       def base_query
-        gems
-          .where { pushed_at > DateTime.now - 365 }
-          .select_append { function(:max, `repos.stars`).as(:stars) }
-          .select_append { function(:count, `issues.id`).as(:issues_count) }
-          .select_append { function(:max, `issues.created_at`).as(:max_issue_created_at) }
+        # plain Sequel datasets for CTE
+        new_ds = gems.dataset.with(:ic, issues_count).with(:fc, favorites_count)
+        gems.class.new(new_ds).with(auto_struct: true)
+          .select_append { `ic.count`.as(:issues_count) }
+          .select_append { `fc.count`.as(:favorites_count) }
+          .select_append { `ic.max_created_at`.as(:max_issue_created_at) }
           .join(repos)
-          .join(:issues, {repo_id: :id})
-          .group(gems[:id])
+          .join(:ic, {repo_id: repos[:id]})
+          .left_join(:fc, {gem_id: gems[:id]})
+          .where { pushed_at > DateTime.now - 365 }
           .combine(:repo)
+      end
+
+      def issues_count
+        container.relations[:issues].dataset.unordered
+          .select(
+            :repo_id,
+            Sequel.function(:count, "*").as(:count),
+            Sequel.function(:max, :created_at).as(:max_created_at)
+          )
+          .group(:repo_id)
+      end
+
+      def favorites_count
+        container.relations[:favorites].dataset.unordered.group_and_count(:gem_id)
       end
     end
   end

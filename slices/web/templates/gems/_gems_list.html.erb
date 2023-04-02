@@ -1,20 +1,33 @@
 <% gems.each do |gem| %>
   <a href="/gems/<%= gem.name %>" class="card text-decoration-none text-black mt-2">
     <div class="card-body">
-      <div class="d-flex flex-sm-row flex-column">
-        <div class="flex-grow-1">
-          <h5 class="card-title"><%= gem.name %></h5>
-          <p class="card-text"><%= gem.description %></p>
+      <h5 class="card-title"><%= gem.name %></h5>
+      <p class="card-text"><%= gem.description %></p>
+    </div>
+    <div class="text-center card-footer">
+      <div class="row">
+        <div class="col-md-3">
+          <%= gem.repo.stars %>
+          <div class="text-muted small">
+            GitHub stars
+          </div>
         </div>
-        <div class="text-sm-end flex-shrink-0 ps-sm-2 mt-3 mt-sm-0">
-          <div class="card-subtitle text-muted" data-bs-toggle="tooltip" data-bs-title="GitHub stars">
-            <%= gem.repo.stars %> <i class="bi bi-star ms-1"></i>
+        <div class="col-md-3 mt-2 mt-md-0">
+          <%= gem.downloads %>
+          <div class="text-muted small">
+            RubyGems downloads
           </div>
-          <div class="card-subtitle mt-1 text-muted" data-bs-toggle="tooltip" data-bs-title="RubyGems downloads">
-            <%= gem.downloads %> <i class="bi bi-download ms-1"></i>
+        </div>
+        <div class="col-md-3 mt-2 mt-md-0">
+          <%= gem.issues_count %>
+          <div class="text-muted small">
+            Issues count
           </div>
-          <div class="card-subtitle mt-1 text-muted" data-bs-toggle="tooltip" data-bs-title="Issues count">
-            <%= gem.issues_count %> <i class="bi bi-record-circle ms-1"></i>
+        </div>
+        <div class="col-md-3 mt-2 mt-md-0">
+          <%= gem.favorites_count %>
+          <div class="text-muted small">
+            Favorites
           </div>
         </div>
       </div>

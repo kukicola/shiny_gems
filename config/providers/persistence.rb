@@ -19,7 +19,7 @@ Hanami.app.register_provider :persistence, namespace: true do
     )
 
     container = ROM.container(config)
-    # container.gateways[:default].use_logger(target["logger"])
+    container.gateways[:default].use_logger(target["logger"]) if Hanami.env?(:development)
     register "rom", container
   end
 end
