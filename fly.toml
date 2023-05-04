@@ -7,8 +7,8 @@ app = "shiny-gems"
 primary_region = "mia"
 
 [processes]
-  web = "bundle exec puma -C config/puma.rb"
-  worker = "bundle exec sidekiq -r ./config/sidekiq.rb -e production"
+  web = "./web.sh"
+  worker = "./worker.sh"
 
 [http_service]
   processes = ["web"]
