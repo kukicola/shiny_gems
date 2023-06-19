@@ -1,13 +1,15 @@
 GIT
   remote: https://github.com/hanami/view.git
-  revision: c1a6f60a989f1face809a6d8d61652748aee19a7
+  revision: 2443703e799f2ae57e05b4794abc44d4863952bf
   specs:
     hanami-view (2.0.0.alpha8)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0)
       dry-core (~> 1.0)
       dry-inflector (~> 1.0, < 2)
+      temple (~> 0.10.0, >= 0.10.2)
       tilt (~> 2.0, >= 2.0.6)
+      zeitwerk (~> 2.6)
 
 GEM
   remote: https://rubygems.org/
@@ -373,9 +375,9 @@ GEM
     standard-performance (1.0.1)
       lint_roller (~> 1.0)
       rubocop-performance (~> 1.16.0)
-    temple (0.9.1)
+    temple (0.10.2)
     thor (1.2.1)
-    tilt (2.0.11)
+    tilt (2.2.0)
     transproc (1.1.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -391,7 +393,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
 
 PLATFORMS
   arm64-darwin-22
