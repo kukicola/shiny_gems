@@ -3,7 +3,6 @@
 module Processing
   module Workers
     class SyncWorker < Processing::Worker
-      include Dry::Monads[:result]
       include Deps["services.syncer", "repositories.gems_repository"]
 
       def perform(gem_id)
