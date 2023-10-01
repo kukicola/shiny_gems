@@ -6,7 +6,7 @@ RSpec.describe Web::Views::Gems::Index do
 
     let(:context) { Web::Views::Context.new.with(request: request_dbl, response: response_dbl) }
     let(:response_dbl) { instance_double(Hanami::Action::Response, flash: []) }
-    let(:request_dbl) { instance_double(Hanami::Action::Request, session: {}) }
+    let(:request_dbl) { instance_double(Hanami::Action::Request, session: {}, flash: {}) }
     let(:fake_pager) { instance_double(ROM::SQL::Plugin::Pagination::Pager, current_page: 5, total_pages: 25) }
 
     before do

@@ -11,7 +11,6 @@ module Web
     config.paths = [File.join(__dir__, "templates")]
     config.layout = "application"
     config.part_namespace = Views::Parts
-    config.default_context = Views::Context.new
 
     expose :seo_title, layout: true do
       config.title || "ShinyGems"
@@ -20,5 +19,7 @@ module Web
     expose :seo_description, layout: true do
       config.description || DEFAULT_DESCRIPTION
     end
+
+    expose :current_user, layout: true
   end
 end

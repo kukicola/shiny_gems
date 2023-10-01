@@ -6,7 +6,7 @@ RSpec.describe Web::Views::Pages::Error do
 
     let(:context) { Web::Views::Context.new.with(request: request_dbl, response: response_dbl) }
     let(:response_dbl) { instance_double(Hanami::Action::Response, flash: []) }
-    let(:request_dbl) { instance_double(Hanami::Action::Request, session: {}) }
+    let(:request_dbl) { instance_double(Hanami::Action::Request, session: {}, flash: {}) }
 
     before do
       allow(response_dbl).to receive(:[]).with(:current_user).and_return(nil)
