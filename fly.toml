@@ -16,3 +16,6 @@ primary_region = "mia"
   force_https = true
   auto_stop_machines = true
   auto_start_machines = true
+
+[deploy]
+  release_command = "bundle exec rake db:migrate"
