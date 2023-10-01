@@ -22,8 +22,16 @@ RSpec.describe Processing::Workers::SyncWorker do
 
   context "sync failed" do
     it "raises error" do
-      expect(fake_syncer).to receive(:call).with(gem).and_return(Dry::Monads::Failure(Octokit::Forbidden.new))
-      expect { subject }.to raise_error(Octokit::Forbidden)
+      expect(fake_syncer).to receive(:call).with(gem).and_return(Dry::Monads::Failure(Gems::GemError.new))
+      expect { subject }.to raise_error(Gems::GemError)
+    end
+  end
+
+  context "gem not found" do
+    it "deletes gem" do
+      expect(fake_syncer).to receive(:call).with(gem).and_return(Dry::Monads::Failure(Gems::NotFound.new))
+      expect(fake_gem_repo).to receive(:delete).with(1)
+      subject
     end
   end
 end

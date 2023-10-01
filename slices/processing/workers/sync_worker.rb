@@ -3,13 +3,21 @@
 module Processing
   module Workers
     class SyncWorker < Processing::Worker
+      include Dry::Monads[:result]
       include Deps["services.syncer", "repositories.gems_repository"]
 
       def perform(gem_id)
         gem = gems_repository.by_id(gem_id)
         result = syncer.call(gem)
 
-        raise result.failure unless result.success?
+        case result
+        in Dry::Monads::Success
+          return
+        in Dry::Monads::Failure[Gems::NotFound]
+          gems_repository.delete(gem_id)
+        else
+          raise result.failure
+        end
       end
     end
   end
