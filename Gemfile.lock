@@ -1,14 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.8)
+    activesupport (7.1.1)
+      base64
+      bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
+      connection_pool (>= 2.2.5)
+      drb
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
+      mutex_m
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
+    base64 (0.1.1)
+    bigdecimal (3.1.4)
     capybara (3.39.2)
       addressable
       matrix
@@ -33,6 +40,8 @@ GEM
     diff-lcs (1.5.0)
     docile (1.4.0)
     dotenv (2.8.1)
+    drb (2.1.1)
+      ruby2_keywords
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
       zeitwerk (~> 2.6)
@@ -113,12 +122,12 @@ GEM
       websocket-driver (>= 0.6, < 0.8)
     ffi (1.15.5)
     formatador (1.1.0)
-    fugit (1.8.1)
+    fugit (1.9.0)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     gems (1.2.0)
-    globalid (1.1.0)
-      activesupport (>= 5.0)
+    globalid (1.2.1)
+      activesupport (>= 6.1)
     guard (2.18.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -208,6 +217,7 @@ GEM
     mustermann-contrib (3.0.0)
       hansi (~> 0.2.0)
       mustermann (= 3.0.0)
+    mutex_m (0.1.2)
     nenv (0.3.0)
     nio4r (2.5.9)
     nokogiri (1.15.2-arm64-darwin)
@@ -259,7 +269,7 @@ GEM
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis-client (0.17.0)
+    redis-client (0.18.0)
       connection_pool
     regexp_parser (2.8.1)
     rexml (3.2.5)
@@ -346,7 +356,7 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.14.0)
-    sidekiq-cron (1.10.0)
+    sidekiq-cron (1.11.0)
       fugit (~> 1.8)
       globalid (>= 1.0.1)
       sidekiq (>= 6)
