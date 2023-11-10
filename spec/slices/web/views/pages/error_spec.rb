@@ -4,7 +4,7 @@ RSpec.describe Web::Views::Pages::Error do
   describe "exposures" do
     subject { described_class.new.call(code: 404, context: context) }
 
-    let(:context) { Web::Views::Context.new.with(request: request_dbl, response: response_dbl) }
+    let(:context) { Web::Views::Context.new(request: request_dbl, response: response_dbl) }
     let(:response_dbl) { instance_double(Hanami::Action::Response, flash: []) }
     let(:request_dbl) { instance_double(Hanami::Action::Request, session: {}, flash: {}) }
 

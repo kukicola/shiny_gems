@@ -1,0 +1,15 @@
+{
+  "name": "shiny_gems",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "assets": "node config/assets.js"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.2",
+    "bootstrap-icons": "^1.11.1",
+    "esbuild-sass-plugin": "^2.16.0",
+    "hanami-assets": "^2.1.0-rc.2"
+  }
+}

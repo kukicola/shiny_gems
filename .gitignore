@@ -4,3 +4,6 @@
 /node_modules
 .env
 coverage
+yarn-error.log
+public/assets
+public/assets.json

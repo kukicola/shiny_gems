@@ -1,0 +1,2 @@
+procfile: Procfile.dev
+env: .env

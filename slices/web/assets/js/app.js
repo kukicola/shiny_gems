@@ -1,12 +1,17 @@
+import { Tooltip, Toast } from 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.scss'
+import '../css/app.scss'
+
 (function () {
   const toastElList = document.querySelectorAll('.toast')
   toastElList.forEach(function (toastEl) {
-    new bootstrap.Toast(toastEl, {}).show()
+    new Toast(toastEl, {}).show()
   })
 
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   tooltipTriggerList.forEach(function (tooltip) {
-    new bootstrap.Tooltip(tooltip)
+    new Tooltip(tooltip)
   })
 
   const autoSaveForms = document.querySelectorAll('[data-autosave]')
