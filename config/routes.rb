@@ -5,8 +5,6 @@ module ShinyGems
     slice :web, at: "/" do
       require "sidekiq/web"
       require "sidekiq/cron/web"
-      require "omniauth"
-      require "omniauth-github"
 
       Sidekiq::Web.use Rack::Auth::Basic do |username, password|
         Rack::Utils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(Hanami.app["settings"].sidekiq_web_user)) &
@@ -14,12 +12,6 @@ module ShinyGems
       end
       mount Sidekiq::Web, at: "/sidekiq"
 
-      use OmniAuth::Builder do
-        configure do |config|
-          config.request_validation_phase = Web::Action.new
-        end
-        provider :github, Hanami.app["settings"].github_key, Hanami.app["settings"].github_secret, scope: "user:email"
-      end
 
       root to: "pages.index"
       get "privacy", to: "pages.privacy"
