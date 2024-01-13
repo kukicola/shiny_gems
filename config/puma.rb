@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "sentry-sidekiq"
-
 workers 2
 threads 1, 3
 

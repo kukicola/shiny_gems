@@ -3,6 +3,7 @@
 Hanami.app.register_provider :sentry do
   prepare do
     require "sentry-ruby"
+    require "sentry-sidekiq"
 
     Sentry.init do |config|
       config.dsn = target["settings"].sentry_url
