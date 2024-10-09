@@ -1,8 +1,5 @@
-FROM ruby:3.1
-ENV BUNDLER_VERSION=2.3.10
-ENV APP_HOME=/app
+FROM ruby:3.2.2
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-WORKDIR $APP_HOME
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v $BUNDLER_VERSION && bundle install
 COPY . ./
