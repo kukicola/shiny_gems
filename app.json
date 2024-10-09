@@ -1,0 +1,15 @@
+{
+  "name": "shinygems",
+  "scripts": {
+    "dokku": {
+      "predeploy": "bundle exec rake db:migrate"
+    }
+  },
+  "healthchecks": {
+    "web": {
+      "name": "web check",
+      "path": "/",
+      "port": 2300
+    }
+  }
+}
