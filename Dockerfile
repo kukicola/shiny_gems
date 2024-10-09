@@ -8,6 +8,6 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . ./
-RUN bundle exec rake assets:precompile
+RUN bundle exec hanami assets compile
 EXPOSE 2300
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
