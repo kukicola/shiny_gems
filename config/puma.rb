@@ -33,4 +33,3 @@ end
 on_worker_shutdown do
   sidekiq&.stop
 end
-
