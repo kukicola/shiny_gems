@@ -8,6 +8,7 @@ WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
 COPY . ./
+ENV HANAMI_ENV=production
 RUN bundle exec hanami assets compile
 EXPOSE 2300
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
