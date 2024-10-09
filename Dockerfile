@@ -5,7 +5,7 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man && \
     npm install -g yarn
 WORKDIR /app
-COPY Gemfile Gemfile.lock package.json ./
+COPY Gemfile Gemfile.lock package.json yarn.lock ./
 RUN bundle install
 RUN yarn install
 COPY . ./
