@@ -6,7 +6,7 @@
         "name": "web check",
         "path": "/",
         "port": 2300,
-        "type": "liveness"
+        "type": "startup"
       }
     ]
   }
