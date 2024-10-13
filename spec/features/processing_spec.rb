@@ -22,7 +22,7 @@ RSpec.feature "processing", type: :feature, js: true do
     {
       full_name: "some/some_gem",
       stargazers_count: 1_234,
-      pushed_at: "2023-01-26T19:06:43Z"
+      pushed_at: Time.now.to_s
     }
   end
 
