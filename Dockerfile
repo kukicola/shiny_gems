@@ -5,7 +5,7 @@ RUN apt-get update -qq && \
     apt-get install -y nodejs npm postgresql-client libjemalloc2 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man && \
-    npm install -g yarn \
+    npm install -g yarn
 
 WORKDIR /app
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
