@@ -19,7 +19,7 @@ module Processing
         in Dry::Monads::Failure(StandardError => exception)
           raise exception
         in Dry::Monads::Failure(:no_results)
-          return
+          nil
         end
       end
     end

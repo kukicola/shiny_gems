@@ -11,7 +11,7 @@ module Processing
 
         case result
         in Dry::Monads::Success
-          return
+          nil
         in Dry::Monads::Failure[Gems::NotFound]
           gems_repository.delete(gem_id)
         else
