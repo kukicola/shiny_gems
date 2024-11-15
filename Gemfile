@@ -2,14 +2,14 @@
 
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.3.6"
 
-gem "hanami", "~> 2.0"
-gem "hanami-router", "~> 2.0"
-gem "hanami-controller", "~> 2.0"
-gem "hanami-validations", "~> 2.0"
-gem "hanami-view", "~> 2.0"
-gem "hanami-assets", "~> 2.0"
+gem "hanami", "~> 2.2"
+gem "hanami-router", "~> 2.2"
+gem "hanami-controller", "~> 2.2"
+gem "hanami-validations", "~> 2.2"
+gem "hanami-view", "~> 2.2"
+gem "hanami-assets", "~> 2.2"
 gem "rom", "~> 5.3"
 gem "rom-sql", "~> 3.6"
 gem "pg"
@@ -39,10 +39,6 @@ end
 
 group :cli, :development, :test do
   gem "hanami-rspec"
-end
-
-group :development do
-  gem "guard-puma", "~> 0.8"
 end
 
 group :test do

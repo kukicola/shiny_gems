@@ -1,4 +1,4 @@
-FROM ruby:3.2.2
+FROM ruby:3.3.6
 ENV LANG=en_US.UTF-8
 
 RUN apt-get update -qq && \

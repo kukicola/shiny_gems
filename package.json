@@ -10,6 +10,6 @@
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.1",
     "esbuild-sass-plugin": "^2.16.0",
-    "hanami-assets": "^2.1.0-rc.2"
+    "hanami-assets": "^2.2.1"
   }
 }

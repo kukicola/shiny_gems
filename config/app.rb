@@ -19,6 +19,6 @@ module ShinyGems
     config.middleware.use Rack::Static, {urls: ["/assets", "/favicon.ico"], root: "public"}
     config.middleware.use :body_parser, :form
 
-    config.assets.package_manager_run_command = "yarn run"
+    # config.assets.package_manager_run_command = "yarn run"
   end
 end

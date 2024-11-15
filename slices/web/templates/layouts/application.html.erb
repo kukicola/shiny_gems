@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title><%= seo_title %></title>
-    <%= stylesheet_tag "web/app" %>
+    <%= stylesheet_tag "app" %>
     <meta charset="UTF-8"/>
     <meta content="<%= seo_description %>" name="description"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -16,6 +16,6 @@
       <%= yield %>
       <%= render :footer %>
     </div>
-    <%= javascript_tag "web/app" %>
+    <%= javascript_tag "app" %>
   </body>
 </html>

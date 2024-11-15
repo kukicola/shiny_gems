@@ -8,6 +8,7 @@ ENV["HANAMI_ENV"] ||= "test"
 require_relative "support/cov"
 require "hanami/prepare"
 require "dry/system/stubs"
+require "ostruct"
 
 Web::Slice.container.enable_stubs!
 
