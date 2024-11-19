@@ -26,10 +26,18 @@ body {
 
 .text-gray {
   color: #adb5bd;
+
+  svg path {
+    fill: #adb5bd;
+  }
 }
 
 a.text-gray:hover {
   color: #ced4da;
+
+  svg path {
+    fill: #ced4da;
+  }
 }
 
 .intro {
@@ -81,4 +89,10 @@ footer {
 
 .icon-huge {
   font-size: 7rem;
+}
+
+.svg-icon {
+  height: 22px;
+  display: inline-block;
+  vertical-align: text-top;
 }
