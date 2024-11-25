@@ -375,7 +375,7 @@ GEM
       pg (>= 0.18.0, != 1.2.0)
       sequel (>= 4.38.0)
     shellany (0.0.1)
-    sidekiq (7.3.5)
+    sidekiq (7.3.6)
       connection_pool (>= 2.3.0)
       logger
       rack (>= 2.2.4)
