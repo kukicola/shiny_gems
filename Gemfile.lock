@@ -220,7 +220,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.1)
+    logger (1.6.2)
     lumberjack (1.2.10)
     matrix (0.4.2)
     method_source (1.1.0)
@@ -363,11 +363,11 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     securerandom (0.3.2)
-    sentry-ruby (5.21.0)
+    sentry-ruby (5.22.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
-    sentry-sidekiq (5.21.0)
-      sentry-ruby (~> 5.21.0)
+    sentry-sidekiq (5.22.0)
+      sentry-ruby (~> 5.22.0)
       sidekiq (>= 3.0)
     sequel (5.86.0)
       bigdecimal
