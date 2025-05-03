@@ -9,7 +9,7 @@ module Processing
         repo = repos_repository.by_id(repo_id, with: [:issues])
         result = issues_syncer.call(repo)
 
-        raise result.failure if !result.success? && !result.failure.is_a?(Octokit::NotFound)
+        raise result.failure if !result.success? && ![Octokit::NotFound, Octokit::Forbidden].include?(result.failure.class)
       end
     end
   end
