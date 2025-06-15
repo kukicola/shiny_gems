@@ -14,7 +14,7 @@ module Web
     handle_exception BadRequestError => :handle_bad_request
     handle_exception StandardError => :handle_standard_error
 
-    before :check_host!
+    #before :check_host!
     before :set_current_user
 
     private

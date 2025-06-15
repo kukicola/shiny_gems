@@ -22,8 +22,8 @@ RSpec.describe Processing::Workers::SyncIssuesWorker do
 
   context "update failed" do
     it "raises error" do
-      expect(fake_syncer).to receive(:call).with(repo).and_return(Dry::Monads::Failure(Octokit::Forbidden.new))
-      expect { subject }.to raise_error(Octokit::Forbidden)
+      expect(fake_syncer).to receive(:call).with(repo).and_return(Dry::Monads::Failure(Octokit::ServerError.new))
+      expect { subject }.to raise_error(Octokit::ServerError)
     end
   end
 end
