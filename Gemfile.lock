@@ -172,7 +172,7 @@ GEM
       hanami-utils (~> 2.2)
       json (>= 2.7.2)
       zeitwerk (~> 2.6)
-    hanami-assets (2.2.0)
+    hanami-assets (3.0.0)
       zeitwerk (~> 2.6)
     hanami-cli (2.2.1)
       bundler (~> 2.1)
@@ -458,7 +458,7 @@ DEPENDENCIES
   gems
   guard-puma (~> 0.10)
   hanami (~> 2.2)
-  hanami-assets (~> 2.2)
+  hanami-assets (~> 3.0)
   hanami-controller (~> 2.2)
   hanami-router (~> 3.0)
   hanami-rspec
