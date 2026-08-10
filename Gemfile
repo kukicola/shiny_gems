@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "3.3.6"
+ruby "3.3.12"
 
 gem "hanami", "~> 2.2"
 gem "hanami-router", "~> 2.2"
@@ -17,7 +17,7 @@ gem "octokit"
 gem "dry-monads"
 gem "gems"
 gem "dry-types", "~> 1.7"
-gem "puma"
+gem "puma", "~> 7.2.1"
 gem "rake"
 gem "sidekiq"
 gem "faraday-retry"
@@ -34,7 +34,7 @@ group :development, :test do
 end
 
 group :cli, :development do
-  gem "hanami-reloader"
+  gem "guard-puma", "~> 0.10"
 end
 
 group :cli, :development, :test do
