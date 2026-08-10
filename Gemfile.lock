@@ -278,7 +278,7 @@ GEM
       method_source (~> 1.0)
       reline (>= 0.6.0)
     public_suffix (6.0.2)
-    puma (7.2.1)
+    puma (8.0.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
@@ -468,7 +468,7 @@ DEPENDENCIES
   omniauth
   omniauth-github
   pg
-  puma (~> 7.2.1)
+  puma (~> 8.0.2)
   rack-test
   rake
   rom (~> 5.4)
