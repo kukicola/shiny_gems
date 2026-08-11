@@ -50,6 +50,15 @@ RSpec.describe Web::Repositories::GemsRepository, type: :database do
         expect(result.name).to eq(gem.name)
         expect(result.repo).to match(match_entity(repo))
       end
+
+      it "returns nested repo associations" do
+        other_gem = Factory[:gem, repo_id: repo.id]
+
+        result = repository.by_name(gem.name, with: {repo: [:issues, :gems]})
+
+        expect(result.repo.issues.map(&:title)).to match_array(repo.issues.map(&:title))
+        expect(result.repo.gems.map(&:id)).to match_array([gem.id, other_gem.id])
+      end
     end
   end
 

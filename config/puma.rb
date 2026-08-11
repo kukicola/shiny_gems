@@ -9,3 +9,10 @@ environment ENV.fetch("HANAMI_ENV", "development")
 workers ENV.fetch("HANAMI_WEB_CONCURRENCY", 2)
 
 preload_app!
+
+# The persistence provider is started while the app is preloaded. Disconnect its
+# pool before forking so workers do not inherit and concurrently use the same
+# PostgreSQL sockets. Sequel reconnects lazily in each worker on first use.
+before_fork do
+  Hanami.app["persistence.db"].disconnect
+end
