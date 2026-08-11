@@ -34,7 +34,7 @@ GEM
       xpath (~> 3.2)
     coderay (1.1.3)
     concurrent-ruby (1.3.8)
-    connection_pool (3.0.2)
+    connection_pool (2.5.5)
     crack (1.0.0)
       bigdecimal
       rexml
@@ -449,6 +449,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  connection_pool (~> 2.5)
   cuprite
   database_cleaner-sequel
   dotenv
