@@ -84,12 +84,12 @@ GEM
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
       dry-events (~> 1.0, < 2)
-    dry-schema (1.14.1)
+    dry-schema (1.15.0)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 1.0, >= 1.0.1)
       dry-core (~> 1.1)
       dry-initializer (~> 3.2)
-      dry-logic (~> 1.5)
+      dry-logic (~> 1.6)
       dry-types (~> 1.8)
       zeitwerk (~> 2.6)
     dry-struct (1.8.1)
@@ -200,7 +200,7 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-core (~> 1.0, < 2)
       dry-transformer (~> 1.0, < 2)
-    hanami-validations (2.2.0)
+    hanami-validations (2.3.0)
       dry-validation (>= 1.10, < 2)
     hanami-view (2.2.1)
       dry-configurable (~> 1.0)
@@ -463,7 +463,7 @@ DEPENDENCIES
   hanami-controller (~> 2.2)
   hanami-router (~> 3.0)
   hanami-rspec
-  hanami-validations (~> 2.2)
+  hanami-validations (~> 2.3)
   hanami-view (~> 2.2)
   octokit
   omniauth
