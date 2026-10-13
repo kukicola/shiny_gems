@@ -6,7 +6,7 @@ ruby "3.3.12"
 
 gem "hanami", "~> 2.2"
 gem "hanami-router", "~> 3.0"
-gem "hanami-controller", "~> 2.2"
+gem "hanami-controller", "~> 2.3"
 gem "hanami-validations", "~> 2.2"
 gem "hanami-view", "~> 2.2"
 gem "hanami-assets", "~> 3.0"
