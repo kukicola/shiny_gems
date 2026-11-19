@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "3.3.12"
+ruby "3.3.14"
 
 gem "hanami", "~> 2.2"
 gem "hanami-router", "~> 3.0"
