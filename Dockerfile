@@ -1,4 +1,4 @@
-FROM ruby:3.3.12-trixie
+FROM ruby:3.3.14-trixie
 ENV LANG=en_US.UTF-8
 
 RUN apt-get update -qq && \
